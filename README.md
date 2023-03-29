@@ -1,6 +1,7 @@
-# Pi-hole Star Trek Picard LCARS Theme
 ![Pi-hole Star Trek Picard LCARS Theme](https://github.com/MichalSvatos/pi-hole-star-trek-picard/raw/main/previews/pi-hole-star-trek-picard-lcars.png)
 ***
+
+# Pi-hole Star Trek Picard LCARS Theme
 
 LCARS Theme for [Pi-hole](https://github.com/pi-hole/pi-hole) dashboard. Written completely from scratch.
 
