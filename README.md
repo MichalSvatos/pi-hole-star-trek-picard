@@ -32,10 +32,6 @@ Run the same commands directly in the container as shown [here](https://github.c
 
 _Note: I didn't test it myself._
 
-## Do you prefer more colorful LCARS?
-Check my other theme
-[![Pi-hole LCARS Next Generation Theme](https://github.com/MichalSvatos/pi-hole-star-trek-picard/raw/main/previews/pi-hole-tng-lcars.png)](https://github.com/MichalSvatos/pi-hole-lcars-next-gen)
-
 ## Changelog
 **0.6.2**
 - Preview images in README
@@ -52,6 +48,11 @@ Check my other theme
 ## Thanks to ...
 - [meWho.com](https://mewho.com) - creator of the famous SYSTEM47 screensaver and various LCARS projects
 - [Jacob Bates](https://github.com/jacobbates) for this installation process
+
+## Do you prefer more colorful LCARS?
+Check my other theme
+[![Pi-hole LCARS Next Generation Theme](https://github.com/MichalSvatos/pi-hole-star-trek-picard/raw/main/previews/pi-hole-tng-lcars.png)](https://github.com/MichalSvatos/pi-hole-lcars-next-gen)
+
 ---
 ### License
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
