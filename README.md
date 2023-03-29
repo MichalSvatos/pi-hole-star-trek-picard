@@ -1,5 +1,5 @@
 # Pi-hole Star Trek Picard LCARS Theme
-
+![Pi-hole Star Trek Picard LCARS Theme](https://github.com/MichalSvatos/pi-hole-star-trek-picard/raw/main/previews/pi-hole-star-trek-picard-lcars.png)
 ***
 
 LCARS Theme for [Pi-hole](https://github.com/pi-hole/pi-hole) dashboard. Written completely from scratch.
@@ -32,9 +32,13 @@ Run the same commands directly in the container as shown [here](https://github.c
 _Note: I didn't test it myself._
 
 ## Do you prefer more colorful LCARS?
-Check my [Pi-hole LCARS Next Generation Theme](https://github.com/MichalSvatos/pi-hole-lcars-next-gen)
+Check my other theme
+[![Pi-hole LCARS Next Generation Theme](https://github.com/MichalSvatos/pi-hole-star-trek-picard/raw/main/previews/pi-hole-tng-lcars.png)](https://github.com/MichalSvatos/pi-hole-lcars-next-gen)
 
 ## Changelog
+**0.6.2**
+- Preview images in README
+
 **0.6.1**
 - Pie charts visual tweak (mirroring)
 
