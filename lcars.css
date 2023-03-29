@@ -865,11 +865,12 @@ h6 {
 }
 
 .col-lg-3 + .col-lg-3 .small-box:after {
-	background-image: linear-gradient(0deg, rgba(0, 0, 0, 1) 0%, rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 1) 100%);
+	/*background-image: linear-gradient(0deg, rgba(0, 0, 0, 1) 0%, rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 1) 100%);*/
+	background-image: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 49%, rgba(0,0,0,1) 51%, rgba(0,0,0,1) 100%);
 	/*background-size: var(--gap) var(--gap);*/
 	background-position: 0 0;
 	z-index: 2;
-	animation: backgroundPositionAnimation 15s var(--transition-function) infinite;
+	animation: backgroundPositionAnimation 5s linear infinite;
 }
 
 @media (min-width: 768px) and (max-width: 1199px) {
@@ -881,6 +882,10 @@ h6 {
 
 .small-box.bg-yellow:after {
 	animation-delay: 3s !important;
+}
+
+.small-box.bg-green:after {
+	animation-delay: 1.6s !important;
 }
 
 .small-box:has(.glow) .small-box-footer:after {
@@ -1204,32 +1209,20 @@ h6 {
 }
 
 @-webkit-keyframes backgroundPositionAnimation {
-	0%, 30%, 95% {
+	0% {
 		background-position: 0 0;
 	}
-	20% {
-		background-position: 0 calc(var(--gap) * 5);
-	}
-	70% {
-		background-position: 0 calc(var(--gap) * 10);
-	}
 	100% {
-		background-position: 0 calc(var(--gap) * -2);
+		background-position: 0 calc(var(--gap) * -18.125);
 	}
 }
 
 @keyframes backgroundPositionAnimation {
-	0%, 30%, 95% {
+	0% {
 		background-position: 0 0;
 	}
-	20% {
-		background-position: 0 calc(var(--gap) * 5);
-	}
-	70% {
-		background-position: 0 calc(var(--gap) * 10);
-	}
 	100% {
-		background-position: 0 calc(var(--gap) * -2);
+		background-position: 0 calc(var(--gap) * -18.125);
 	}
 }
 
