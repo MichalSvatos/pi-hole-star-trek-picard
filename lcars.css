@@ -1,6 +1,6 @@
 /*
 	- Document: Pi-hole LCARS Star Trek Picard Theme
-	- Version:  0.6.0
+	- Version:  0.6.1
 	- Author:   @MichalSvatos
 	- Description: Star Trek Picard LCARS Theme for Pi-hole dashboard.
 	- Disclaimer: Due to fact that I have the access only to CSS I was forced to use some !importants and a lot of IDs. I'm sorry.
@@ -1201,9 +1201,13 @@ h6 {
 }
 
 @media (min-width: 768px) {
-	#query-types-pie,
-	#forward-destinations-pie {
+	#query-types-pie {
 		border-right-width: var(--pie-chart-border-width);
+	}
+
+	#forward-destinations-pie {
+		border-left-width: var(--pie-chart-border-width);
+		text-align: right;
 	}
 
 	#query-types-pie:before,
@@ -1225,6 +1229,11 @@ h6 {
 		border-top: calc(var(--border-width) * 2) solid var(--color-background);
 		z-index: 1;
 	}
+
+	#forward-destinations-pie:before {
+		justify-content: flex-start;
+		inset: calc(var(--gap) * 1) auto auto calc(var(--gap) * -9);
+	}
 }
 
 #query-types-pie:after,
@@ -1238,10 +1247,18 @@ h6 {
 	z-index: 0;
 }
 
+#forward-destinations-pie:after {
+	inset: calc(var(--gap25) * -1) calc(var(--gap25) * 32) calc(var(--gap25) * -1) calc(var(--gap25) * -1);
+	border-radius: var(--radius75) 0 0 var(--radius75);
+}
+
 @media (min-width: 768px) {
-	#query-types-pie:after,
-	#forward-destinations-pie:after {
+	#query-types-pie:after {
 		inset: calc(var(--gap25) * -1) calc(var(--gap25) * -10) calc(var(--gap25) * -1) calc(var(--gap25) * 32);
+	}
+
+	#forward-destinations-pie:after {
+		inset: calc(var(--gap25) * -1) calc(var(--gap25) * 32) calc(var(--gap25) * -1) calc(var(--gap25) * -10);
 	}
 }
 
@@ -1259,19 +1276,25 @@ h6 {
 }
 
 @media (min-width: 768px) {
-	#query-types-pie .box-body,
-	#forward-destinations-pie .box-body {
+	#query-types-pie .box-body {
 		margin-right: var(--gap);
+	}
+
+	#forward-destinations-pie .box-body {
+		margin-left: var(--gap);
 	}
 }
 
 /* --- fake corners */
 @media (min-width: 768px) {
 	#query-types-pie .box-body:before,
-	#query-types-pie .box-body:after,
+	#query-types-pie .box-body:after {
+		inset: calc((var(--gap) * -2.125) - var(--gap) - var(--gap25)) calc((var(--gap) * -1) - var(--gap25)) calc(var(--gap25) * -1) auto;
+	}
+
 	#forward-destinations-pie .box-body:before,
 	#forward-destinations-pie .box-body:after {
-		inset: calc((var(--gap) * -2.125) - var(--gap) - var(--gap25)) calc((var(--gap) * -1) - var(--gap25)) calc(var(--gap25) * -1) auto;
+		inset: calc((var(--gap) * -2.125) - var(--gap) - var(--gap25)) auto calc(var(--gap25) * -1) calc((var(--gap) * -1) - var(--gap25));
 	}
 
 	#query-types-pie .box-body:before,
@@ -1283,6 +1306,10 @@ h6 {
 	#forward-destinations-pie .box-body:after {
 		background-color: var(--color-background);
 		border-radius: 0 var(--radius50) var(--radius50) 0;
+	}
+
+	#forward-destinations-pie .box-body:after {
+		border-radius: var(--radius50) 0 0 var(--radius50);
 	}
 }
 
@@ -1310,6 +1337,12 @@ h6 {
 		right: calc((var(--gap) * -9) - (var(--border-width) * 2) - var(--gap));
 		top: calc(var(--gap) * 1.615);
 	}
+
+	#forward-destinations-pie .chart-legend {
+		justify-content: flex-start;
+		right: auto;
+		left: calc((var(--gap) * -9) - (var(--border-width) * 2) - var(--gap));
+	}
 }
 
 .chart-legend ul {
@@ -1329,6 +1362,13 @@ h6 {
 	font-size: 1.4rem;
 }
 
+@media (min-width: 768px) {
+	#forward-destinations-pie .chart-legend li {
+		padding: var(--gap50) var(--gap75) var(--gap50) calc(var(--gap) * 3);
+		justify-content: flex-end !important;
+	}
+}
+
 .chart-legend li:hover {
 	background-color: var(--color-secondary);
 }
@@ -1346,6 +1386,12 @@ h6 {
 	inset: 0 var(--gap50) 0 auto;
 	width: calc(var(--gap) * 2);
 	margin: 0 !important;
+}
+
+@media (min-width: 768px) {
+	#forward-destinations-pie .chart-legend li span {
+		inset: 0 auto 0 var(--gap50);
+	}
 }
 
 .chart-legend li span svg {

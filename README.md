@@ -35,6 +35,9 @@ _Note: I didn't test it myself._
 Check my [Pi-hole LCARS Next Generation Theme](https://github.com/MichalSvatos/pi-hole-lcars-next-gen)
 
 ## Changelog
+**0.6.1**
+- Pie charts visual tweak (mirroring)
+
 **0.6.0**
 - Pie charts styling
 
