@@ -1,6 +1,6 @@
 /*
 	- Document: Pi-hole LCARS Star Trek Picard Theme
-	- Version:  0.5.0
+	- Version:  0.6.0
 	- Author:   @MichalSvatos
 	- Description: Star Trek Picard LCARS Theme for Pi-hole dashboard.
 	- Disclaimer: Due to fact that I have the access only to CSS I was forced to use some !importants and a lot of IDs. I'm sorry.
@@ -31,10 +31,12 @@
 	--gradient-pos: 300px;
 	--wrapper-max-width: 1250px;
 	--radius100: var(--gap);
+	--radius75: var(--gap75);
 	--radius50: var(--gap50);
 	--radius25: var(--gap25);
 	--lcars-space: var(--gap25);
 	--border-width: calc(var(--gap) / 8);
+	--pie-chart-border-width: calc(var(--gap) * 9);
 
 	/* -- colors */
 	--color-background: #000;
@@ -54,6 +56,7 @@
 	--color-danger-bright: #f37052;
 	/*--color-success: var(--lcars-martian);*/
 	--color-disabled: #1f2228;
+	--color-supplement-01: #411E17;
 
 	/* -- typo */
 	--font-family: Antonio, Oswald, "Myriad Pro Cond", "Roboto Condensed", "Futura Condensed",
@@ -72,9 +75,12 @@
 	--transition-slow: var(--transition-duration-slow) var(--transition-function);
 
 	/* -- LCARS panels and gradients */
-	--background-grid: linear-gradient(var(--color-quinternary) .2rem, transparent .2rem), linear-gradient(90deg, var(--color-quinternary) .2rem, transparent .2rem);
+	--background-grid: linear-gradient(var(--color-supplement-01) .1rem, transparent .1rem), linear-gradient(90deg, var(--color-supplement-01) .1rem, transparent .1rem);
 }
 
+/*
+	TODO: Unify small labels (eg. content: attr(id))
+*/
 
 /* GLOBAL STYLES
    ========================================================== */
@@ -1007,11 +1013,14 @@ h6 {
 	}
 }
 
-/* -- black backgrounds */
+/* -- box "resets" - black backgrounds, borders ... */
 .box,
 .box-warning,
 .login-box {
 	background-color: var(--color-background);
+	border: 0;
+	margin-bottom: 0;
+	box-shadow: none;
 }
 
 #queries-over-time,
@@ -1177,6 +1186,187 @@ h6 {
 @media (min-width: 1250px) {
 	#queries-over-time .box-header:after {
 		--scanner-animation-width: var(--gap);
+	}
+}
+
+
+/* PIE CHARTS BOXES
+   ========================================================== */
+#query-types-pie,
+#forward-destinations-pie {
+	padding: var(--gap25) var(--gap25);
+	margin-top: calc(var(--gap) * 2);
+	border: calc(var(--border-width) * 4) solid var(--color-primary);
+	border-radius: var(--radius100);
+}
+
+@media (min-width: 768px) {
+	#query-types-pie,
+	#forward-destinations-pie {
+		border-right-width: var(--pie-chart-border-width);
+	}
+
+	#query-types-pie:before,
+	#forward-destinations-pie:before {
+		content: attr(id);
+		display: flex;
+		align-items: flex-end;
+		justify-content: flex-end;
+		width: calc(var(--gap) * 9);
+		min-height: calc(var(--gap) * 4);
+		background-color: var(--color-secondary-hover);
+		padding: var(--gap25) var(--gap75);
+		text-align: right;
+		position: absolute;
+		inset: calc(var(--gap) * 1) calc(var(--gap) * -9) auto auto;
+		font-size: 1.2rem;
+		text-transform: uppercase;
+		color: var(--color-text-dark);
+		border-top: calc(var(--border-width) * 2) solid var(--color-background);
+		z-index: 1;
+	}
+}
+
+#query-types-pie:after,
+#forward-destinations-pie:after {
+	content: '';
+	border: var(--border-width) solid var(--color-background);
+	border-radius: 0 var(--radius75) var(--radius75) 0;
+	background-color: transparent;
+	position: absolute;
+	inset: calc(var(--gap25) * -1) calc(var(--gap25) * -1) calc(var(--gap25) * -1) calc(var(--gap25) * 32);
+	z-index: 0;
+}
+
+@media (min-width: 768px) {
+	#query-types-pie:after,
+	#forward-destinations-pie:after {
+		inset: calc(var(--gap25) * -1) calc(var(--gap25) * -10) calc(var(--gap25) * -1) calc(var(--gap25) * 32);
+	}
+}
+
+#query-types-pie > div,
+#forward-destinations-pie > div {
+	z-index: 5;
+}
+
+#query-types-pie .box-body,
+#forward-destinations-pie .box-body {
+	background: var(--background-grid) repeat 0 0;
+	background-size: calc(var(--gap) * 2) calc(var(--gap) * 2);
+	padding: var(--gap25) var(--gap25);
+	margin: var(--gap) 0 0 0;
+}
+
+@media (min-width: 768px) {
+	#query-types-pie .box-body,
+	#forward-destinations-pie .box-body {
+		margin-right: var(--gap);
+	}
+}
+
+/* --- fake corners */
+@media (min-width: 768px) {
+	#query-types-pie .box-body:before,
+	#query-types-pie .box-body:after,
+	#forward-destinations-pie .box-body:before,
+	#forward-destinations-pie .box-body:after {
+		inset: calc((var(--gap) * -2.125) - var(--gap) - var(--gap25)) calc((var(--gap) * -1) - var(--gap25)) calc(var(--gap25) * -1) auto;
+	}
+
+	#query-types-pie .box-body:before,
+	#forward-destinations-pie .box-body:before {
+		background-color: var(--color-primary);
+	}
+
+	#query-types-pie .box-body:after,
+	#forward-destinations-pie .box-body:after {
+		background-color: var(--color-background);
+		border-radius: 0 var(--radius50) var(--radius50) 0;
+	}
+}
+
+#query-types-pie .box-body div:first-child,
+#forward-destinations-pie .box-body div:first-child {
+	padding: var(--gap) var(--gap);
+}
+
+@media (min-width: 768px) {
+	#query-types-pie .box-body div:first-child,
+	#forward-destinations-pie .box-body div:first-child {
+		flex-grow: 1;
+	}
+}
+
+/* --- pie chart legend + "buttons" */
+.chart-legend {
+	width: calc(var(--gap) * 12) !important;
+	justify-content: flex-end;
+}
+
+@media (min-width: 768px) {
+	.chart-legend {
+		position: absolute;
+		right: calc((var(--gap) * -9) - (var(--border-width) * 2) - var(--gap));
+		top: calc(var(--gap) * 1.615);
+	}
+}
+
+.chart-legend ul {
+	width: calc(var(--gap) * 9);
+}
+
+.chart-legend li {
+	margin: 0;
+	background-color: var(--color-disabled);
+	border-block: calc(var(--border-width) * 2) solid var(--color-background);
+	padding: var(--gap50) calc(var(--gap) * 3) var(--gap50) var(--gap75);
+	justify-content: flex-start !important;
+	flex-direction: row-reverse !important;
+	transition: background-color var(--transition-fast);
+	text-transform: uppercase;
+	font-weight: var(--font-regular);
+	font-size: 1.4rem;
+}
+
+.chart-legend li:hover {
+	background-color: var(--color-secondary);
+}
+
+.chart-legend li:hover p {
+	text-decoration: none !important;
+}
+
+.chart-legend li span {
+	background-color: var(--color-background);
+	display: flex !important;
+	justify-content: center;
+	align-items: center;
+	position: absolute;
+	inset: 0 var(--gap50) 0 auto;
+	width: calc(var(--gap) * 2);
+	margin: 0 !important;
+}
+
+.chart-legend li span svg {
+	transition: transform var(--transition-fast);
+}
+
+.chart-legend li span:hover svg {
+	transform: scale(1.5);
+}
+
+.chart-legend li + li {
+	margin-top: calc(var(--border-width) * -2);
+}
+
+@media (max-width: 767px) {
+	.chart-legend li:first-child {
+		border-radius: calc(var(--radius100) * 1.5) calc(var(--radius100) * 1.5) 0 0;
+	}
+
+	.chart-legend li:last-child {
+		border-radius: 0 0 calc(var(--radius100) * 1.5) calc(var(--radius100) * 1.5);
 	}
 }
 
