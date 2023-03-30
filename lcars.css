@@ -1,6 +1,6 @@
 /*
 	- Document: Pi-hole LCARS Star Trek Picard Theme
-	- Version:  0.6.3
+	- Version:  0.7.0
 	- Author:   @MichalSvatos
 	- Description: Star Trek Picard LCARS Theme for Pi-hole dashboard.
 	- Disclaimer: Due to fact that I have the access only to CSS I was forced to use some !importants and a lot of IDs. I'm sorry.
@@ -1138,7 +1138,6 @@ h6 {
 	}
 }
 
-
 /* --- additional line + animated box (Total queries box) */
 #queries-over-time:after {
 	content: '';
@@ -1209,6 +1208,112 @@ h6 {
 #clients .chart:before {
 	animation-delay: 160ms;
 	animation-duration: 24s;
+}
+
+/* --- "TOP" tables */
+#domain-frequency,
+#ad-frequency,
+#client-frequency,
+#client-frequency-blocked {
+	--table-color: var(--color-secondary);
+	position: relative;
+	margin-top: calc(var(--gap) * 2);
+	border: calc(var(--border-width) * 4) solid var(--table-color);
+	border-right: 0;
+	border-top-width: calc(var(--gap) * 1.6);
+	border-radius: var(--radius100) 0 0 var(--radius100);
+}
+
+#ad-frequency,
+#client-frequency-blocked {
+	--table-color: var(--color-quinternary);
+}
+
+#domain-frequency:before,
+#ad-frequency:before,
+#client-frequency:before,
+#client-frequency-blocked:before {
+	content: attr(id) "-panel";
+	position: absolute;
+	inset: auto var(--gap) 0 auto;
+	text-transform: uppercase;
+	font-size: 1rem;
+	color: var(--table-color);
+}
+
+#domain-frequency .box-header,
+#ad-frequency .box-header,
+#client-frequency .box-header,
+#client-frequency-blocked .box-header {
+	position: absolute;
+	right: 0;
+	top: calc(var(--gap) * -1.6);
+	background-color: var(--color-background);
+	padding: 0 var(--gap50);
+	z-index: 2;
+	min-height: calc(var(--gap) * 1.6);
+}
+
+#domain-frequency .box-body,
+#ad-frequency .box-body,
+#client-frequency .box-body,
+#client-frequency-blocked .box-body {
+	padding-right: 0;
+	z-index: 5;
+}
+
+/* --- "TOP" tables animated scanners */
+#domain-frequency .box-body:before,
+#domain-frequency .box-body:after,
+#ad-frequency .box-body:before,
+#ad-frequency .box-body:after,
+#client-frequency .box-body:before,
+#client-frequency .box-body:after,
+#client-frequency-blocked .box-body:before,
+#client-frequency-blocked .box-body:after {
+	content: '';
+	position: absolute;
+	inset: 0 auto auto 0;
+}
+
+#ad-frequency .box-body:after,
+#client-frequency .box-body:after,
+#client-frequency-blocked .box-body:after,
+#domain-frequency .box-body:after {
+	background-color: transparent;
+	width: calc(100% - var(--gap));
+	height: calc(var(--gap) * 1.5);
+	border: calc(var(--border-width) * 4) solid var(--color-background);
+	border-radius: 0 var(--radius100) var(--radius100) 0;
+	margin: var(--gap75);
+}
+
+#ad-frequency .box-body:before,
+#client-frequency .box-body:before,
+#client-frequency-blocked .box-body:before,
+#domain-frequency .box-body:before {
+	opacity: .5;
+	background-image: repeating-linear-gradient(to right, var(--color-secondary), var(--color-secondary) var(--border-width), var(--color-background) var(--border-width), var(--color-background));
+	background-size: var(--gap) var(--gap);
+	background-position: center center;
+	width: calc(100% - var(--gap50));
+	height: calc(var(--gap) * 2);
+	margin: var(--gap50);
+	border: calc(var(--border-width) * 4) solid var(--color-primary);
+	border-radius: 0 var(--radius100) var(--radius100) 0;
+	animation: topBoxesScanner 15s cubic-bezier(0.87, 0, 0.13, 1) infinite;
+}
+
+#ad-frequency .box-body:before {
+	animation-delay: .8s
+}
+
+#client-frequency .box-body:before {
+	animation-delay: 1.2s
+}
+
+#client-frequency-blocked .box-body:before {
+	animation-delay: 1.6s
 }
 
 
@@ -1445,6 +1550,100 @@ h6 {
 }
 
 
+/* TABLES
+   ========================================================== */
+.table-responsive {
+	overflow: visible; /* ! this could potentially cause problems - KEEP AN EYE ON IT */
+	border: 0;
+}
+
+.table-bordered {
+	border: 0;
+	margin-bottom: 0;
+	margin-top: calc(var(--gap) * 2);
+}
+
+.table-bordered > thead > tr > th,
+.table-bordered > tbody > tr > td {
+	border: 0;
+}
+
+.table-bordered > thead > tr > th {
+	text-transform: uppercase;
+	font-weight: var(--font-regular);
+	background-color: var(--table-color);
+	color: var(--color-text-dark);
+}
+
+.table-bordered > thead > tr > th:last-child {
+	border-radius: 0 calc(var(--radius100) * 1.25) calc(var(--radius100) * 1.25) 0;
+}
+
+.table-bordered > tbody > tr > td {
+	text-transform: uppercase;
+	font-size: 1.4rem;
+	vertical-align: middle;
+}
+
+.table-bordered > tbody > tr > td:first-child a {
+	display: block;
+	background-color: var(--color-disabled);
+	padding: var(--gap25) var(--gap50) var(--gap25) var(--gap);
+	position: relative;
+	transition: background-color var(--transition-fast);
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+
+.table-bordered > tbody > tr > td:first-child a:hover {
+	background-color: var(--table-color);
+	color: var(--color-tertiary-hover);
+}
+
+.table-bordered > tbody > tr > td:first-child a:before,
+.table-bordered > tbody > tr > td:first-child a:after {
+	content: '';
+	position: absolute;
+	inset: calc(var(--border-width) * -4) auto calc(var(--border-width) * -4) calc(var(--gap) * -1);
+	width: var(--gap50);
+	background-color: var(--color-background);
+}
+
+.table-bordered > tbody > tr > td:first-child a:after {
+	inset: 0 auto 0 calc(var(--gap) * -1);
+	background-color: var(--table-color);
+}
+
+.table-bordered > tbody > tr > td:first-child a:hover:after {
+	background-color: var(--color-secondary-hover);
+}
+
+/* --- progress bar in the dashboard tables (frequency) */
+.progress {
+	border: calc(var(--border-width) * 2) solid var(--color-secondary);
+	border-bottom: 0;
+	padding: var(--gap25);
+	background: var(--color-background);
+	border-radius: 0;
+	margin: var(--gap25) !important;
+	flex-grow: 1;
+}
+
+.progress-sm {
+	height: var(--gap);
+}
+
+.progress-sm .progress-bar {
+	border-radius: 0;
+	background-color: var(--color-secondary-hover);
+}
+
+#ad-frequency .progress-bar,
+#client-frequency-blocked .progress-bar {
+	background-color: var(--color-danger);
+}
+
+
 /* ANIMATIONS
    ========================================================== */
 
@@ -1559,5 +1758,25 @@ h6 {
 	}
 	50% {
 		left: calc(100% - (var(--gap) * 3));
+	}
+}
+
+@-webkit-keyframes topBoxesScanner {
+	0%, 100% {
+		background-size: var(--gap) var(--gap);
+	}
+
+	50% {
+		background-size: calc(var(--gap) * 2) var(--gap);
+	}
+}
+
+@keyframes topBoxesScanner {
+	0%, 100% {
+		background-size: var(--gap) var(--gap);
+	}
+
+	50% {
+		background-size: calc(var(--gap) * 2) var(--gap);
 	}
 }
