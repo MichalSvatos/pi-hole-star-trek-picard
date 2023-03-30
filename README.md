@@ -13,8 +13,8 @@ Type the following commands into SSH, line by line.
 cd /var/www/html/admin/style/themes/
 sudo git clone https://github.com/MichalSvatos/pi-hole-star-trek-picard.git
 sudo rm -f lcars.css
-sudo cp pi-hole-lcars-next-gen/lcars.css .
-sudo rm -rf pi-hole-lcars-next-gen
+sudo cp pi-hole-star-trek-picard/lcars.css .
+sudo rm -rf pi-hole-star-trek-picard
 ```
 
 ⚠️ Check the trailing " ." on the 3rd line (it's not a typo - it means copy to current directory).
