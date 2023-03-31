@@ -1,6 +1,6 @@
 /*
 	- Document: Pi-hole LCARS Star Trek Picard Theme
-	- Version:  0.8.1
+	- Version:  0.8.2
 	- Author:   @MichalSvatos
 	- Description: Star Trek Picard LCARS Theme for Pi-hole dashboard.
 	- Disclaimer: Due to fact that I have the access only to CSS I was forced to use some !importants and a lot of IDs. I'm sorry.
@@ -1977,6 +1977,70 @@ h6 {
 /* OTHER ..... */
 .svg-inline--fa {
 	vertical-align: inherit;
+}
+
+/* COLORS FOR GRAPHS, TABLES, ETC.
+   ========================================================== */
+/* TODO: Change to vars */
+.not-used {
+	background-color: #222;
+}
+
+.not-used:hover {
+	background-color: #444;
+}
+
+.used {
+	background-color: #fff;
+}
+
+.used:hover {
+	background-color: #ddd;
+}
+
+.graphs-grid {
+	background-color: #202429;
+}
+
+.graphs-ticks {
+	color: #9ab;
+}
+
+.progress-bar {
+	background-color: #48f;
+}
+
+.queries-permitted {
+	background-color: var(--color-success);
+}
+
+.queries-blocked {
+	background-color: var(--color-danger);
+}
+
+/*--- Query Log table */
+.text-black {
+	color: var(--color-background) !important;
+}
+
+.text-green-light {
+	color: var(--color-tertiary-hover) !important;
+}
+
+.text-green {
+	color: var(--color-success) !important;
+}
+
+.text-orange {
+	color: var(--color-danger) !important;
+}
+
+.text-red {
+	color: var(--color-red-alert) !important;
+}
+
+.text-vivid-blue {
+	color: var(--color-quinternary) !important;
 }
 
 
