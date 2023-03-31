@@ -1,6 +1,6 @@
 /*
 	- Document: Pi-hole LCARS Star Trek Picard Theme
-	- Version:  0.8.0
+	- Version:  0.8.1
 	- Author:   @MichalSvatos
 	- Description: Star Trek Picard LCARS Theme for Pi-hole dashboard.
 	- Disclaimer: Due to fact that I have the access only to CSS I was forced to use some !importants and a lot of IDs. I'm sorry.
@@ -1318,6 +1318,19 @@ h6 {
 	animation-delay: 1.6s
 }
 
+/* --- set same height */
+@media (min-width: 992px) {
+	.row:has(#domain-frequency),
+	.row:has(#client-frequency) {
+		display: flex;
+	}
+
+	.row:has(#domain-frequency) > div,
+	.row:has(#client-frequency) > div {
+		display: flex;
+	}
+}
+
 
 /* PIE CHARTS BOXES
    ========================================================== */
@@ -2008,7 +2021,9 @@ h6 {
 	padding: var(--gap25) var(--gap50) var(--gap25) var(--gap);
 	position: relative;
 	transition: background-color var(--transition-fast);
-	white-space: nowrap;
+	/*white-space: nowrap;*/
+	white-space: normal;
+	word-break: break-all;
 	text-overflow: ellipsis;
 }
 

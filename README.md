@@ -33,6 +33,9 @@ Run the same commands directly in the container as shown [here](https://github.c
 _Note: I didn't test it myself._
 
 ## Changelog
+**0.8.1**
+- FIX - same height of the "TOP" tables
+
 **0.8.0**
 - Donation bar
 - Footer + update available variant
