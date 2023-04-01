@@ -1813,18 +1813,7 @@ h6 {
 /* --- shameless self-promo */
 .version-info .list-inline:after {
 	content: 'github.com/MichalSvatos | LCARS';
-	padding-left: calc(var(--gap) * 2.25);
 	border-top: calc(var(--border-width) * 4) solid var(--color-background);
-}
-
-.version-info .list-inline:before {
-	content: '\f09b';
-	font-family: fontAwesome;
-	vertical-align: middle;
-	color: var(--color-primary-text);
-	position: absolute;
-	inset: auto auto var(--gap25) var(--gap);
-	z-index: 1;
 }
 
 .version-info .list-inline > li + li {
