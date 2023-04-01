@@ -1,6 +1,6 @@
 /*
 	- Document: Pi-hole LCARS Star Trek Picard Theme
-	- Version:  0.8.2
+	- Version:  0.8.3
 	- Author:   @MichalSvatos
 	- Description: Star Trek Picard LCARS Theme for Pi-hole dashboard.
 	- Disclaimer: Due to fact that I have the access only to CSS I was forced to use some !importants and a lot of IDs. I'm sorry.
@@ -906,17 +906,8 @@ h6 {
 	text-shadow: 0 0 var(--gap25) var(--color-tertiary-hover);
 }
 
-/* --- new icons */
+/* --- icons */
 .small-box .icon {
-	display: none;
-}
-
-.small-box .inner:after {
-	font-family: fontAwesome;
-	font-style: normal;
-	font-variant: normal;
-	text-rendering: auto;
-	content: '';
 	font-size: 5rem;
 	width: calc(var(--gap) * 4);
 	color: var(--color-background);
@@ -929,26 +920,11 @@ h6 {
 	transition: opacity var(--transition-slow), translate var(--transition-slow);
 }
 
-.small-box[class*="bg-"]:hover .inner:after {
+.small-box[class*="bg-"]:hover .icon {
 	opacity: 1;
 	translate: 0 47%;
-}
-
-.small-box.bg-aqua .inner:after {
-	content: '\f20e';
-	/*f233	*/
-}
-
-.small-box.bg-red .inner:after {
-	content: '\f05e';
-}
-
-.small-box.bg-yellow .inner:after {
-	content: '\f1fe';
-}
-
-.small-box.bg-green .inner:after {
-	content: '\f03a';
+	transform: scale(1);
+	font-size: 5rem;
 }
 
 .small-box .inner:before {
@@ -1873,13 +1849,6 @@ h6 {
 	position: absolute;
 	inset: 0 0 0 auto;
 	animation: pulseBg var(--transition-duration-slow) var(--transition-function) infinite;
-}
-
-.version-info .lookatme:before {
-	content: '\f0e7';
-	font-family: fontAwesome;
-	vertical-align: middle;
-	margin-right: var(--gap50);
 }
 
 .version-info .lookatme:after {
