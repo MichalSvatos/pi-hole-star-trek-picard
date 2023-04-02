@@ -1,6 +1,6 @@
 /*
 	- Document: Pi-hole LCARS Star Trek Picard Theme
-	- Version:  0.8.3
+	- Version:  0.8.4
 	- Author:   @MichalSvatos
 	- Description: Star Trek Picard LCARS Theme for Pi-hole dashboard.
 	- Disclaimer: Due to fact that I have the access only to CSS I was forced to use some !importants and a lot of IDs. I'm sorry.
@@ -828,12 +828,41 @@ h6 {
 	overflow: visible;
 }
 
+/* --- on long term data / query log */
+.col-xs-12:has(.small-box):first-child .small-box {
+	border-radius: var(--radius100) var(--radius100) 0 0;
+}
+
+.col-xs-12:has(.small-box):last-child .small-box {
+	border-radius: 0 0 var(--radius100) var(--radius100);
+}
+
+.col-xs-12:has(.small-box) .small-box .inner {
+	display: flex;
+	flex-direction: column-reverse;
+}
+
+.col-xs-12:has(.small-box) .small-box .inner:before {
+	/*display: none;*/
+	bottom: 0;
+}
+
 @media (min-width: 1200px) {
-	.small-box.bg-aqua {
+	/* --- on long term data / query log */
+	.col-xs-12:has(.small-box):first-child .small-box {
+		border-radius: var(--radius100) 0 0 var(--radius100);
+	}
+
+	.col-xs-12:has(.small-box):last-child .small-box {
+		border-radius: 0 var(--radius100) var(--radius100) 0;
+	}
+
+	/* --- on dashboard */
+	.col-sm-6:has(.small-box):first-child .small-box {
 		border-radius: var(--radius100) 0 0 0;
 	}
 
-	.small-box.bg-green {
+	.col-sm-6:has(.small-box):last-child .small-box {
 		border-radius: 0 var(--radius100) 0 0;
 	}
 }
@@ -851,6 +880,11 @@ h6 {
 .small-box .inner {
 	padding: var(--gap);
 	text-align: left;
+}
+
+.small-box h3 {
+	font-weight: var(--font-regular);
+	letter-spacing: -.1rem;
 }
 
 /* --- vertical scanner animation */
