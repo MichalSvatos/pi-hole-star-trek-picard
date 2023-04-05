@@ -33,6 +33,9 @@ Run the same commands directly in the container as shown [here](https://github.c
 _Note: I didn't test it myself._
 
 ## Changelog
+**0.8.5**
+- Tab buttons in SETTINGS section
+
 **0.8.4**
 - FIX - font weight and subpage version of STATS boxes
 

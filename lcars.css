@@ -1,6 +1,6 @@
 /*
 	- Document: Pi-hole LCARS Star Trek Picard Theme
-	- Version:  0.8.4
+	- Version:  0.8.5
 	- Author:   @MichalSvatos
 	- Description: Star Trek Picard LCARS Theme for Pi-hole dashboard.
 	- Disclaimer: Due to fact that I have the access only to CSS I was forced to use some !importants and a lot of IDs. I'm sorry.
@@ -1029,7 +1029,9 @@ h6 {
 /* -- box "resets" - black backgrounds, borders ... */
 .box,
 .box-warning,
-.login-box {
+.login-box,
+.nav-tabs-custom,
+.nav-tabs-custom > .tab-content {
 	background-color: var(--color-background);
 	border: 0;
 	margin-bottom: 0;
@@ -1965,6 +1967,49 @@ h6 {
 	color: #fff !important;
 }
 
+
+/* NAV CUSTOM TABS (settings page)
+   ========================================================== */
+.nav-tabs-custom {
+	border-radius: 0;
+}
+
+.nav-tabs-custom > .nav-tabs {
+	border: 0;
+	border-radius: 0;
+}
+
+.nav-tabs-custom > .nav-tabs > li {
+	border: 0;
+	margin: 0;
+}
+
+.nav-tabs-custom > .nav-tabs > li > a {
+	background-color: var(--color-primary);
+	border-radius: 0;
+	border: 0 !important;
+	min-width: calc(var(--gap) * 8);
+	margin: var(--gap25) var(--gap25) 0 0;
+	font-size: 1.4rem;
+	cursor: pointer;
+}
+
+.nav-tabs-custom > .nav-tabs > li.active > a,
+.nav-tabs-custom > .nav-tabs > li.active:hover > a,
+.nav-tabs-custom > .nav-tabs > li > a:hover {
+	background-color: var(--color-tertiary-hover);
+	color: var(--color-text-dark);
+	margin: var(--gap25) var(--gap25) 0 0;
+}
+
+.nav-tabs-custom > .nav-tabs > li > a:hover {
+	background-color: var(--color-danger-bright);
+}
+
+.nav-tabs-custom > .tab-content {
+	padding: 0;
+	margin-top: var(--gap);
+}
 
 /* OTHER ..... */
 .svg-inline--fa {
