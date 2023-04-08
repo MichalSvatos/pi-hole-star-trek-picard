@@ -1,6 +1,6 @@
 /*
 	- Document: Pi-hole LCARS Star Trek Picard Theme
-	- Version:  0.9.0
+	- Version:  0.9.1
 	- Author:   @MichalSvatos
 	- Description: Star Trek Picard LCARS Theme for Pi-hole dashboard.
 	- Disclaimer: Due to fact that I have the access only to CSS I was forced to use some !importants and a lot of IDs. I'm sorry.
@@ -1983,9 +1983,21 @@ h6 {
 	border-radius: 0;
 }
 
+@media (min-width: 1250px) {
+	.nav-tabs-custom > .nav-tabs {
+		display: flex;
+	}
+}
+
 .nav-tabs-custom > .nav-tabs > li {
 	border: 0;
 	margin: 0;
+}
+
+@media (min-width: 1250px) {
+	.nav-tabs-custom > .nav-tabs > li {
+		flex-grow: 1;
+	}
 }
 
 .nav-tabs-custom > .nav-tabs > li > a {
