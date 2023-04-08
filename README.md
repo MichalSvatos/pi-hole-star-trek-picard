@@ -33,6 +33,10 @@ Run the same commands directly in the container as shown [here](https://github.c
 _Note: I didn't test it myself._
 
 ## Changelog
+**0.9.0**
+- SETTINGS / SYSTEM page
+- FIX - pulseBg animation new variable
+
 **0.8.5**
 - Tab buttons in SETTINGS section
 

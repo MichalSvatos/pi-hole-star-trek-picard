@@ -1,6 +1,6 @@
 /*
 	- Document: Pi-hole LCARS Star Trek Picard Theme
-	- Version:  0.8.5
+	- Version:  0.9.0
 	- Author:   @MichalSvatos
 	- Description: Star Trek Picard LCARS Theme for Pi-hole dashboard.
 	- Disclaimer: Due to fact that I have the access only to CSS I was forced to use some !importants and a lot of IDs. I'm sorry.
@@ -200,24 +200,28 @@ h6 {
 }
 
 .btn-warning {
-	background-color: var(--color-primary);
+	background-color: var(--color-supplement-01);
+	color: var(--color-danger-bright);
 }
 
 .btn-warning:hover {
-	/*background-color: var(--color-primary-hover);*/
-	color: #000;
+	background-color: var(--color-danger);
+	color: var(--color-background);
 }
 
 #resetButton,
 .btn-danger {
-	background-color: var(--color-danger);
+	background-color: var(--color-red-alert);
+	color: #fff;
 }
 
 #resetButton:hover,
 .btn-danger:hover {
-	background-color: var(--color-danger-bright);
+	/*background-color: var(--color-danger-bright);*/
+	--pulse-color: #fff;
+	--pulse-color-background: var(--color-red-alert);
 	color: #000;
-	animation: dangerFlash 2s ease-in-out infinite;
+	animation: pulseBg 2s ease-in-out infinite;
 }
 
 #resetButton {
@@ -514,7 +518,7 @@ h6 {
 
 .sidebar-menu > li.menu-donate a {
 	--pulse-color: var(--color-danger-bright);
-	--color-background: var(--color-danger);
+	--pulse-color-background: var(--color-danger);
 	background-color: var(--color-danger);
 	color: var(--color-text-dark);
 	animation: pulseBg var(--transition-duration-slow) var(--transition-function) infinite;
@@ -750,11 +754,11 @@ h6 {
 
 .user-panel .info > span:has(.text-red) {
 	--pulse-color: #fff;
-	--color-background: var(--color-danger);
+	--pulse-color-background: var(--color-danger);
 	background-color: var(--color-danger);
 	color: var(--color-text-dark);
 	animation: pulseBg var(--transition-duration-slow) var(--transition-function) infinite;
-	border-color: var(--color-text-dark); /* --color-background rewritten for the animation */
+	border-color: var(--color-background);
 }
 
 .user-panel .info > span:has(.text-red):before {
@@ -1867,7 +1871,7 @@ h6 {
 /* --- update button */
 .version-info .lookatme {
 	--pulse-color: var(--color-red-alert);
-	--color-background: var(--color-disabled);
+	--pulse-color-background: var(--color-disabled);
 	padding: var(--gap25) var(--gap50);
 	border-left: calc(var(--border-width) * 4) solid var(--color-text-dark);
 	color: #fff;
@@ -2010,6 +2014,206 @@ h6 {
 	padding: 0;
 	margin-top: var(--gap);
 }
+
+
+/* SYSTEM (settings page)
+   ========================================================== */
+#sysadmin .table-striped {
+	margin-top: 0;
+}
+
+#sysadmin .table-striped > tbody > tr:nth-of-type(odd) {
+	background-color: transparent;
+}
+
+#sysadmin .table-striped > tbody > tr:nth-child(2n + 1) th {
+	background-color: var(--color-secondary);
+}
+
+#sysadmin .table-striped > tbody > tr:nth-child(3n + 1) th {
+	background-color: var(--color-tertiary);
+}
+
+#sysadmin .table-striped > tbody > tr:hover th {
+	background-color: var(--color-danger-bright);
+	transition: background-color var(--transition-fast);
+}
+
+#sysadmin .table-striped > tbody > tr:hover td:after,
+#sysadmin .table-striped > tbody > tr:hover td:before {
+	--sysadmin-border-color: var(--color-danger-bright);
+	transition: background-color var(--transition-fast);
+}
+
+@media (max-width: 767px) {
+	#sysadmin .table-bordered > tbody > tr {
+		display: flex;
+		flex-direction: column;
+	}
+}
+
+#sysadmin .table > tbody > tr > th,
+#sysadmin .table > tbody > tr > td {
+	padding: var(--gap) var(--gap75) var(--gap50) var(--gap75);
+	text-transform: uppercase;
+	border: calc(var(--border-width) * 4) solid var(--color-background);
+	position: relative;
+	font-size: inherit;
+}
+
+#sysadmin .table-bordered > tbody > tr > th {
+	border-left: 0;
+	background-color: var(--color-tertiary-hover);
+	color: var(--color-text-dark);
+	vertical-align: bottom;
+	text-align: right;
+	font-weight: var(--font-regular);
+}
+
+#sysadmin .table-bordered > tbody > tr > th:before {
+	content: '';
+	background-color: var(--color-background);
+	width: calc(var(--gap50));
+	height: calc(var(--gap50));
+	position: absolute;
+	inset: var(--gap25) auto auto var(--gap25);
+}
+
+#sysadmin .table-bordered > tbody > tr > td {
+	padding-left: var(--gap);
+}
+
+@media (max-width: 767px) {
+	#sysadmin .table-bordered > tbody > tr > td {
+		border-top: 0;
+		border-left: 0;
+	}
+}
+
+#sysadmin .table-bordered > tbody > tr > td:before,
+#sysadmin .table-bordered > tbody > tr > td:after {
+	--sysadmin-border-color: var(--color-secondary);
+	content: '';
+	position: absolute;
+	background-color: var(--sysadmin-border-color);
+}
+
+#sysadmin .table-bordered > tbody > tr > td:before {
+	height: calc(var(--border-width) * 4);
+	inset: 0 0 auto 0;
+}
+
+#sysadmin .table-bordered > tbody > tr > td:after {
+	width: calc(var(--border-width) * 4);
+	inset: 0 auto 0 0;
+}
+
+#sysadmin .row:first-child .box {
+	position: relative;
+	margin-top: calc(var(--gap) * 2);
+	border-top: calc(var(--gap) * 1.6) solid var(--color-secondary);
+	border-radius: var(--radius100) 0 0 var(--radius100);
+}
+
+#sysadmin .box-header {
+	border-left: calc(var(--border-panel-width)) solid var(--color-secondary);
+	min-height: calc(var(--gap) * 3);
+}
+
+#sysadmin .box-title {
+	position: absolute;
+	inset: calc(var(--gap) * -1.6) 0 auto auto;
+	background-color: var(--color-background);
+	padding: 0 var(--gap50);
+	min-height: calc(var(--gap) * 1.6);
+}
+
+#sysadmin .box-body {
+	padding-right: 0;
+	padding-top: 0;
+}
+
+/* --- fake corner */
+#sysadmin .box-header:before,
+#sysadmin .box-header:after {
+	content: '';
+	position: absolute;
+	width: var(--gap);
+	height: var(--gap);
+	inset: 0 auto auto 0;
+}
+
+#sysadmin .box-header:before {
+	background-color: var(--color-secondary);
+}
+
+#sysadmin .box-header:after {
+	background-color: var(--color-background);
+	border-radius: var(--radius50) 0 0 0;
+}
+
+/* --- danger area buttons */
+#sysadmin .box-warning {
+	padding: var(--gap25) var(--gap25);
+	margin-top: calc(var(--gap) * 2);
+	border: calc(var(--border-width) * 4) solid var(--color-quinternary);
+	border-radius: var(--radius100);
+}
+
+@media (min-width: 768px) {
+	#sysadmin .box-warning {
+		border-left-width: var(--pie-chart-border-width);
+		text-align: right;
+	}
+
+	#sysadmin .box-warning:before {
+		content: "danger.area.74656";
+		display: flex;
+		align-items: flex-end;
+		width: calc(var(--gap) * 9);
+		min-height: calc(var(--gap) * 4);
+		background-color: var(--color-danger-bright);
+		padding: var(--gap25) var(--gap75);
+		text-align: right;
+		position: absolute;
+		font-size: 1.2rem;
+		text-transform: uppercase;
+		color: var(--color-text-dark);
+		border-top: calc(var(--border-width) * 2) solid var(--color-background);
+		border-bottom: calc(var(--border-width) * 2) solid var(--color-background);
+		z-index: 1;
+		justify-content: flex-end;
+		inset: var(--gap) auto auto calc(var(--gap) * -9);
+	}
+}
+
+#sysadmin .box-warning .box-body {
+	padding: var(--gap) var(--gap);
+	z-index: 1;
+}
+
+#sysadmin .box-warning:after {
+	content: '';
+	border: var(--border-width) solid var(--color-background);
+	border-radius: 0 var(--radius75) var(--radius75) 0;
+	background-color: transparent;
+	position: absolute;
+	inset: calc(var(--gap25) * -1) calc(var(--gap25) * -1) calc(var(--gap25) * -1) calc(var(--gap25) * 32);
+	z-index: 0;
+}
+
+#sysadmin .box-warning:after {
+	inset: calc(var(--gap25) * -1) calc(var(--gap25) * 32) calc(var(--gap25) * -1) calc(var(--gap25) * -1);
+	border-radius: var(--radius75) 0 0 var(--radius75);
+}
+
+@media (min-width: 768px) {
+	#sysadmin .box-warning:after {
+		inset: calc(var(--gap25) * -1) calc(var(--gap25) * 32) calc(var(--gap25) * -1) calc(var(--gap25) * -10);
+	}
+}
+
+
 
 /* OTHER ..... */
 .svg-inline--fa {
@@ -2185,7 +2389,7 @@ h6 {
 		background-color: var(--pulse-color);
 	}
 	100% {
-		background-color: var(--color-background);
+		background-color: var(--pulse-color-background);
 	}
 }
 
@@ -2194,7 +2398,7 @@ h6 {
 		background-color: var(--pulse-color);
 	}
 	100% {
-		background-color: var(--color-background);
+		background-color: var(--pulse-color-background);
 	}
 }
 
