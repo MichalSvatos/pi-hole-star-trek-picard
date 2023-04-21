@@ -1,6 +1,6 @@
 /*
 	- Document: Pi-hole LCARS Star Trek Picard Theme
-	- Version:  0.9.1
+	- Version:  0.9.2
 	- Author:   @MichalSvatos
 	- Description: Star Trek Picard LCARS Theme for Pi-hole dashboard.
 	- Disclaimer: Due to fact that I have the access only to CSS I was forced to use some !importants and a lot of IDs. I'm sorry.
@@ -2230,6 +2230,36 @@ h6 {
 /* OTHER ..... */
 .svg-inline--fa {
 	vertical-align: inherit;
+}
+
+/* --- notification "dot" */
+.warning-count {
+	background-color: var(--color-danger);
+	border-radius: 0;
+	font-size: 1rem;
+	border: var(--border-width) solid var(--color-background);
+}
+
+#top-warning-count {
+	top: calc(var(--gap) * 1.05);
+	left: calc(var(--gap) * -1);
+}
+
+.sidebar-menu .warning-count {
+	height: auto;
+	margin: 0;
+	top: 0;
+	bottom: 0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border-block: 0;
+}
+
+.sidebar-menu .treeview-menu li > a > .warning-count {
+	right: calc(var(--gap) * 2.5 - var(--border-width));
+	top: 0;
+	margin: 0;
 }
 
 /* COLORS FOR GRAPHS, TABLES, ETC.
