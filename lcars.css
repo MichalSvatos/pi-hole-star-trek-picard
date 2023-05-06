@@ -1,6 +1,6 @@
 /*
 	- Document: Pi-hole LCARS Star Trek Picard Theme
-	- Version:  0.9.2
+	- Version:  0.9.3
 	- Author:   @MichalSvatos
 	- Description: Star Trek Picard LCARS Theme for Pi-hole dashboard.
 	- Disclaimer: Due to fact that I have the access only to CSS I was forced to use some !importants and a lot of IDs. I'm sorry.
@@ -55,7 +55,8 @@
 	--color-danger: #d55138;
 	--color-danger-bright: #f37052;
 	--color-red-alert: #ea3323;
-	--color-success: #46553c;
+	--color-success: #0bd08a;
+	--color-success-dark: #024b3b;
 	--color-disabled: #1f2228;
 	--color-supplement-01: #411e17;
 
@@ -234,6 +235,88 @@ h6 {
 	padding: 1px 5px;
 	border-radius: 5px;
 	min-width: auto;
+}
+
+
+/* CHECKBOXES, RADIOS
+   ========================================================== */
+
+[class*=icheck-] > label {
+	padding-left: calc(var(--gap) * 3.5) !important;
+}
+
+[class*=icheck-] > input:first-child:checked + input[type=hidden] + label,
+[class*=icheck-] > input:first-child:checked + label {
+	color: var(--color-tertiary-hover);
+}
+
+/* --- border */
+[class*=icheck-] > input:first-child + input[type=hidden] + label:before,
+[class*=icheck-] > input:first-child + label:before {
+	content: '';
+	width: calc(var(--gap) * 2.5);
+	margin-left: calc(var(--gap) * -3.5) !important;
+	border: calc(var(--border-width) * 2) solid var(--color-primary);
+	border-bottom: 0;
+	transition: border-color var(--transition-fast), background-color var(--transition-fast);
+}
+
+.icheck-primary > input:first-child:checked + input[type=hidden] + label:before,
+.icheck-primary > input:first-child:checked + label:before {
+	background-color: transparent;
+	border-color: var(--color-danger-bright);
+}
+
+[class*=icheck-] > input:first-child:not(:checked):not(:disabled):hover + input[type=hidden] + label:before,
+[class*=icheck-] > input:first-child:not(:checked):not(:disabled):hover + label:before {
+	border-width: calc(var(--border-width) * 2);
+	border-color: var(--color-secondary);
+}
+
+/* --- switch */
+[class*=icheck-] > input:first-child + input[type=hidden] + label:after,
+[class*=icheck-] > input:first-child + label:after {
+	content: '';
+	background-color: var(--color-primary);
+	width: var(--gap75);
+	height: 1.4rem;
+	inset: calc(var(--border-width) * 4) auto 0 calc(var(--border-width) * 4);
+	position: absolute;
+	transition: inset var(--transition);
+}
+
+[class*=icheck-] > input:first-child:checked + input[type=hidden] + label:after,
+[class*=icheck-] > input:first-child:checked + label:after {
+	background-color: var(--color-danger);
+	width: var(--gap75);
+	height: 1.4rem;
+	transform: none;
+	border: none;
+	top: auto;
+	left: auto;
+	inset: calc(var(--border-width) * 4) auto 0 calc(var(--border-width) * 10);
+}
+
+/* --- radios */
+[class*=icheck-] > input[type=radio]:first-child + input[type=hidden] + label:before,
+[class*=icheck-] > input[type=radio]:first-child + label:before {
+	border-radius: 0;
+}
+
+[class*=icheck-] > input[type=radio]:first-child + input[type=hidden] + label:after,
+[class*=icheck-] > input[type=radio]:first-child + label:after {
+	background-color: var(--color-disabled);
+	width: calc(var(--gap) * 1.5);
+	inset: calc(var(--border-width) * 4) auto 0 calc(var(--border-width) * 4);
+}
+
+[class*=icheck-] > input[type=radio]:first-child:checked + input[type=hidden] + label:after,
+[class*=icheck-] > input[type=radio]:first-child:checked + label:after {
+	background-color: var(--color-danger);
+}
+
+[class*="icheck-"] > input:first-child:focus + label:before {
+	outline-color: transparent;
 }
 
 
@@ -2224,7 +2307,6 @@ h6 {
 		inset: calc(var(--gap25) * -1) calc(var(--gap25) * 32) calc(var(--gap25) * -1) calc(var(--gap25) * -10);
 	}
 }
-
 
 
 /* OTHER ..... */
