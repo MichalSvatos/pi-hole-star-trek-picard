@@ -1,6 +1,6 @@
 /*
 	- Document: Pi-hole LCARS Star Trek Picard Theme
-	- Version:  0.10.0
+	- Version:  0.10.1
 	- Author:   @MichalSvatos
 	- Description: Star Trek Picard LCARS Theme for Pi-hole dashboard.
 	- Disclaimer: Due to fact that I have the access only to CSS I was forced to use some !importants and a lot of IDs. I'm sorry.
@@ -264,7 +264,7 @@ h6 {
 .icheck-primary > input:first-child:checked + input[type=hidden] + label:before,
 .icheck-primary > input:first-child:checked + label:before {
 	background-color: transparent;
-	border-color: var(--color-danger-bright);
+	border-color: var(--color-success-dark);
 }
 
 [class*=icheck-] > input:first-child:not(:checked):not(:disabled):hover + input[type=hidden] + label:before,
@@ -287,7 +287,7 @@ h6 {
 
 [class*=icheck-] > input:first-child:checked + input[type=hidden] + label:after,
 [class*=icheck-] > input:first-child:checked + label:after {
-	background-color: var(--color-danger);
+	background-color: var(--color-success);
 	width: var(--gap75);
 	height: 1.4rem;
 	transform: none;
@@ -312,7 +312,7 @@ h6 {
 
 [class*=icheck-] > input[type=radio]:first-child:checked + input[type=hidden] + label:after,
 [class*=icheck-] > input[type=radio]:first-child:checked + label:after {
-	background-color: var(--color-danger);
+	background-color: var(--color-success);
 }
 
 [class*="icheck-"] > input:first-child:focus + label:before {
@@ -2504,7 +2504,6 @@ h6 {
 .danger-area:after {
 	top: calc(var(--gap) * -1);
 	bottom: auto;
-	/*right: calc(var(--gap) / -4);*/
 }
 
 .no-danger-area h4:before,
@@ -2536,7 +2535,7 @@ h6 {
 	border-block: var(--border-width) solid var(--color-background);
 	position: absolute;
 	inset: auto var(--gap) calc(var(--gap) * -.75) auto;
-	animation: test 1s linear infinite;
+	animation: topSmallScanner 1s linear infinite;
 }
 
 .danger-area h4:after {
@@ -2567,17 +2566,6 @@ h6 {
 .danger-area h4 {
 	color: var(--color-danger-bright);
 }
-
-@keyframes test {
-	0% {
-		background-position: 0 0;
-	}
-
-	100% {
-		background-position: var(--gap) 0;
-	}
-}
-
 
 
 /* OTHER ..... */
@@ -2910,5 +2898,25 @@ h6 {
 
 	50% {
 		background-size: calc(var(--gap) * 2) var(--gap);
+	}
+}
+
+@-webkit-keyframes topSmallScanner {
+	0% {
+		background-position: 0 0;
+	}
+
+	100% {
+		background-position: var(--gap) 0;
+	}
+}
+
+@keyframes topSmallScanner {
+	0% {
+		background-position: 0 0;
+	}
+
+	100% {
+		background-position: var(--gap) 0;
 	}
 }

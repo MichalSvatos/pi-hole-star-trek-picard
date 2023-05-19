@@ -33,6 +33,10 @@ Run the same commands directly in the container as shown [here](https://github.c
 _Note: I didn't test it myself._
 
 ## Changelog
+**0.10.1**
+- FIX - More logical color (green) for checkboxes and radios
+- FIX - Renamed animation for small scanners
+
 **0.10.0**
 - SETTINGS / DNS page
 
