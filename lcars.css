@@ -1,6 +1,6 @@
 /*
 	- Document: Pi-hole LCARS Star Trek Picard Theme
-	- Version:  0.9.3
+	- Version:  0.10.0
 	- Author:   @MichalSvatos
 	- Description: Star Trek Picard LCARS Theme for Pi-hole dashboard.
 	- Disclaimer: Due to fact that I have the access only to CSS I was forced to use some !importants and a lot of IDs. I'm sorry.
@@ -2307,6 +2307,277 @@ h6 {
 		inset: calc(var(--gap25) * -1) calc(var(--gap25) * 32) calc(var(--gap25) * -1) calc(var(--gap25) * -10);
 	}
 }
+
+
+/* DNS (settings page)
+   ========================================================== */
+#dns {
+	margin-top: calc(var(--gap) * 2);
+}
+
+#dns p {
+	font-weight: 100;
+	line-height: 1.5;
+	letter-spacing: .015rem;
+	margin-top: var(--gap);
+	margin-bottom: 0;
+}
+
+#dns .table {
+	margin-top: 0;
+}
+
+#dns .table + p {
+	padding: var(--gap);
+	border: calc(var(--border-width) * 2) double var(--color-disabled);
+	border-radius: var(--radius100);
+}
+
+#dns .table th {
+	color: var(--color-primary-text);
+	padding-bottom: var(--gap);
+}
+
+#dns .table-bordered td[title] {
+	position: relative;
+}
+
+#dns .table-bordered td[title]:hover:before,
+#dns .table-bordered td[title]:hover:after {
+	opacity: 1;
+	translate: 0;
+}
+
+#dns .table-bordered td[title]:before,
+#dns .table-bordered td[title]:after {
+	opacity: 0;
+	pointer-events: none;
+	transition: opacity var(--transition), translate var(--transition);
+}
+
+/* --- lines */
+#dns .table-bordered td[title]:before {
+	content: '';
+	position: absolute;
+	inset: calc(var(--gap50) * -1) auto auto 0;
+	width: 100%;
+	height: 100%;
+	border-top: var(--border-width) solid var(--color-disabled);
+	border-left: calc(var(--border-width) * 2) solid var(--color-disabled);
+	border-radius: var(--radius50) 0 0 0;
+	translate: calc(var(--gap25) * -1) 0;
+}
+
+/* --- ip address */
+#dns .table-bordered td[title]:after {
+	content: attr(title);
+	position: absolute;
+	inset: calc(var(--gap25) * -1) auto auto var(--gap50);
+	font-size: 1rem;
+	color: var(--color-success);
+	translate: var(--gap25) 0;
+}
+
+/* --- UPSTREAM DNS SERVERS */
+#dns .row:first-child div:first-child .box {
+	border: var(--border-width) solid var(--color-disabled);
+	border-radius: 0 var(--radius100) var(--radius100) 0;
+	border-left: 0;
+}
+
+#dns .row:first-child div:nth-child(2) .box {
+	border: var(--border-width) solid var(--color-primary);
+	border-radius: var(--radius100) 0 0 var(--radius100);
+	border-right: 0;
+	padding-left: var(--gap);
+}
+
+@media (max-width: 1199px) {
+	#dns .row:first-child div:nth-child(2) .box {
+		margin-top: var(--gap50);
+	}
+}
+
+@media (min-width: 768px) {
+	#dns .row:first-child div:first-child .box {
+		border-right-width: calc(var(--border-panel-width) / 2);
+	}
+
+	#dns .row:first-child div:nth-child(2) .box {
+		border-left-width: calc(var(--border-panel-width) / 2);
+	}
+}
+
+/* --- fake corners */
+@media (min-width: 768px) {
+	#dns .row:first-child div:first-child .box:before,
+	#dns .row:first-child div:nth-child(2) .box:before {
+		content: '';
+		position: absolute;
+		background-color: var(--color-background);
+		border-radius: var(--radius50);
+		inset: 0 calc(var(--gap50) * -1) 0 auto;
+		width: var(--gap);
+		z-index: 1;
+	}
+
+	#dns .row:first-child div:nth-child(2) .box:before {
+		inset: 0 auto 0 calc(var(--gap50) * -1);
+	}
+}
+
+/* --- fake panel */
+@media (min-width: 768px) {
+	#dns .row:first-child div:first-child .box:after {
+		content: 'UDS 498 691';
+		position: absolute;
+		inset: calc(var(--gap) * 2) calc(var(--gap) * -2) calc(var(--gap) * 10.5) auto;
+		background-color: var(--color-primary);
+		width: calc(var(--gap) * 2);
+		border-radius: 0 var(--radius50) var(--radius50) 0;
+		border: var(--border-width) solid black;
+		text-align: right;
+		font-size: 1rem;
+		padding: var(--gap) var(--gap25);
+		color: var(--color-text-dark);
+	}
+}
+
+/* --- SAFE/DANGER AREA */
+#dns .row:first-child div:nth-child(3) .box {
+	margin-top: var(--gap);
+}
+
+#dns .row:first-child div:nth-child(3) .box-body {
+	padding-right: 0;
+}
+
+.no-danger-area,
+.danger-area {
+	border-width: calc(var(--border-width) * 2);
+	border-style: double;
+	box-shadow: none;
+	margin-block: 0;
+	position: relative;
+}
+
+.no-danger-area h4,
+.danger-area h4 {
+	margin-top: var(--gap);
+	margin-bottom: calc(var(--gap) * 1.5);
+}
+
+.danger-area h4 {
+	position: relative;
+}
+
+/* --- top / bottom panel + text */
+.no-danger-area:before,
+.danger-area:before {
+	content: "panel-" attr(class);
+	height: calc(var(--border-width) * 8);
+	padding-left: var(--gap50);
+	position: absolute;
+	inset: auto 0 calc(var(--border-width) * -8) calc(var(--border-width) * -2);
+	background-color: var(--color-success-dark);
+	text-transform: uppercase;
+	color: var(--color-background);
+	font-size: 1rem;
+}
+
+.danger-area:before {
+	inset: calc(var(--border-width) * -8) 0 auto calc(var(--border-width) * -2);
+	background-color: var(--color-danger);
+}
+
+.no-danger-area:after,
+.danger-area:after {
+	content: '';
+	position: absolute;
+	width: calc(var(--gap) * 1);
+	height: calc(var(--gap) + (var(--border-width) * 2));
+	background-color: var(--color-background);
+	bottom: calc(var(--gap) * -1);
+	right: calc(var(--gap) / -4);
+}
+
+.danger-area:after {
+	top: calc(var(--gap) * -1);
+	bottom: auto;
+	/*right: calc(var(--gap) / -4);*/
+}
+
+.no-danger-area h4:before,
+.danger-area h4:before {
+	content: '';
+	position: absolute;
+	inset: auto calc(var(--gap) * -.25) calc(var(--border-width) * -8) auto;
+	width: calc(var(--gap) * 1);
+	height: calc(var(--border-width) * 8);
+	background-color: var(--color-success-dark);
+	border-radius: 0 var(--radius100) var(--radius100) 0;
+	z-index: 1;
+}
+
+.danger-area h4:before {
+	inset: calc(var(--border-width) * -17 + 1px) calc(var(--gap) * -1.25) auto auto; /* 1px default padding compensation */
+	background-color: var(--color-danger);
+}
+
+/* --- "scanner" */
+.no-danger-area h4:after,
+.danger-area h4:after {
+	content: '';
+	background-image: repeating-linear-gradient(to right, var(--color-primary), var(--color-primary) var(--border-width), var(--color-background) var(--border-width), var(--color-background));
+	background-size: var(--gap) var(--gap);
+	background-position: 0 0;
+	width: calc(var(--gap) * 10);
+	height: var(--gap50);
+	border-block: var(--border-width) solid var(--color-background);
+	position: absolute;
+	inset: auto var(--gap) calc(var(--gap) * -.75) auto;
+	animation: test 1s linear infinite;
+}
+
+.danger-area h4:after {
+	inset: calc(var(--gap) * -1.8) 0 auto auto;
+}
+
+.no-danger-area + .danger-area {
+	margin-top: calc(var(--gap) * 2.5);
+}
+
+/* --- variants */
+.no-danger-area {
+	border-color: var(--color-success-dark);
+	border-bottom: 0;
+	border-radius: var(--radius100) var(--radius100) 0 0;
+}
+
+.no-danger-area h4 {
+	color: var(--color-success);
+}
+
+.danger-area {
+	border-color: var(--color-danger);
+	border-top: 0;
+	border-radius: 0 0 var(--radius100) var(--radius100);
+}
+
+.danger-area h4 {
+	color: var(--color-danger-bright);
+}
+
+@keyframes test {
+	0% {
+		background-position: 0 0;
+	}
+
+	100% {
+		background-position: var(--gap) 0;
+	}
+}
+
 
 
 /* OTHER ..... */
