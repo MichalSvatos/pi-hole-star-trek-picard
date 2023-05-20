@@ -32,6 +32,9 @@ Run the same commands directly in the container as shown [here](https://github.c
 
 _Note: I didn't test it myself._
 
+## Screenshots
+![Pi-hole Star Trek Picard LCARS Theme Dashboard Preview](https://github.com/MichalSvatos/pi-hole-star-trek-picard/raw/main/previews/pi-hole-star-trek-picard-lcars-preview-hp.png)
+
 ## Changelog
 **0.10.1**
 - FIX - More logical color (green) for checkboxes and radios
