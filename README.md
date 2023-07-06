@@ -36,6 +36,9 @@ _Note: I didn't test it myself._
 ![Pi-hole Star Trek Picard LCARS Theme Dashboard Preview](https://github.com/MichalSvatos/pi-hole-star-trek-picard/raw/main/previews/pi-hole-star-trek-picard-lcars-preview-hp.png)
 
 ## Changelog
+**0.10.2**
+- FIX - Checkboxes and radios styling (because icheck-bootstrap.min.css)
+
 **0.10.1**
 - FIX - More logical color (green) for checkboxes and radios
 - FIX - Renamed animation for small scanners

@@ -1,6 +1,6 @@
 /*
 	- Document: Pi-hole LCARS Star Trek Picard Theme
-	- Version:  0.10.1
+	- Version:  0.10.2
 	- Author:   @MichalSvatos
 	- Description: Star Trek Picard LCARS Theme for Pi-hole dashboard.
 	- Disclaimer: Due to fact that I have the access only to CSS I was forced to use some !importants and a lot of IDs. I'm sorry.
@@ -241,18 +241,18 @@ h6 {
 /* CHECKBOXES, RADIOS
    ========================================================== */
 
-[class*=icheck-] > label {
+body [class*=icheck-] > label {
 	padding-left: calc(var(--gap) * 3.5) !important;
 }
 
-[class*=icheck-] > input:first-child:checked + input[type=hidden] + label,
-[class*=icheck-] > input:first-child:checked + label {
+body [class*=icheck-] > input:first-child:checked + input[type=hidden] + label,
+body [class*=icheck-] > input:first-child:checked + label {
 	color: var(--color-tertiary-hover);
 }
 
 /* --- border */
-[class*=icheck-] > input:first-child + input[type=hidden] + label:before,
-[class*=icheck-] > input:first-child + label:before {
+body [class*=icheck-] > input:first-child + input[type=hidden] + label:before,
+body [class*=icheck-] > input:first-child + label:before {
 	content: '';
 	width: calc(var(--gap) * 2.5);
 	margin-left: calc(var(--gap) * -3.5) !important;
@@ -261,21 +261,21 @@ h6 {
 	transition: border-color var(--transition-fast), background-color var(--transition-fast);
 }
 
-.icheck-primary > input:first-child:checked + input[type=hidden] + label:before,
-.icheck-primary > input:first-child:checked + label:before {
+body .icheck-primary > input:first-child:checked + input[type=hidden] + label:before,
+body .icheck-primary > input:first-child:checked + label:before {
 	background-color: transparent;
 	border-color: var(--color-success-dark);
 }
 
-[class*=icheck-] > input:first-child:not(:checked):not(:disabled):hover + input[type=hidden] + label:before,
-[class*=icheck-] > input:first-child:not(:checked):not(:disabled):hover + label:before {
+body [class*=icheck-] > input:first-child:not(:checked):not(:disabled):hover + input[type=hidden] + label:before,
+body [class*=icheck-] > input:first-child:not(:checked):not(:disabled):hover + label:before {
 	border-width: calc(var(--border-width) * 2);
 	border-color: var(--color-secondary);
 }
 
 /* --- switch */
-[class*=icheck-] > input:first-child + input[type=hidden] + label:after,
-[class*=icheck-] > input:first-child + label:after {
+body [class*=icheck-] > input:first-child + input[type=hidden] + label:after,
+body [class*=icheck-] > input:first-child + label:after {
 	content: '';
 	background-color: var(--color-primary);
 	width: var(--gap75);
@@ -285,8 +285,8 @@ h6 {
 	transition: inset var(--transition);
 }
 
-[class*=icheck-] > input:first-child:checked + input[type=hidden] + label:after,
-[class*=icheck-] > input:first-child:checked + label:after {
+body [class*=icheck-] > input:first-child:checked + input[type=hidden] + label:after,
+body [class*=icheck-] > input:first-child:checked + label:after {
 	background-color: var(--color-success);
 	width: var(--gap75);
 	height: 1.4rem;
@@ -298,24 +298,24 @@ h6 {
 }
 
 /* --- radios */
-[class*=icheck-] > input[type=radio]:first-child + input[type=hidden] + label:before,
-[class*=icheck-] > input[type=radio]:first-child + label:before {
+body [class*=icheck-] > input[type=radio]:first-child + input[type=hidden] + label:before,
+body [class*=icheck-] > input[type=radio]:first-child + label:before {
 	border-radius: 0;
 }
 
-[class*=icheck-] > input[type=radio]:first-child + input[type=hidden] + label:after,
-[class*=icheck-] > input[type=radio]:first-child + label:after {
+body [class*=icheck-] > input[type=radio]:first-child + input[type=hidden] + label:after,
+body [class*=icheck-] > input[type=radio]:first-child + label:after {
 	background-color: var(--color-disabled);
 	width: calc(var(--gap) * 1.5);
 	inset: calc(var(--border-width) * 4) auto 0 calc(var(--border-width) * 4);
 }
 
-[class*=icheck-] > input[type=radio]:first-child:checked + input[type=hidden] + label:after,
-[class*=icheck-] > input[type=radio]:first-child:checked + label:after {
+body [class*=icheck-] > input[type=radio]:first-child:checked + input[type=hidden] + label:after,
+body [class*=icheck-] > input[type=radio]:first-child:checked + label:after {
 	background-color: var(--color-success);
 }
 
-[class*="icheck-"] > input:first-child:focus + label:before {
+body [class*="icheck-"] > input:first-child:focus + label:before {
 	outline-color: transparent;
 }
 
