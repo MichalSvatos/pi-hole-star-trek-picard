@@ -44,6 +44,9 @@ Check my other theme
 ***
 
 ## Changelog
+**0.11.1**
+- Main drop down menu
+
 **0.11.0**
 - Forms, selects, inputs, textareas
 - Select2

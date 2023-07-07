@@ -1,6 +1,6 @@
 /*
 	- Document: Pi-hole LCARS Star Trek Picard Theme
-	- Version:  0.11.0
+	- Version:  0.11.1
 	- Author:   @MichalSvatos
 	- Description: Star Trek Picard LCARS Theme for Pi-hole dashboard.
 	- Disclaimer: Due to fact that I have the access only to CSS I was forced to use some !importants and a lot of IDs. I'm sorry.
@@ -523,6 +523,7 @@ div.dataTables_wrapper div.dataTables_length select {
 	background-color: var(--color-link);
 }
 
+
 /* MAIN HEADER
    ========================================================== */
 
@@ -677,6 +678,212 @@ div.dataTables_wrapper div.dataTables_length select {
 	/* --wrapper-max-width */
 	#enableTimer {
 		right: calc(((100dvw - var(--wrapper-max-width)) / 2) + var(--gap));
+	}
+}
+
+
+/* MAIN DROPDOWN MENU
+   ========================================================== */
+.navbar-custom-menu > .navbar-nav > li > .dropdown-menu {
+	background-color: var(--color-background);
+	width: 90vw;
+	max-width: calc(var(--gap) * 30);
+	box-shadow: 0 0 0 100vmax rgba(0, 0, 0, .75);
+	border: 0;
+	border-radius: 0 0 var(--radius25) 0;
+}
+
+@media (min-width: 576px) {
+	.navbar-custom-menu > .navbar-nav > li > .dropdown-menu {
+		position: fixed;
+		inset: var(--gap) auto auto 50%;
+		translate: -50% 0;
+		box-shadow: 0 0 0 100vmax rgba(0, 0, 0, .9);
+	}
+}
+
+/* --- header */
+.navbar-nav > .user-menu > .dropdown-menu > li.user-header {
+    padding: 0 var(--gap) 0 0;
+    border: var(--border-width) solid var(--color-primary);
+    border-bottom: 0;
+    border-left: 0;
+    border-right-width: var(--border-panel-width);
+    border-top-right-radius: calc(var(--radius100) * 2);
+    display: flex;
+    position: relative;
+    min-height: calc(var(--gap) * 5);
+    gap: var(--gap);
+    align-items: center;
+}
+
+.navbar-nav > .user-menu > .dropdown-menu > li.user-header > img {
+	height: calc(var(--gap) * 5);
+    width: calc(var(--gap) * 4);
+    top: var(--gap);
+    padding: var(--gap50) var(--gap50);
+    flex-shrink: 0;
+}
+
+.navbar-nav > .user-menu > .dropdown-menu > li.user-header > p {
+    color: var(--color-red-alert);
+    font-size: 26px;
+    margin-top: 0;
+    text-transform: uppercase;
+    text-align: left;
+	margin-bottom: 0;
+}
+
+.navbar-nav > .user-menu > .dropdown-menu > li.user-header > p::after {
+	content: 'A black hole for Internet advertisements';
+    display: block;
+    font-size: 1.5rem;
+    color: var(--color-quinternary);
+}
+
+/* --- footer */
+.navbar-nav > .user-menu > .dropdown-menu > .user-footer {
+	display: flex;
+	flex-direction: column;
+	padding: var(--gap) var(--gap) calc(var(--gap) * 2) var(--gap);
+    background: var(--color-background);
+    border: var(--border-width) solid var(--color-secondary);
+    border-top: 0;
+    border-left: 0;
+    border-right-width: var(--border-panel-width);
+    border-bottom-right-radius: 0;
+    margin-top: var(--border-width);
+	position: relative;
+}
+
+@media (min-width: 576px) {
+	.navbar-nav > .user-menu > .dropdown-menu > .user-footer {
+		flex-direction: row;
+		flex-wrap: wrap;
+		justify-content: space-between;
+	}
+}
+
+.navbar-nav > .user-menu > .dropdown-menu > .user-footer hr {
+	width: 100%;
+}
+
+.navbar-nav > .user-menu > .dropdown-menu > .user-footer .btn-link {
+	background-color: var(--color-disabled) !important;
+	color: var(--color-link);
+	padding: var(--gap50) var(--gap);
+	position: relative;
+}
+
+@media (min-width: 576px) {
+	.navbar-nav > .user-menu > .dropdown-menu > .user-footer .btn-link {
+		width: calc(50% - var(--gap50));
+		margin-block: var(--gap50);
+	}
+}
+
+.navbar-nav > .user-menu > .dropdown-menu > .user-footer .btn-link:hover {
+	background-color: var(--color-primary) !important;
+	color: #fff;
+}
+
+.navbar-nav > .user-menu > .dropdown-menu > .user-footer .btn-link:first-child {
+	width: 100%;
+	background-color: var(--color-success-dark) !important;
+    color: var(--color-success);
+}
+
+.navbar-nav > .user-menu > .dropdown-menu > .user-footer .btn-link:first-child:hover {
+	background-color: var(--color-link) !important;
+    color: #fff;
+}
+
+.navbar-nav > .user-menu > .dropdown-menu > .user-footer .btn-link:last-child {
+	width: 100%;
+    background-color: var(--color-supplement-01) !important;
+    color: var(--color-danger-bright);
+}
+
+.navbar-nav > .user-menu > .dropdown-menu > .user-footer .btn-link:last-child:hover {
+    background-color: var(--color-danger) !important;
+    color: #fff;
+}
+
+@media (max-width: 768px) {
+	.navbar-nav > .user-menu > .dropdown-menu > .user-footer .btn-link + .btn-link {
+		margin-top: var(--gap50);
+	}
+}
+
+.navbar-nav > .user-menu > .dropdown-menu > .user-footer .btn-link svg {
+	position: absolute;
+    background-color: rgba(0, 0, 0, .35);
+    padding: calc(var(--gap75));
+    width: calc(var(--gap) * 3);
+    height: 36px !important;
+    inset: 0 auto 0 0;
+    border-right: calc(var(--border-width) * 2) solid var(--color-background);
+    border-radius: 18px 0 0 18px;
+}
+
+/* --- fake corners */
+@media (min-width: 768px) {
+	.navbar-nav > .user-menu > .dropdown-menu > li.user-header::after,
+	.navbar-nav > .user-menu > .dropdown-menu > .user-footer::after {
+		display: block;
+		content: '';
+		background-color: var(--color-background);
+		width: var(--gap);
+		border-radius: 0 var(--radius50) 0 0;
+		position: absolute;
+		inset: 0 calc(var(--gap50) * -1) 0 auto;
+		z-index: 5;
+	}
+
+	.navbar-nav > .user-menu > .dropdown-menu > .user-footer::after {
+		border-radius: 0 0 var(--radius50) 0;
+	}
+}
+
+/* --- additional visual tweaks */
+.navbar-custom-menu > .navbar-nav > li > .dropdown-menu::after {
+	content: 'LCARS theme by @MichalSvatos';
+    text-transform: uppercase;
+    font-size: 1rem;
+    position: absolute;
+    inset: auto auto var(--gap25) var(--gap);
+    color: var(--color-secondary);
+}
+
+@media (min-width: 768px) {
+	.navbar-nav > .user-menu > .dropdown-menu > li.user-header::before {
+		content: '';
+		position: absolute;
+		width: var(--gap50);
+		height: var(--gap50);
+		right: calc(var(--gap) * -1.5);
+		bottom: var(--gap50);
+		background-color: var(--color-background);
+		z-index: 6;
+	}
+
+	.navbar-nav > .user-menu > .dropdown-menu > .user-footer::before {
+		display: block;
+		position: absolute;
+		right: calc(var(--gap) * -3);
+		top: calc(var(--gap) * 1);
+		width: calc(var(--gap) * 2.5);
+		background-color: var(--color-secondary);
+		z-index: 6;
+		border-radius: 0 var(--radius100) var(--radius100) 0;
+		border: var(--border-width) solid var(--color-background);
+		bottom: calc(var(--gap) * 2);
+		border-left: 0;
+		transition: background-color var(--transition-duration-slow);
+	}
+
+	.navbar-nav > .user-menu > .dropdown-menu > .user-footer:hover::before {
+		background-color: var(--color-tertiary);
 	}
 }
 
