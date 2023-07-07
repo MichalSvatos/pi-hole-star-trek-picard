@@ -1,6 +1,6 @@
 /*
 	- Document: Pi-hole LCARS Star Trek Picard Theme
-	- Version:  0.10.2
+	- Version:  0.11.0
 	- Author:   @MichalSvatos
 	- Description: Star Trek Picard LCARS Theme for Pi-hole dashboard.
 	- Disclaimer: Due to fact that I have the access only to CSS I was forced to use some !importants and a lot of IDs. I'm sorry.
@@ -37,6 +37,7 @@
 	--lcars-space: var(--gap25);
 	--border-width: calc(var(--gap) / 8);
 	--pie-chart-border-width: calc(var(--gap) * 9);
+	--form-fields-height: 34px;
 
 	/* -- colors */
 	--color-background: #000;
@@ -51,7 +52,7 @@
 	--color-quinternary: #8e4437;
 	--color-text: #9fa5b8;
 	--color-text-dark: #000;
-	/*--color-link: var(--lcars-mariner);*/
+	--color-link: #3c8dbc;
 	--color-danger: #d55138;
 	--color-danger-bright: #f37052;
 	--color-red-alert: #ea3323;
@@ -319,6 +320,208 @@ body [class*="icheck-"] > input:first-child:focus + label:before {
 	outline-color: transparent;
 }
 
+
+/* FORMS
+   ========================================================== */
+
+.form-control,
+.select2-container--default .select2-search--dropdown .select2-search__field {
+	border-color: var(--color-tertiary);
+	color: var(--color-tertiary-hover);
+	background-color: var(--color-disabled);
+	transition: background-color var(--transition), border-color var(--transition);
+}
+
+.form-control[disabled],
+.form-control[readonly],
+fieldset[disabled] .form-control {
+	border-color: var(--color-primary);
+	background-color: var(--color-disabled);
+}
+
+.form-control:focus,
+.select2-container--default .select2-search--dropdown .select2-search__field:focus {
+	border-color: var(--color-tertiary-hover);
+	background-color: var(--color-background);
+}
+
+.input-group .input-group-addon,
+.input-group .input-group-btn .btn-file {
+	background-color: var(--color-secondary-hover);
+	border: none;
+	border-radius: var(--radius100) 0 0 var(--radius100);
+	color: var(--color-text-dark);
+	text-transform: uppercase;
+	font-size: 1.25rem;
+	font-weight: 600;
+}
+
+.input-group .input-group-btn .btn-default {
+	background-color: var(--color-secondary-hover);
+	border: none;
+	color: var(--color-text-dark);
+	text-transform: uppercase;
+	font-size: 1.25rem;
+	font-weight: 600;
+}
+
+.input-group .input-group-btn .btn-default:hover {
+	background-color: var(--color-tertiary);
+}
+
+.input-group .input-group-btn .btn-default + .btn-default {
+	margin-left: calc(var(--border-width) * 2);
+}
+
+textarea.form-control {
+	resize: vertical;
+}
+
+div.dataTables_wrapper div.dataTables_filter input,
+div.dataTables_wrapper div.dataTables_length select {
+	height: var(--form-fields-height);
+}
+
+div.dataTables_wrapper div.dataTables_length select {
+	border-radius: var(--radius100);
+	margin-inline: var(--gap25);
+}
+
+/* -- select2 */
+.select2-container--default .select2-selection--single {
+	height: var(--form-fields-height);
+	border-color: var(--color-tertiary);
+	color: var(--color-tertiary-hover);
+	background-color: var(--color-disabled);
+	border-radius: var(--radius100);
+	font-size: 14px;
+}
+
+.select2-container--default.select2-container--open.select2-container--below .select2-selection--single,
+.select2-container--default.select2-container--open.select2-container--below .select2-selection--multiple {
+	background-color: var(--color-secondary);
+    border-color: var(--color-secondary);
+    border-bottom-color: var(--color-secondary);
+}
+
+.select2-container--default .select2-selection__placeholder {
+	text-transform: uppercase;
+}
+
+.select2-container--default.select2-container--open .select2-selection__placeholder {
+	color: var(--color-background);
+}
+
+.select2-container--default .select2-selection--single .select2-selection__rendered {
+	color: var(--color-tertiary-hover);
+}
+
+.select2-container--default .select2-selection--single .select2-selection__clear {
+	width: calc(var(--gap) * 2.25);
+    height: calc(var(--gap) * 1.75);
+	background-color: var(--color-danger);
+	overflow: hidden;
+	text-indent: -32px;
+	border: calc(var(--border-width) * 2) solid var(--color-danger);
+	border-radius: var(--radius100) 0 0 var(--radius100);
+	transition: border-color var(--transition), background-color var(--transition);
+}
+
+.select2-container--default .select2-selection--single .select2-selection__clear::before,
+.select2-container--default .select2-selection--single .select2-selection__clear::after {
+	content: '';
+	position: absolute;
+	width: var(--border-width);
+	height: 100%;
+	background-color: var(--color-background);
+	top: 0;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__clear::before {
+	left: calc(50% - (var(--border-width) / 2));
+	rotate: -45deg;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__clear::after {
+	right: calc(50% - (var(--border-width) / 2));
+	rotate: 45deg;
+}
+.select2-container--default .select2-selection--single .select2-selection__clear:hover {
+	background-color: var(--color-danger-bright);
+	border-color: var(--color-danger-bright);
+}
+
+.select2-container--default .select2-selection--single .select2-selection__arrow {
+	top: 5px;
+    right: 10px;
+}
+
+.select2-dropdown {
+	background-color: var(--color-primary);
+    border-color: var(--color-primary);
+	translate: 0 2px;
+}
+
+.select2-search--dropdown {
+	padding: var(--gap) var(--gap) var(--gap) var(--gap);
+	background-color: var(--color-primary);
+	position: relative;
+}
+
+.select2-search--dropdown::after {
+	content: '';
+	height: var(--border-width);
+	background-color: var(--color-background);
+	position: absolute;
+	inset: auto calc((var(--gap25) + 1px) * -1) 0 calc((var(--gap25) + 1px) * -1);
+}
+
+.select2-results {
+    padding: var(--gap) var(--gap) 0 var(--gap);
+    background-color: var(--color-background);
+}
+
+.select2-container--open .select2-dropdown--below {
+	padding-inline: var(--gap25);
+	border-bottom-right-radius: var(--radius100);
+	border-bottom-left-radius: var(--radius100);
+	border-bottom-width: var(--gap);
+}
+
+.select2-container--default .select2-results > .select2-results__options {
+	padding-bottom: var(--gap);
+}
+
+.select2-results__option {
+	background-color: var(--color-disabled);
+	color: var(--color-link);
+	font-size: 1.4rem;
+    padding-inline: var(--gap);
+	position: relative;
+	transition: background-color var(--transition), color var(--transition);
+}
+
+.select2-results__option::before {
+	content: '';
+	width: var(--gap50);
+	background-color: var(--color-primary);
+	position: absolute;
+	inset: 0 auto 0 0;
+	border-right: var(--gap25) solid var(--color-background);
+}
+
+.select2-results__option + .select2-results__option {
+	border-top: calc(var(--border-width) * 4) solid var(--color-background);
+}
+
+.select2-container--default .select2-results__option--highlighted[aria-selected] {
+	background-color: var(--color-secondary);
+    color: var(--color-tertiary-hover);
+}
+
+.select2-container--default .select2-results__option--highlighted[aria-selected]::before {
+	background-color: var(--color-link);
+}
 
 /* MAIN HEADER
    ========================================================== */

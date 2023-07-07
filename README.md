@@ -35,7 +35,19 @@ _Note: I didn't test it myself._
 ## Screenshots
 ![Pi-hole Star Trek Picard LCARS Theme Dashboard Preview](https://github.com/MichalSvatos/pi-hole-star-trek-picard/raw/main/previews/pi-hole-star-trek-picard-lcars-preview-hp.png)
 
+***
+
+## Do you prefer more colorful LCARS?
+Check my other theme
+[![Pi-hole LCARS Next Generation Theme](https://github.com/MichalSvatos/pi-hole-star-trek-picard/raw/main/previews/pi-hole-tng-lcars.png)](https://github.com/MichalSvatos/pi-hole-lcars-next-gen)
+
+***
+
 ## Changelog
+**0.11.0**
+- Forms, selects, inputs, textareas
+- Select2
+
 **0.10.2**
 - FIX - Checkboxes and radios styling (because icheck-bootstrap.min.css)
 
@@ -69,7 +81,7 @@ _Note: I didn't test it myself._
 - FIX - removed custom FontAwesome icon. Don't ask 🤦
 
 **0.8.2**
-- FIX - colors for the JS generated content 
+- FIX - colors for the JS generated content
 
 **0.8.1**
 - FIX - same height of the "TOP" tables
@@ -79,7 +91,7 @@ _Note: I didn't test it myself._
 - Footer + update available variant
 
 **0.7.0**
-- "TOP" tables on the dashboard 
+- "TOP" tables on the dashboard
 
 **0.6.3**
 - Charts "scanner" animation
@@ -99,10 +111,6 @@ _Note: I didn't test it myself._
 ## Thanks to ...
 - [meWho.com](https://mewho.com) - creator of the famous SYSTEM47 screensaver and various LCARS projects
 - [Jacob Bates](https://github.com/jacobbates) for this installation process
-
-## Do you prefer more colorful LCARS?
-Check my other theme
-[![Pi-hole LCARS Next Generation Theme](https://github.com/MichalSvatos/pi-hole-star-trek-picard/raw/main/previews/pi-hole-tng-lcars.png)](https://github.com/MichalSvatos/pi-hole-lcars-next-gen)
 
 ---
 ### License
