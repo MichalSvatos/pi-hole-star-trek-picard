@@ -696,8 +696,8 @@ div.dataTables_wrapper div.dataTables_length select {
 @media (min-width: 576px) {
 	.navbar-custom-menu > .navbar-nav > li > .dropdown-menu {
 		position: fixed;
-		inset: var(--gap) auto auto 50%;
-		translate: -50% 0;
+		inset: 50% auto auto 50%;
+		translate: -50% -50%;
 		box-shadow: 0 0 0 100vmax rgba(0, 0, 0, .9);
 	}
 }
