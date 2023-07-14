@@ -44,6 +44,9 @@ Check my other theme
 ***
 
 ## Changelog
+**0.12.1**
+- Login screen - error message
+
 **0.12.0**
 - Login screen
 
