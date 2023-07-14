@@ -1,6 +1,6 @@
 /*
 	- Document: Pi-hole LCARS Star Trek Picard Theme
-	- Version:  0.12.1
+	- Version:  0.12.2
 	- Author:   @MichalSvatos
 	- Description: Star Trek Picard LCARS Theme for Pi-hole dashboard.
 	- Disclaimer: Due to fact that I have the access only to CSS I was forced to use some !importants and a lot of IDs. I'm sorry.
@@ -920,6 +920,96 @@ div.dataTables_wrapper div.dataTables_length select {
 .login-donate {
 	text-transform: uppercase;
     margin-top: calc(var(--gap) * 2);
+	padding: var(--gap) var(--gap) 0 var(--gap);
+	width: 90vw;
+	margin-inline: auto;
+	max-width: calc(var(--gap) * 35);
+}
+
+.login-donate .text-center {
+	position: relative;
+    border: var(--border-width) solid var(--color-success-dark);
+    border-bottom: calc(var(--border-width) * 4) solid var(--color-success-dark);
+    border-radius: calc(var(--radius100) * 2) calc(var(--radius100) * 2) calc(var(--radius100) * 2) 0;
+    padding: calc(var(--gap) * 2) var(--gap) calc(var(--gap) * 2) var(--gap);
+	color: var(--color-success-dark);
+}
+
+.login-donate .text-center::before {
+	content: '';
+    position: absolute;
+    inset: auto auto 0 0;
+    translate: calc(var(--gap25) * -1) 75%;
+    color: var(--color-primary);
+    font-size: 1rem;
+    text-align: left;
+    width: calc(var(--gap) * 6);
+    animation: runningDots 2.5s steps(10, end) infinite;
+    background: black;
+    height: var(--gap);
+    line-height: 1;
+}
+
+.login-donate .text-center::after {
+	content: '';
+	position: absolute;
+	border-top: calc(var(--border-width) * 2) solid var(--color-background);
+	border-bottom: calc(var(--border-width) * 4) solid var(--color-background);
+	height: calc(var(--gap) * 5);
+	inset: calc(var(--gap) * 2) calc(var(--gap50) * -1) auto calc(var(--gap50) * -1);
+}
+
+.login-donate strong {
+	display: block;
+	font-size: 3rem;
+	position: relative;
+	z-index: 1;
+}
+
+.login-donate strong::before {
+	content: 'donation-bar_31911A ■';
+	font-size: 1.2rem;
+	position: absolute;
+	inset: calc(var(--gap) * -2) var(--gap) auto auto;
+	text-align: right;
+	color: var(--color-success-dark);
+}
+
+.login-donate strong::after {
+	content: '┅┅┅┅┅┄┄';
+    position: absolute;
+    font-size: 2.2rem;
+    left: calc(var(--gap25) * -4);
+    bottom: calc(var(--gap25) * -17);
+    color: var(--color-success-dark);
+}
+
+.login-donate a {
+	color: var(--color-success);
+	transition: color var(--transition);
+}
+
+.login-donate a:hover {
+	color: var(--color-tertiary-hover);
+}
+
+.login-donate a svg {
+	transition: scale var(--transition);
+	scale: .9;
+}
+
+.login-donate a:hover svg {
+	scale: 1.1;
+}
+
+.login-donate a::before {
+	content: 'please ';
+}
+
+.login-donate a::after {
+	content: '';
+	position: absolute;
+	inset: 0;
 }
 
 
@@ -3784,4 +3874,32 @@ div.dataTables_wrapper div.dataTables_length select {
 	100% {
 		opacity: 1;
 	}
+}
+
+@keyframes runningDots {
+	0% {content: '■ □ □ □ □ □ □ □ □ □ □';}
+	10% {content: '□ ■ □ □ □ □ □ □ □ □ □';}
+	20% {content: '□ □ ■ □ □ □ □ □ □ □ □';}
+	30% {content: '□ □ □ ■ □ □ □ □ □ □ □';}
+	40% {content: '□ □ □ □ ■ □ □ □ □ □ □';}
+	50% {content: '□ □ □ □ □ ■ □ □ □ □ □';}
+	60% {content: '□ □ □ □ □ □ ■ □ □ □ □';}
+	70% {content: '□ □ □ □ □ □ □ ■ □ □ □';}
+	80% {content: '□ □ □ □ □ □ □ □ ■ □ □';}
+	90% {content: '□ □ □ □ □ □ □ □ □ ■ □';}
+	100% {content: '□ □ □ □ □ □ □ □ □ □ ■';}
+}
+
+@-webkit-keyframes runningDots {
+	0% {content: '■ □ □ □ □ □ □ □ □ □ □';}
+	10% {content: '□ ■ □ □ □ □ □ □ □ □ □';}
+	20% {content: '□ □ ■ □ □ □ □ □ □ □ □';}
+	30% {content: '□ □ □ ■ □ □ □ □ □ □ □';}
+	40% {content: '□ □ □ □ ■ □ □ □ □ □ □';}
+	50% {content: '□ □ □ □ □ ■ □ □ □ □ □';}
+	60% {content: '□ □ □ □ □ □ ■ □ □ □ □';}
+	70% {content: '□ □ □ □ □ □ □ ■ □ □ □';}
+	80% {content: '□ □ □ □ □ □ □ □ ■ □ □';}
+	90% {content: '□ □ □ □ □ □ □ □ □ ■ □';}
+	100% {content: '□ □ □ □ □ □ □ □ □ □ ■';}
 }

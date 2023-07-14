@@ -44,6 +44,9 @@ Check my other theme
 ***
 
 ## Changelog
+**0.12.2**
+- Login screen - donation bar
+
 **0.12.1**
 - Login screen - error message
 
