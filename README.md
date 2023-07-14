@@ -44,6 +44,9 @@ Check my other theme
 ***
 
 ## Changelog
+**0.12.3**
+- Donation bar (login, other pages) + refactoring
+
 **0.12.2**
 - Login screen - donation bar
 

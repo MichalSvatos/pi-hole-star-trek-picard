@@ -1,6 +1,6 @@
 /*
 	- Document: Pi-hole LCARS Star Trek Picard Theme
-	- Version:  0.12.2
+	- Version:  0.12.3
 	- Author:   @MichalSvatos
 	- Description: Star Trek Picard LCARS Theme for Pi-hole dashboard.
 	- Disclaimer: Due to fact that I have the access only to CSS I was forced to use some !importants and a lot of IDs. I'm sorry.
@@ -916,7 +916,10 @@ div.dataTables_wrapper div.dataTables_length select {
     padding: var(--gap75);
 }
 
-/* --- login - donate */
+
+/* DONATION BAR (login + other pages)
+   ========================================================== */
+
 .login-donate {
 	text-transform: uppercase;
     margin-top: calc(var(--gap) * 2);
@@ -926,7 +929,8 @@ div.dataTables_wrapper div.dataTables_length select {
 	max-width: calc(var(--gap) * 35);
 }
 
-.login-donate .text-center {
+.login-donate .text-center,
+.main-footer > .row:first-child > div {
 	position: relative;
     border: var(--border-width) solid var(--color-success-dark);
     border-bottom: calc(var(--border-width) * 4) solid var(--color-success-dark);
@@ -935,12 +939,13 @@ div.dataTables_wrapper div.dataTables_length select {
 	color: var(--color-success-dark);
 }
 
-.login-donate .text-center::before {
+.login-donate .text-center::before,
+.main-footer > .row:first-child > div::before {
 	content: '';
     position: absolute;
     inset: auto auto 0 0;
     translate: calc(var(--gap25) * -1) 75%;
-    color: var(--color-primary);
+    color: var(--color-red-alert);
     font-size: 1rem;
     text-align: left;
     width: calc(var(--gap) * 6);
@@ -950,7 +955,8 @@ div.dataTables_wrapper div.dataTables_length select {
     line-height: 1;
 }
 
-.login-donate .text-center::after {
+.login-donate .text-center::after,
+.main-footer > .row:first-child > div::after {
 	content: '';
 	position: absolute;
 	border-top: calc(var(--border-width) * 2) solid var(--color-background);
@@ -959,14 +965,16 @@ div.dataTables_wrapper div.dataTables_length select {
 	inset: calc(var(--gap) * 2) calc(var(--gap50) * -1) auto calc(var(--gap50) * -1);
 }
 
-.login-donate strong {
+.login-donate strong,
+.main-footer > .row:first-child > div strong {
 	display: block;
 	font-size: 3rem;
 	position: relative;
 	z-index: 1;
 }
 
-.login-donate strong::before {
+.login-donate strong::before,
+.main-footer > .row:first-child > div strong::before {
 	content: 'donation-bar_31911A ■';
 	font-size: 1.2rem;
 	position: absolute;
@@ -975,7 +983,12 @@ div.dataTables_wrapper div.dataTables_length select {
 	color: var(--color-success-dark);
 }
 
-.login-donate strong::after {
+.main-footer > .row:first-child > div strong::before {
+	content: 'donation-bar_1764A ■';
+}
+
+.login-donate strong::after,
+.main-footer > .row:first-child > div strong::after {
 	content: '┅┅┅┅┅┄┄';
     position: absolute;
     font-size: 2.2rem;
@@ -984,29 +997,35 @@ div.dataTables_wrapper div.dataTables_length select {
     color: var(--color-success-dark);
 }
 
-.login-donate a {
+.login-donate a,
+.main-footer > .row:first-child > div a {
 	color: var(--color-success);
 	transition: color var(--transition);
 }
 
-.login-donate a:hover {
+.login-donate a:hover,
+.main-footer > .row:first-child > div a:hover {
 	color: var(--color-tertiary-hover);
 }
 
-.login-donate a svg {
+.login-donate a svg,
+.main-footer > .row:first-child > div a svg {
 	transition: scale var(--transition);
 	scale: .9;
 }
 
-.login-donate a:hover svg {
+.login-donate a:hover svg,
+.main-footer > .row:first-child > div a:hover svg {
 	scale: 1.1;
 }
 
-.login-donate a::before {
+.login-donate a::before,
+.main-footer > .row:first-child > div a::before {
 	content: 'please ';
 }
 
-.login-donate a::after {
+.login-donate a::after,
+.main-footer > .row:first-child > div a::after {
 	content: '';
 	position: absolute;
 	inset: 0;
@@ -2550,9 +2569,16 @@ div.dataTables_wrapper div.dataTables_length select {
 	content: '';
 	display: block;
 	position: absolute;
-	inset: auto auto 0 0;
+	inset: auto auto calc(var(--gap) * -4) calc(var(--gap) * -2);
 	width: var(--gap);
 	height: var(--gap);
+}
+
+@media (min-width: 1250px) {
+	.main-footer > .row:first-child:before,
+	.main-footer > .row:first-child:after {
+		inset: auto auto calc(var(--gap) * -6) calc(var(--gap) * -6);
+	}
 }
 
 .main-footer > .row:first-child:before {
@@ -2564,90 +2590,30 @@ div.dataTables_wrapper div.dataTables_length select {
 	border-radius: 0 0 0 var(--radius100);
 }
 
-/* --- donation bar */
+/* --- donation bar tweaks */
 .main-footer > .row:first-child {
-	margin-inline: 0;
-	padding: calc(var(--gap) * 2) calc(var(--gap) * 1.5) calc(var(--gap) * 4) calc(var(--gap) * 1.5);
+	padding: 0;
+	margin-inline: calc(var(--gap) * 2);
+	margin-bottom: calc(var(--gap) * 4);
+	margin-top: calc(var(--gap) * 4);
+	outline: calc(var(--gap) * 4) solid var(--color-background);
 	position: relative;
 }
 
 @media (min-width: 1250px) {
 	.main-footer > .row:first-child {
-		padding: calc(var(--gap) * 2) 0 calc(var(--gap) * 4) calc(var(--gap) * 2.5);
+		margin-inline: calc(var(--gap) * 6);
+		margin-bottom: calc(var(--gap) * 6);
+		margin-top: calc(var(--gap) * 4);
+		outline: calc(var(--gap) * 6) solid var(--color-background);
 	}
 }
 
 .main-footer > .row:first-child > div {
-	box-shadow: inset 0 0 0 calc(var(--border-width) * 1) var(--footer-color);
+	text-transform: uppercase;
+	font-size: 2rem;
 	width: 100%;
-	padding: var(--gap50) calc(var(--gap) * 4) var(--gap50) calc(var(--gap) * 8.5);
-	border-radius: calc(var(--radius100) * 1.5);
-	position: relative;
-	text-align: left;
-	text-transform: uppercase;
-	color: var(--footer-color-text);
-	font-weight: var(--font-bold);
-	transition: color var(--transition), box-shadow var(--transition);
-}
-
-.main-footer > .row:first-child > div:hover {
-	--footer-color: var(--color-danger);
-	--footer-color-text: #fff;
-}
-
-.main-footer > .row:first-child > div:before,
-.main-footer > .row:first-child > div:after {
-	content: '';
-	position: absolute;
-}
-
-.main-footer > .row:first-child > div:before {
-	content: 'Priority message:';
-	background-color: var(--footer-color);
-	display: flex;
-	align-items: center;
-	justify-content: flex-end;
-	min-width: calc(var(--gap) * 8);
-	padding: 0 var(--gap50);
-	border-right: calc(var(--border-width) * 4) solid var(--color-background);
-	border-radius: calc(var(--radius100) * 1.5) 0 0 calc(var(--radius100) * 1.5);
-	inset: 0 auto 0 0;
-	color: var(--color-text-dark);
-	font-size: 1.4rem;
-	text-transform: uppercase;
-	font-weight: var(--font-regular);
-	transition: background-color var(--transition);
-}
-
-.main-footer > .row:first-child > div:after {
-	background-color: transparent;
-	width: calc(var(--gap) * 2.75);
-	border-left: calc(var(--border-width) * 1) solid var(--footer-color);
-	inset: var(--gap50) 0 var(--gap50) auto;
-	transition: border-color var(--transition);
-}
-
-.main-footer > .row:first-child > div a {
-	color: var(--footer-color-text);
-	font-weight: var(--font-bold);
-	transition: color var(--transition);
-}
-
-.main-footer > .row:first-child > div a:before {
-	content: 'Please, ';
-}
-
-.main-footer > .row:first-child > div a:after {
-	content: '';
-	position: absolute;
-	inset: 0;
-}
-
-.main-footer > .row:first-child > div svg {
-	position: absolute;
-	right: var(--gap);
-	top: 50%;
-	translate: 0 -50%;
+	max-width: calc(var(--gap) * 35);
 }
 
 /* --- version info */
