@@ -44,6 +44,9 @@ Check my other theme
 ***
 
 ## Changelog
+**0.12.0**
+- Login screen
+
 **0.11.1**
 - Main drop down menu
 

@@ -1,6 +1,6 @@
 /*
 	- Document: Pi-hole LCARS Star Trek Picard Theme
-	- Version:  0.11.1
+	- Version:  0.12.0
 	- Author:   @MichalSvatos
 	- Description: Star Trek Picard LCARS Theme for Pi-hole dashboard.
 	- Disclaimer: Due to fact that I have the access only to CSS I was forced to use some !importants and a lot of IDs. I'm sorry.
@@ -236,6 +236,36 @@ h6 {
 	padding: 1px 5px;
 	border-radius: 5px;
 	min-width: auto;
+}
+
+.navbar-nav > .user-menu > .dropdown-menu > .user-footer .btn-link,
+.login-footer .btn-default,
+.login-box button.btn-primary {
+	background-color: var(--color-disabled) !important;
+	color: var(--color-link);
+	padding: var(--gap50) var(--gap);
+	position: relative;
+	text-align: right;
+}
+
+.navbar-nav > .user-menu > .dropdown-menu > .user-footer .btn-link:hover,
+.login-footer .btn-default:hover,
+.login-box button.btn-primary:hover {
+	background-color: var(--color-primary) !important;
+	color: #fff;
+}
+
+.navbar-nav > .user-menu > .dropdown-menu > .user-footer .btn-link svg,
+.login-footer .btn-default svg,
+.login-box button.btn-primary svg {
+	position: absolute;
+    background-color: rgba(0, 0, 0, .35);
+    padding: calc(var(--gap75));
+    width: calc(var(--gap) * 3);
+    height: 36px !important;
+    inset: 0 auto 0 0;
+    border-right: calc(var(--border-width) * 2) solid var(--color-background);
+    border-radius: 18px 0 0 18px;
 }
 
 
@@ -524,6 +554,341 @@ div.dataTables_wrapper div.dataTables_length select {
 }
 
 
+/* LOGIN
+   ========================================================== */
+
+.login-box {
+	width: 90vw;
+	max-width: calc(var(--gap) * 65);
+	padding: calc(var(--gap) * 3) var(--gap);
+}
+
+@media (min-width: 992px) {
+	.login-box {
+		padding: calc(var(--gap) * 3) calc(var(--gap) * 10);
+	}
+}
+
+.login-box::after,
+.login-box::before {
+	content: '';
+	position: absolute;
+}
+
+/* --- login - main panels */
+.login-box::after {
+	--_login-border-radius: calc(var(--radius100) * 3);
+	--_login-main-bg-color: var(--color-disabled);
+	inset: 0;
+	background: linear-gradient(90deg, var(--_login-main-bg-color) 50%, var(--_login-main-bg-color) 50%);
+	border-radius: var(--_login-border-radius);
+	transition: border-radius var(--transition);
+	z-index: 0;
+}
+
+/* --- login - panel lines */
+.login-box::before {
+	--_login-lines-bg-color: var(--color-primary);
+	inset: 15% var(--gap50);
+	background-color: var(--_login-lines-bg-color);
+	border-radius: var(--radius100);
+	border: var(--border-width) solid var(--color-background);
+	z-index: 1;
+}
+
+@media (min-width: 992px) {
+	.login-box::after {
+		border-radius: calc(var(--radius100) * 4);
+		animation: loginPanel var(--transition) 0s forwards;
+	}
+
+	.login-box::before {
+		inset: calc(var(--gap) * 1.35) calc(var(--gap) * 6);
+		border-radius: calc(var(--radius100) * 2);
+		animation: loginLines var(--transition) 0s forwards;
+	}
+}
+
+.login-box section {
+	background-color: var(--color-background);
+	padding: calc(var(--gap) * 2) calc(var(--gap) * 2) !important;
+    border-radius: var(--radius100);
+	position: relative;
+	z-index: 1;
+	transition: border-radius var(--transition);
+}
+
+@media (min-width: 768px) {
+	.login-box section {
+		display: flex;
+		/* align-items: center; */
+		padding: calc(var(--gap) * 3) calc(var(--gap) * 3) !important;
+	}
+}
+
+.login-box section::before,
+.login-box section::after {
+	--_login-title-bg-color: var(--color-primary);
+	content: '';
+	position: absolute;
+	width: 75%;
+	height: calc(var(--gap) * 3);
+	background-color: var(--_login-title-bg-color);
+	outline: calc(var(--border-width) * 4) solid var(--color-background);
+	left: 50%;
+	text-align: right;
+	padding: var(--gap25);
+	display: flex;
+	justify-content: flex-end;
+	align-items: flex-end;
+}
+
+/* --- login - "title" */
+.login-box section::before {
+	--_login-title-color: var(--color-text-dark);
+	content: 'Authorized access only';
+	text-transform: uppercase;
+	color: var(--_login-title-color);
+	top: 0;
+	translate: -50% -100%;
+}
+
+/* --- login - "footer" */
+.login-box section::after {
+	--_login-section-border-color: var(--color-primary);
+	--_login-color-grid: var(--color-supplement-01);
+	content: 'Background neural net analysis: Awaiting input';
+	letter-spacing: .025rem;
+	text-transform: uppercase;
+	color: var(--color-danger);
+	font-size: 1.2rem;
+	justify-content: center;
+	bottom: 0;
+	translate: -50% 100%;
+	outline: var(--border-width) solid var(--color-background);
+    border: var(--border-width) solid var(--_login-section-border-color);
+	background-color: var(--color-background);
+	background-image:
+		linear-gradient(var(--_login-color-grid) 1px, transparent 1px),
+		linear-gradient(90deg, var(--_login-color-grid) 1px, transparent 1px),
+		linear-gradient(var(--_login-color-grid) .5px, transparent .5px),
+		linear-gradient(90deg, var(--_login-color-grid) .5px, var(--color-background) .5px);
+	background-size: var(--gap) var(--gap), var(--gap) var(--gap), var(--gap25) var(--gap25), var(--gap25) var(--gap25);
+	background-position: -1px -1px, -1px -1px, -.5px -.5px, -.5px -.5px;
+	--pulse-font-color-01: var(--color-danger-bright);
+	--pulse-font-color-02: var(--color-red-alert);
+}
+
+@media (min-width: 992px) {
+	.login-box section::before {
+		width: calc(var(--gap) * 30);
+		background: var(--color-background);
+		justify-content: center;
+		align-items: center;
+		color: var(--color-background);
+		font-size: 4.5rem;
+		outline: none;
+		--pulse-font-color-01: var(--color-background);
+		--pulse-font-color-02: var(--color-primary);
+		animation: pulseFont var(--transition) 350ms forwards;
+	}
+
+	.login-box section::after {
+		width: calc(var(--gap) * 30);
+		opacity: 0;
+		animation:
+			pulseFont var(--transition-duration-slow) infinite,
+			topSmallScanner 2s linear reverse infinite,
+			fadeIn var(--transition) forwards;
+	}
+}
+
+/* --- login - logo */
+.login-logo {
+	text-transform: uppercase;
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+
+@media (min-width: 768px) {
+	.login-logo {
+		width: calc(var(--gap) * 10);
+		flex-shrink: 0;
+		padding-right: calc(var(--gap) * 2);
+		margin-bottom: 0;
+	}
+}
+
+
+@media (min-width: 992px) {
+	.login-logo::before {
+		--_login-logo-bg-color: var(--color-disabled);
+		content: '■ Login-74205A';
+		position: absolute;
+		width: calc(var(--gap) * 10);
+		inset: 0 auto 0 calc(var(--gap) * -13);
+		background-color: var(--_login-logo-bg-color);
+		display: flex;
+		justify-content: flex-end;
+		align-items: flex-end;
+		padding: var(--gap25) var(--gap25);
+		font-size: 1.2rem;
+		color: var(--color-text-dark);
+		border-top: calc(var(--border-width) * 2) solid var(--color-background);
+		border-bottom: calc(var(--border-width) * 2) solid var(--color-background);
+	}
+
+	.login-logo > div {
+		opacity: 0;
+		animation: fadeIn var(--transition) 1050ms forwards;
+	}
+}
+
+.loginpage-logo {
+	width: calc(var(--gap) * 5);
+}
+
+@media (min-width: 768px) {
+	.loginpage-logo {
+		width: calc(var(--gap) * 8);
+	}
+}
+
+.login-footer {
+	flex-wrap: wrap;
+	gap: var(--gap);
+}
+
+.login-footer a {
+	width: 100%;
+	flex-grow: 1;
+}
+
+@media (min-width: 576px) and (max-width: 991px), (min-width: 1140px) {
+	.login-footer a {
+		width: calc((100% / 2) - var(--gap));
+	}
+}
+
+@media (min-width: 768px) {
+	.login-box .card {
+		flex-grow: 1;
+	}
+}
+
+@media (min-width: 992px) {
+	.login-box .card {
+		opacity: 0;
+		animation: fadeIn var(--transition) 700ms forwards;
+	}
+}
+
+.login-box button.btn-primary {
+	background-color: var(--color-primary-text) !important;
+	color: var(--color-background);
+}
+
+.login-box button.btn-primary:hover {
+	background-color: var(--color-success) !important;
+	color: var(--color-background);
+}
+
+.login-box .card-body .box {
+	padding: 0;
+    border-radius: 0;
+	position: relative;
+}
+
+.login-box .card-body .box-header {
+	background: var(--color-supplement-01);
+	padding: var(--gap50);
+	transition: background-color var(--transition), color var(--transition);
+}
+
+.login-box .card-body .box-header:hover {
+	background: var(--color-danger);
+	color: var(--color-background);
+}
+
+.login-box .card-body .box-tools {
+	margin: 0;
+}
+
+.login-box .card-body .btn-box-tool {
+	width: calc(var(--gap) * 3);
+	min-width: auto;
+	position: absolute;
+	inset: 0 0 0 auto;
+	background-color: rgba(0, 0, 0, .35);
+	border-radius: 0;
+	color: var(--color-danger-bright);
+	border-left: calc(var(--border-width) * 2) solid var(--color-background);
+}
+
+.login-box .card-body .box-body {
+	padding: var(--gap) var(--gap);
+	border: calc(var(--border-width) * 2) solid var(--color-supplement-01);
+	border-radius: 0 0 var(--radius100) var(--radius100);
+    border-top: 0;
+	margin-right: calc(var(--gap) * 3);
+	font-weight: 100;
+    line-height: 1.5;
+    letter-spacing: .015rem;
+}
+
+/* --- login - error */
+.login-box:has(.has-error)::after {
+	--_login-main-bg-color: var(--color-supplement-01);
+	animation: none;
+}
+
+.login-box:has(.has-error)::before {
+	--_login-lines-bg-color: var(--color-danger);
+	animation: none;
+}
+
+.login-box:has(.has-error) section::before {
+	content: 'Encrypted access denied';
+	--pulse-font-color-01: #fff;
+	--pulse-font-color-02: var(--color-red-alert);
+	animation: pulseFont var(--transition-duration-slow) infinite;
+}
+
+.login-box:has(.has-error) section::after {
+	--_login-section-border-color: var(--color-danger);
+	--pulse-font-color-01: #fff;
+	content: 'Background neural net analysis: Failed';
+}
+
+@media (max-width: 991px) {
+	.login-box:has(.has-error) section::before {
+		--_login-title-bg-color: var(--color-supplement-01);
+	}
+}
+
+@media (min-width: 992px) {
+	.login-box:has(.has-error) .card,
+	.login-box:has(.has-error) .login-logo {
+		opacity: 1;
+		animation: none;
+	}
+
+	.login-box:has(.has-error) .login-logo::before {
+		--_login-logo-bg-color: var(--color-supplement-01);
+	}
+
+}
+
+/* --- login - donate */
+.login-donate {
+	text-transform: uppercase;
+    margin-top: calc(var(--gap) * 2);
+}
+
+
 /* MAIN HEADER
    ========================================================== */
 
@@ -768,23 +1133,11 @@ div.dataTables_wrapper div.dataTables_length select {
 	width: 100%;
 }
 
-.navbar-nav > .user-menu > .dropdown-menu > .user-footer .btn-link {
-	background-color: var(--color-disabled) !important;
-	color: var(--color-link);
-	padding: var(--gap50) var(--gap);
-	position: relative;
-}
-
 @media (min-width: 576px) {
 	.navbar-nav > .user-menu > .dropdown-menu > .user-footer .btn-link {
 		width: calc(50% - var(--gap50));
 		margin-block: var(--gap50);
 	}
-}
-
-.navbar-nav > .user-menu > .dropdown-menu > .user-footer .btn-link:hover {
-	background-color: var(--color-primary) !important;
-	color: #fff;
 }
 
 .navbar-nav > .user-menu > .dropdown-menu > .user-footer .btn-link:first-child {
@@ -813,17 +1166,6 @@ div.dataTables_wrapper div.dataTables_length select {
 	.navbar-nav > .user-menu > .dropdown-menu > .user-footer .btn-link + .btn-link {
 		margin-top: var(--gap50);
 	}
-}
-
-.navbar-nav > .user-menu > .dropdown-menu > .user-footer .btn-link svg {
-	position: absolute;
-    background-color: rgba(0, 0, 0, .35);
-    padding: calc(var(--gap75));
-    width: calc(var(--gap) * 3);
-    height: 36px !important;
-    inset: 0 auto 0 0;
-    border-right: calc(var(--border-width) * 2) solid var(--color-background);
-    border-radius: 18px 0 0 18px;
 }
 
 /* --- fake corners */
@@ -3195,6 +3537,24 @@ div.dataTables_wrapper div.dataTables_length select {
 	}
 }
 
+@-webkit-keyframes pulseFont {
+	0% {
+		color: var(--pulse-font-color-01);
+	}
+	100% {
+		color: var(--pulse-font-color-02);
+	}
+}
+
+@keyframes pulseFont {
+	0% {
+		color: var(--pulse-font-color-01);
+	}
+	100% {
+		color: var(--pulse-font-color-02);
+	}
+}
+
 @-webkit-keyframes backgroundPositionAnimation {
 	0% {
 		background-position: 0 0;
@@ -3328,5 +3688,66 @@ div.dataTables_wrapper div.dataTables_length select {
 
 	100% {
 		background-position: var(--gap) 0;
+	}
+}
+
+
+@-webkit-keyframes loginLines {
+	0% {
+		inset: 40% calc(var(--gap) * 6);
+	}
+
+	100% {
+		inset: calc(var(--gap) * 1.35) calc(var(--gap) * 6);
+	}
+}
+
+@keyframes loginLines {
+	0% {
+		inset: 40% calc(var(--gap) * 6);
+	}
+
+	100% {
+		inset: calc(var(--gap) * 1.35) calc(var(--gap) * 6);
+	}
+}
+
+@-webkit-keyframes loginPanel {
+	0% {
+		inset: 40% 0;
+	}
+
+	100% {
+		inset: 0 0;
+	}
+}
+
+@keyframes loginPanel {
+	0% {
+		inset: 40% 0;
+	}
+
+	100% {
+		inset: 0 0;
+	}
+}
+
+@-webkit-keyframes  fadeIn {
+	0% {
+		opacity: 0;
+	}
+
+	100% {
+		opacity: 1;
+	}
+}
+
+@keyframes fadeIn {
+	0% {
+		opacity: 0;
+	}
+
+	100% {
+		opacity: 1;
 	}
 }
