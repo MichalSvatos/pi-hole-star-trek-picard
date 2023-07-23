@@ -1,6 +1,6 @@
 /*
 	- Document: Pi-hole LCARS Star Trek Picard Theme
-	- Version:  0.12.4
+	- Version:  0.12.5
 	- Author:   @MichalSvatos
 	- Description: Star Trek Picard LCARS Theme for Pi-hole dashboard.
 	- Disclaimer: Due to fact that I have the access only to CSS I was forced to use some !importants and a lot of IDs. I'm sorry.
@@ -1370,6 +1370,30 @@ div.dataTables_wrapper div.dataTables_length select {
 	.navbar-nav > .user-menu > .dropdown-menu > .user-footer:hover::before {
 		background-color: var(--color-tertiary);
 	}
+}
+
+.navbar-nav > .user-menu.open > .dropdown-toggle {
+	background-color: var(--color-danger);
+	z-index: 1001;
+	position: relative;
+}
+
+.navbar-nav > .user-menu.open > .dropdown-toggle:hover {
+	background-color: var(--color-danger-bright);
+}
+
+.navbar-nav > .user-menu.open > .dropdown-toggle::after {
+	content: 'Close';
+	font-size: 1.2rem;
+	transition: color var(--transition);
+}
+
+.navbar-nav > .user-menu.open > .dropdown-toggle:hover::after {
+	color: #fff;
+}
+
+.navbar-nav > .user-menu.open > .dropdown-toggle > svg {
+	display: none;
 }
 
 

@@ -44,6 +44,9 @@ Check my other theme
 ***
 
 ## Changelog
+**0.12.5**
+- Main drop down menu close button
+
 **0.12.4**
 - FIX - Chart "scanner" height on Long Term Data page
 - FIX - Scanner loading overlay color
