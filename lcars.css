@@ -1,6 +1,6 @@
 /*
 	- Document: Pi-hole LCARS Star Trek Picard Theme
-	- Version:  0.12.3
+	- Version:  0.12.4
 	- Author:   @MichalSvatos
 	- Description: Star Trek Picard LCARS Theme for Pi-hole dashboard.
 	- Disclaimer: Due to fact that I have the access only to CSS I was forced to use some !importants and a lot of IDs. I'm sorry.
@@ -2190,11 +2190,11 @@ div.dataTables_wrapper div.dataTables_length select {
 	content: "";
 	background: linear-gradient(90deg, rgba(255, 255, 255, 0.20) 0%, rgba(255, 255, 255, 1) 50%, rgba(255, 255, 255, 0.20) 100%);
 	width: calc(var(--gap) * 2);
-	height: calc(var(--gap) * 9);
 	margin-inline: var(--gap);
 	position: absolute;
 	left: 0;
 	top: var(--gap50);
+	bottom: calc(var(--gap) * 2 - var(--gap25));
 	animation: chartScanner 16s ease-in-out infinite;
 	transform: translate3d(0, 0, 0);
 	opacity: .2;
@@ -2204,6 +2204,12 @@ div.dataTables_wrapper div.dataTables_length select {
 #clients .chart:before {
 	animation-delay: 160ms;
 	animation-duration: 24s;
+}
+
+.box .overlay,
+.overlay-wrapper .overlay {
+	background: rgb(0 0 0 / 70%);
+    border-radius: var(--radius100);
 }
 
 /* --- "TOP" tables */

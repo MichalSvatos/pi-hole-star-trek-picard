@@ -44,6 +44,10 @@ Check my other theme
 ***
 
 ## Changelog
+**0.12.4**
+- FIX - Chart "scanner" height on Long Term Data page
+- FIX - Scanner loading overlay color
+
 **0.12.3**
 - Donation bar (login, other pages) + refactoring
 
