@@ -44,6 +44,9 @@ Check my other theme
 ***
 
 ## Changelog
+**0.12.6**
+- Pagination
+
 **0.12.5**
 - Main drop down menu close button
 

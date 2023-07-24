@@ -1,6 +1,6 @@
 /*
 	- Document: Pi-hole LCARS Star Trek Picard Theme
-	- Version:  0.12.5
+	- Version:  0.12.6
 	- Author:   @MichalSvatos
 	- Description: Star Trek Picard LCARS Theme for Pi-hole dashboard.
 	- Disclaimer: Due to fact that I have the access only to CSS I was forced to use some !importants and a lot of IDs. I'm sorry.
@@ -551,6 +551,79 @@ div.dataTables_wrapper div.dataTables_length select {
 
 .select2-container--default .select2-results__option--highlighted[aria-selected]::before {
 	background-color: var(--color-link);
+}
+
+
+/* PAGINATION
+   ========================================================== */
+.pagination {
+	font-size: 1.6rem;
+}
+
+.pagination > li > a {
+	margin: 0 calc(var(--gap) / 8);
+	padding: 3px 4px 4px;
+	min-width: calc(var(--gap) * 2);
+	background: var(--color-tertiary);
+	color: var(--color-text-dark);
+	text-align: center;
+	border: none;
+}
+
+.pagination > li > a:focus,
+.pagination > li > a:hover,
+.pagination > li > span:focus,
+.pagination > li > span:hover {
+	color: var(--color-text-dark);
+	background-color: var(--color-tertiary-hover);
+}
+
+.pagination > .disabled > a,
+.pagination > .disabled > a:focus,
+.pagination > .disabled > a:hover,
+.pagination > .disabled > span,
+.pagination > .disabled > span:focus,
+.pagination > .disabled > span:hover {
+	background-color: var(--color-disabled);
+	color: var(--color-text-dark);
+	cursor: default;
+}
+
+.pagination > .active > a,
+.pagination > .active > a:focus,
+.pagination > .active > a:hover,
+.pagination > .active > span,
+.pagination > .active > span:focus,
+.pagination > .active > span:hover {
+	color: var(--color-text-dark);
+	background-color: var(--color-quaternary);
+}
+
+#all-queries_wrapper .pagination > li > a {
+	min-width: calc(var(--gap) * 2);
+	padding: calc(var(--gap) / 2) calc(var(--gap) / 2);
+	line-height: 1;
+}
+
+#all-queries_wrapper .pagination > li.previous > a,
+.pagination > li:first-child > a {
+	padding-left: calc(var(--gap) * .75);
+	border-radius: var(--gap) 0 0 var(--gap);
+	min-width: calc(var(--gap) * 5);
+	text-transform: uppercase;
+}
+
+#all-queries_wrapper .pagination > li.next > a,
+.pagination > li:last-child > a {
+	padding-right: calc(var(--gap) * .75);
+	border-radius: 0 var(--gap) var(--gap) 0;
+	min-width: calc(var(--gap) * 5);
+	text-transform: uppercase;
+	margin-right: 0;
+}
+
+#all-queries_filter {
+	margin: var(--gap) 0;
 }
 
 
