@@ -44,6 +44,9 @@ Check my other theme
 ***
 
 ## Changelog
+**0.13.1**
+- FIX - queries tables (dashboard)
+
 **0.13.0**
 - All queries tables
 
