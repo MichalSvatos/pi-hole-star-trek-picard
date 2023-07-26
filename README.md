@@ -44,6 +44,9 @@ Check my other theme
 ***
 
 ## Changelog
+**0.13.0**
+- All queries tables
+
 **0.12.6**
 - Pagination
 

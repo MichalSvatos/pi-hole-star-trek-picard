@@ -1,6 +1,6 @@
 /*
 	- Document: Pi-hole LCARS Star Trek Picard Theme
-	- Version:  0.12.6
+	- Version:  0.13.0
 	- Author:   @MichalSvatos
 	- Description: Star Trek Picard LCARS Theme for Pi-hole dashboard.
 	- Disclaimer: Due to fact that I have the access only to CSS I was forced to use some !importants and a lot of IDs. I'm sorry.
@@ -211,6 +211,34 @@ h6 {
 	color: var(--color-background);
 }
 
+.btn-whitelist,
+.btn-blacklist {
+	position: relative;
+	padding-left: calc(var(--gap) * 2.75);
+	border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+.btn-whitelist:hover {
+	background-color: var(--color-success-dark) !important;
+	color: #fff !important;
+}
+
+.btn-blacklist:hover {
+	background-color: var(--color-red-alert) !important;
+	color: #fff !important;
+}
+
+.btn-whitelist > svg.svg-inline--fa,
+.btn-blacklist > svg.svg-inline--fa {
+	position: absolute;
+	inset: 0 auto 0 0;
+	width: calc(var(--gap) * 2);
+	height: calc(var(--gap) * 2 + var(--border-width));
+	padding: 0 var(--gap50);
+	border-right: calc(var(--border-width) * 1) solid var(--color-background);
+}
+
 #resetButton,
 .btn-danger {
 	background-color: var(--color-red-alert);
@@ -219,7 +247,6 @@ h6 {
 
 #resetButton:hover,
 .btn-danger:hover {
-	/*background-color: var(--color-danger-bright);*/
 	--pulse-color: #fff;
 	--pulse-color-background: var(--color-red-alert);
 	color: #000;
@@ -3260,22 +3287,8 @@ div.dataTables_wrapper div.dataTables_length select {
 	margin-top: calc(var(--gap) * 2);
 }
 
-#dns p {
-	font-weight: 100;
-	line-height: 1.5;
-	letter-spacing: .015rem;
-	margin-top: var(--gap);
-	margin-bottom: 0;
-}
-
 #dns .table {
 	margin-top: 0;
-}
-
-#dns .table + p {
-	padding: var(--gap);
-	border: calc(var(--border-width) * 2) double var(--color-disabled);
-	border-radius: var(--radius100);
 }
 
 #dns .table th {
@@ -3513,6 +3526,40 @@ div.dataTables_wrapper div.dataTables_length select {
 }
 
 
+/* Double border text areas
+   ========================================================== */
+
+#dns p,
+#all-queries_wrapper ~ p {
+	font-weight: 100;
+	line-height: 1.5;
+	letter-spacing: .015rem;
+	margin-top: var(--gap);
+	margin-bottom: 0;
+}
+
+#dns .table + p,
+#all-queries_wrapper ~ p,
+#all-queries_wrapper ~ p + ul {
+	padding: var(--gap);
+	border: calc(var(--border-width) * 2) double var(--color-disabled);
+	border-radius: var(--radius100);
+}
+
+#all-queries_wrapper ~ p + p {
+	border-bottom: 0;
+	border-bottom-left-radius: 0;
+	border-bottom-right-radius: 0;
+}
+
+#all-queries_wrapper ~ p + ul {
+	border-top: 0;
+	border-top-left-radius: 0;
+	border-top-right-radius: 0;
+	padding-left: calc(var(--gap) * 2);
+}
+
+
 /* OTHER ..... */
 .svg-inline--fa {
 	vertical-align: inherit;
@@ -3615,8 +3662,76 @@ div.dataTables_wrapper div.dataTables_length select {
 
 /* TABLES
    ========================================================== */
+.table tr th,
+.table > tbody > tr > th,
+.table > tfoot > tr > th,
+.table > thead > tr > th {
+	width: auto !important;
+	color: #fff;
+	padding: calc(var(--gap) / 2) calc(var(--gap) / 4);
+}
+
+.table tr td,
+.table > tbody > tr > td,
+.table > tfoot > tr > td,
+.table > thead > tr > td {
+	padding: calc(var(--gap) / 2) calc(var(--gap) / 4);
+	font-size: 1.6rem;
+	font-weight: var(--font-regular);
+	text-transform: none;
+}
+
+table.dataTable {
+	margin: var(--gap) 0 !important;
+}
+
+.table.table-bordered.dataTable > tbody > tr + tr > td {
+	border-top: calc(var(--gap) / 4) solid var(--color-text-dark) !important;
+}
+
+.table.table-bordered.dataTable > tbody > tr > td {
+	vertical-align: middle;
+}
+
+table.dataTable thead .sorting::before {
+	content: "\25B3";
+	position: absolute;
+	bottom: var(--gap);
+	right: calc(var(--gap) / 2);
+	display: block;
+	font-family: "Glyphicons Halflings";
+	opacity: 0.3;
+	font-size: 0.6em;
+}
+
+table.dataTable thead .sorting:after,
+table.dataTable thead .sorting_asc:after,
+table.dataTable thead .sorting_desc:after,
+table.dataTable thead .sorting_asc_disabled:after,
+table.dataTable thead .sorting_desc_disabled:after {
+	opacity: 0.6;
+}
+
+table.dataTable thead .sorting:after {
+	opacity: 0.3;
+	content: "\25BD";
+	font-size: 0.6em;
+}
+
+table.dataTable thead .sorting_asc::after {
+	content: "\25B2";
+}
+
+table.dataTable thead .sorting_desc::after {
+	content: "\25BC";
+}
+
+table.dataTable thead .sorting_asc_disabled:after,
+table.dataTable thead .sorting_desc_disabled:after {
+	color: #eee;
+}
+
 .table-responsive {
-	overflow: visible; /* ! this could potentially cause problems - KEEP AN EYE ON IT */
 	border: 0;
 }
 
@@ -3627,11 +3742,13 @@ div.dataTables_wrapper div.dataTables_length select {
 }
 
 .table-bordered > thead > tr > th,
+.table-bordered > tfoot > tr > th,
 .table-bordered > tbody > tr > td {
 	border: 0;
 }
 
-.table-bordered > thead > tr > th {
+.table-bordered > thead > tr > th,
+.table-bordered > tfoot > tr > th {
 	text-transform: uppercase;
 	font-weight: var(--font-regular);
 	background-color: var(--table-color);
@@ -3654,7 +3771,6 @@ div.dataTables_wrapper div.dataTables_length select {
 	padding: var(--gap25) var(--gap50) var(--gap25) var(--gap);
 	position: relative;
 	transition: background-color var(--transition-fast);
-	/*white-space: nowrap;*/
 	white-space: normal;
 	word-break: break-all;
 	text-overflow: ellipsis;
@@ -3683,6 +3799,75 @@ div.dataTables_wrapper div.dataTables_length select {
 	background-color: var(--color-secondary-hover);
 }
 
+.table-striped > tbody > tr:nth-of-type(odd),
+.table-striped > tbody > tr:nth-of-type(2n + 1) {
+	background: none;
+	background-color: var(--color-background);
+}
+
+.allowed-row td:last-child,
+.blocked-row td:last-child {
+	background-color: transparent;
+}
+
+.blocked-row td {
+	background-color: var(--color-red-alert);
+	color: #fff;
+}
+
+.blocked-row td:last-child {
+	background-color: transparent;
+}
+
+.blocked-row td:nth-child(5) span {
+	color: #fff !important;
+	position: relative;
+	padding-left: calc(var(--gap) * 2.5);
+}
+
+.blocked-row td:nth-child(5) span::before {
+	content: '⚠';
+	position: absolute;
+	inset: calc(var(--gap) * -1) auto calc(var(--gap) * -1) 0;
+	width: calc(var(--gap) * 2);
+	background-color: var(--color-background);
+	display: flex;
+    justify-content: center;
+    align-items: center;
+    line-height: 1;
+    font-size: 1.8rem;
+    color: var(--color-danger);
+	border-left: calc(var(--border-width) * 2) solid var(--color-danger-bright);
+	border-right: calc(var(--border-width) * 2) solid var(--color-danger-bright);
+	--pulse-font-color-02: var(--color-red-alert);
+	--pulse-font-color-01: #fff;
+	animation: pulseFont var(--transition-slow) infinite;
+}
+
+#all-queries_wrapper th {
+	color: var(--color-tertiary-hover);
+}
+
+#all-queries {
+	margin-bottom: calc(var(--gap) * 2) !important;
+}
+
+#all-queries td:nth-of-type(3) {
+    font-family: "Ubuntu Mono", Consolas, "Courier New", monospace;
+    font-weight: var(--font-light);
+    color: var(--color-success);
+	text-transform: none;
+}
+
+table.dataTable thead .sorting:after,
+table.dataTable thead .sorting_asc:after,
+table.dataTable thead .sorting_desc:after,
+table.dataTable thead .sorting_asc_disabled:after,
+table.dataTable thead .sorting_desc_disabled:after,
+table.dataTable thead .sorting::before {
+	color: var(--color-link);
+}
+
 /* --- progress bar in the dashboard tables (frequency) */
 .progress {
 	border: calc(var(--border-width) * 2) solid var(--color-secondary);
@@ -3706,6 +3891,21 @@ div.dataTables_wrapper div.dataTables_length select {
 #ad-frequency .progress-bar,
 #client-frequency-blocked .progress-bar {
 	background-color: var(--color-danger);
+}
+
+#domain-frequency .table-responsive,
+#ad-frequency .table-responsive,
+#client-frequency .table-responsive,
+#client-frequency-blocked .table-responsive {
+	overflow: visible;
+}
+
+/* --- table "processing..." loader */
+.content div.dataTables_wrapper div.dataTables_processing {
+	background-color: var(--color-disabled);
+	border-color: var(--color-disabled);
+	padding: var(--gap) 0;
+    border-radius: var(--radius100);
 }
 
 
