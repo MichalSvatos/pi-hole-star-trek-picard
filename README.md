@@ -44,6 +44,9 @@ Check my other theme
 ***
 
 ## Changelog
+**0.13.2**
+- Audit logs button styling
+
 **0.13.1**
 - FIX - queries tables (dashboard)
 

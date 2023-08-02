@@ -1,6 +1,6 @@
 /*
 	- Document: Pi-hole LCARS Star Trek Picard Theme
-	- Version:  0.13.1
+	- Version:  0.13.2
 	- Author:   @MichalSvatos
 	- Description: Star Trek Picard LCARS Theme for Pi-hole dashboard.
 	- Disclaimer: Due to fact that I have the access only to CSS I was forced to use some !importants and a lot of IDs. I'm sorry.
@@ -212,11 +212,26 @@ h6 {
 }
 
 .btn-whitelist,
-.btn-blacklist {
+.btn-blacklist,
+.btn-audit,
+.btn-xs.btn-whitelist,
+.btn-xs.btn-blacklist,
+.btn-xs.btn-audit {
 	position: relative;
 	padding-left: calc(var(--gap) * 2.75);
 	border-top-left-radius: 0;
     border-bottom-left-radius: 0;
+}
+
+.btn-xs.btn-whitelist,
+.btn-xs.btn-blacklist,
+.btn-xs.btn-audit {
+	padding: var(--gap25) var(--gap) var(--gap25) calc(var(--gap) * 2.75);
+	border-radius: calc(var(--gap) * 1.5);
+}
+
+.btn-audit {
+	background-color: var(--color-supplement-01);
 }
 
 .btn-whitelist:hover {
@@ -229,14 +244,34 @@ h6 {
 	color: #fff !important;
 }
 
+.btn-audit:hover {
+	background-color: var(--color-primary);
+	color: #fff !important;
+}
+
 .btn-whitelist > svg.svg-inline--fa,
-.btn-blacklist > svg.svg-inline--fa {
+.btn-blacklist > svg.svg-inline--fa,
+.btn-audit > svg.svg-inline--fa,
+.btn-xs.btn-whitelist > svg.svg-inline--fa,
+.btn-xs.btn-blacklist > svg.svg-inline--fa,
+.btn-xs.btn-audit > svg.svg-inline--fa {
 	position: absolute;
 	inset: 0 auto 0 0;
 	width: calc(var(--gap) * 2);
 	height: calc(var(--gap) * 2 + var(--border-width));
 	padding: 0 var(--gap50);
 	border-right: calc(var(--border-width) * 1) solid var(--color-background);
+}
+
+.btn-xs.btn-whitelist > svg.svg-inline--fa,
+.btn-xs.btn-blacklist > svg.svg-inline--fa,
+.btn-xs.btn-audit > svg.svg-inline--fa {
+	height: calc(var(--gap) * 1.5 + var(--border-width));
+}
+
+.btn-xs.btn-whitelist,
+.btn-xs.btn-blacklist {
+	margin-right: var(--gap25);
 }
 
 #resetButton,
