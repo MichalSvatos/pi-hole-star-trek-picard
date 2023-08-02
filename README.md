@@ -44,6 +44,10 @@ Check my other theme
 ***
 
 ## Changelog
+**0.2.0**
+- Finished SETTINGS / DNS page
+- `code`, `pre` styling
+
 **0.13.2**
 - Audit logs button styling
 

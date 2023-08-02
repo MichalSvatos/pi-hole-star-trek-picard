@@ -1,6 +1,6 @@
 /*
 	- Document: Pi-hole LCARS Star Trek Picard Theme
-	- Version:  0.13.2
+	- Version:  0.2.0
 	- Author:   @MichalSvatos
 	- Description: Star Trek Picard LCARS Theme for Pi-hole dashboard.
 	- Disclaimer: Due to fact that I have the access only to CSS I was forced to use some !importants and a lot of IDs. I'm sorry.
@@ -3560,11 +3560,102 @@ div.dataTables_wrapper div.dataTables_length select {
 	color: var(--color-danger-bright);
 }
 
+/* --- advanced settings */
+#dns form > .row:nth-child(2) h4 {
+	color: var(--color-danger-bright);
+	padding-left: var(--gap);
+	padding-top: var(--gap25);
+	margin-top: calc(var(--gap) * 2);
+	margin-bottom: 0;
+	border: var(--border-width) solid var(--color-primary);
+	border-radius: var(--radius100) 0 0 0;
+	border-bottom: 0;
+	border-right: 0;
+	position: relative;
+}
+
+@media (min-width: 768px) {
+	#dns form > .row:nth-child(2) h4::before,
+	#dns form > .row:nth-child(2) h4::after {
+		content: '';
+		position: absolute;
+		inset: 0 auto auto 0;
+		width: var(--gap);
+		height: var(--gap);
+		background-color: hotpink;
+	}
+
+	#dns form > .row:nth-child(2) h4::before {
+		background-color: var(--color-primary);
+	}
+
+	#dns form > .row:nth-child(2) h4::after {
+		background-color: var(--color-background);
+		border-radius: var(--radius50) 0 0 0;
+	}
+}
+
+#dns form > .row:nth-child(2) h4 ~ p {
+	margin-top: 0;
+	padding-top: var(--gap);
+	padding-left: var(--gap);
+}
+
+#dns form > .row:nth-child(2) h4:nth-of-type(1) ~ p:nth-of-type(1),
+#dns form > .row:nth-child(2) h4:nth-of-type(1) ~ p:nth-of-type(2),
+#dns form > .row:nth-child(2) h4:nth-of-type(1) ~ p:nth-of-type(3),
+#dns form > .row:nth-child(2) h4:nth-of-type(2) ~ p:nth-of-type(4),
+#dns form > .row:nth-child(2) h4:nth-of-type(2) ~ p:nth-of-type(5),
+#dns form > .row:nth-child(2) h4:nth-of-type(2) ~ p:nth-of-type(6),
+#dns form > .row:nth-child(2) h4:nth-of-type(2) ~ p:nth-of-type(7),
+#dns form > .row:nth-child(2) h4:nth-of-type(2) ~ p:nth-of-type(8),
+#dns form > .row:nth-child(2) .form-group {
+	border-left: var(--border-width) solid var(--color-primary);
+}
+
+#dns form > .row:nth-child(2) h4:nth-of-type(1) ~ p:nth-of-type(3) {
+	border-bottom: var(--border-width) solid var(--color-primary);
+	padding-bottom: var(--gap50);
+}
+
+@media (min-width: 768px) {
+	#dns form > .row:nth-child(2) h4,
+	#dns form > .row:nth-child(2) h4:nth-of-type(1) ~ p:nth-of-type(1),
+	#dns form > .row:nth-child(2) h4:nth-of-type(1) ~ p:nth-of-type(2),
+	#dns form > .row:nth-child(2) h4:nth-of-type(1) ~ p:nth-of-type(3),
+	#dns form > .row:nth-child(2) h4:nth-of-type(2) ~ p:nth-of-type(4),
+	#dns form > .row:nth-child(2) h4:nth-of-type(2) ~ p:nth-of-type(5),
+	#dns form > .row:nth-child(2) h4:nth-of-type(2) ~ p:nth-of-type(6),
+	#dns form > .row:nth-child(2) h4:nth-of-type(2) ~ p:nth-of-type(7),
+	#dns form > .row:nth-child(2) h4:nth-of-type(2) ~ p:nth-of-type(8),
+	#dns form > .row:nth-child(2) .form-group {
+		border-left-width: calc(var(--border-panel-width) / 2);
+	}
+}
+
+#dns form > .row:nth-child(2) .form-group {
+	margin-top: calc(var(--border-width) * 2);
+	margin-bottom: 0;
+	padding: var(--gap50) 0 var(--gap50) var(--gap);
+	border-color: var(--color-disabled);
+	border-bottom: var(--border-width) solid var(--color-disabled);
+}
+
+#dns form > .row:nth-child(2) .form-group .input-group {
+	display: block;
+}
+
+#dns .col-lg-12 > .icheck-primary + br,
+#dns .col-lg-12 > p + br {
+	display: none;
+}
+
 
 /* Double border text areas
    ========================================================== */
 
 #dns p,
+#dns .icheck-primary,
 #all-queries_wrapper ~ p {
 	font-weight: 100;
 	line-height: 1.5;
@@ -3574,6 +3665,7 @@ div.dataTables_wrapper div.dataTables_length select {
 }
 
 #dns .table + p,
+#dns .col-lg-12 > .icheck-primary,
 #all-queries_wrapper ~ p,
 #all-queries_wrapper ~ p + ul {
 	padding: var(--gap);
@@ -3941,6 +4033,24 @@ table.dataTable thead .sorting::before {
 	border-color: var(--color-disabled);
 	padding: var(--gap) 0;
     border-radius: var(--radius100);
+}
+
+
+/* CODE
+   ========================================================== */
+section pre {
+	background-color: var(--color-background);
+	color: var(--color-success);
+	border-color: var(--color-disabled);
+	border-radius: var(--radius100);
+	min-height: calc(var(--gap) * 6) !important;
+}
+
+section code {
+	background-color: var(--color-disabled);
+	color: var(--color-success);
+	border-radius: var(--radius75);
+	padding-inline: var(--gap75);
 }
 
 
