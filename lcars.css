@@ -3802,7 +3802,6 @@ table.dataTable thead .sorting_desc_disabled:after {
 
 .table-striped > tbody > tr:nth-of-type(odd),
 .table-striped > tbody > tr:nth-of-type(2n + 1) {
-	background: none;
 	background-color: var(--color-background);
 }
 
@@ -3845,10 +3844,6 @@ table.dataTable thead .sorting_desc_disabled:after {
 	animation: pulseFont var(--transition-slow) infinite;
 }
 
-#all-queries_wrapper th {
-	color: var(--color-tertiary-hover);
-}
-
 #all-queries {
 	margin-bottom: calc(var(--gap) * 2) !important;
 }
@@ -3867,6 +3862,10 @@ table.dataTable thead .sorting_asc_disabled:after,
 table.dataTable thead .sorting_desc_disabled:after,
 table.dataTable thead .sorting::before {
 	color: var(--color-link);
+}
+
+.dataTables_wrapper table.dataTable th{
+	color: var(--color-tertiary-hover);
 }
 
 /* --- progress bar in the dashboard tables (frequency) */
