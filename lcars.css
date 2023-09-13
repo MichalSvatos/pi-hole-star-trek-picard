@@ -1,6 +1,6 @@
 /*
 	- Document: Pi-hole LCARS Star Trek Picard Theme
-	- Version:  0.2.1
+	- Version:  0.2.2
 	- Author:   @MichalSvatos
 	- Description: Star Trek Picard LCARS Theme for Pi-hole dashboard.
 	- Disclaimer: Due to fact that I have the access only to CSS I was forced to use some !importants and a lot of IDs. I'm sorry.
@@ -2165,6 +2165,43 @@ div.dataTables_wrapper div.dataTables_length select {
 	:root {
 		--border-panel-width: calc(var(--border-width) * 4);
 	}
+}
+
+.page-header {
+	display: flex;
+	justify-content: flex-start;
+	background-color: var(--color-disabled);
+	position: relative;
+	border-bottom: 0;
+	padding: 0;
+}
+
+.page-header::after {
+	background-color: var(--color-primary);
+	content: '';
+	position: absolute;
+	inset: auto 0 0 0;
+	height: calc(var(--gap) * 1);
+	border-top: calc(var(--border-width) * 3) solid var(--color-background);
+	z-index: 0;
+}
+
+.page-header h1 {
+	font-weight: 400;
+	margin: 0;
+	position: relative;
+	z-index: 1;
+	background-color: var(--color-background);
+	margin-left: var(--gap);
+	padding: var(--gap25) var(--gap);
+	color: var(--color-tertiary-hover);
+}
+
+.page-header > small {
+    font-size: 1.5rem;
+    text-transform: uppercase;
+	padding-inline: var(--gap);
+	color: var(--color-link);
 }
 
 /* -- box "resets" - black backgrounds, borders ... */

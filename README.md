@@ -44,6 +44,9 @@ Check my other theme
 ***
 
 ## Changelog
+**0.2.2**
+- Page headers
+
 **0.2.1**
 - Box footers
 
