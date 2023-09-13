@@ -2174,6 +2174,7 @@ div.dataTables_wrapper div.dataTables_length select {
 	position: relative;
 	border-bottom: 0;
 	padding: 0;
+    margin-bottom: calc(var(--gap) * 2);
 }
 
 .page-header::after {
