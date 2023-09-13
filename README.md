@@ -44,6 +44,9 @@ Check my other theme
 ***
 
 ## Changelog
+**0.2.1**
+- Box footers
+
 **0.2.0**
 - Finished SETTINGS / DNS page
 - `code`, `pre` styling
