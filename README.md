@@ -44,6 +44,9 @@ Check my other theme
 ***
 
 ## Changelog
+**0.4.0**
+- Alert modal quick styling
+
 **0.3.3**
 - FIX - SETTINGS / DHCP table
 

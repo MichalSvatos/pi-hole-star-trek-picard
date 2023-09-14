@@ -1,6 +1,6 @@
 /*
 	- Document: Pi-hole LCARS Star Trek Picard Theme
-	- Version:  0.3.3
+	- Version:  0.4.0
 	- Author:   @MichalSvatos
 	- Description: Star Trek Picard LCARS Theme for Pi-hole dashboard.
 	- Disclaimer: Due to fact that I have the access only to CSS I was forced to use some !importants and a lot of IDs. I'm sorry.
@@ -4500,6 +4500,51 @@ div.dt-buttons {
 	background-color: var(--color-danger);
 }
 
+
+/* ALERTS
+   ========================================================== */
+div[class*="alert-"][role="alert"] {
+	border-radius: var(--radius100) 0 0 var(--radius100);
+	color: var(--color-text-dark) !important;
+	padding-right: calc(var(--gap) * 4);
+	position: relative;
+	border: 0;
+}
+
+div[class*="alert-"][role="alert"]::before,
+div[class*="alert-"][role="alert"]::after {
+	content: '';
+	position: absolute;
+}
+
+div[class*="alert-"][role="alert"]::before {
+	inset: 0 0 0 auto;
+	width: calc(var(--gap) * 4.3);
+	background-color: var(--color-background);
+	opacity: .5;
+}
+
+div[class*="alert-"][role="alert"]::after {
+	inset: 0 calc(var(--gap) * 4) 0 auto;
+	width: var(--gap25);
+	background-color: var(--color-background);
+}
+
+div[class*="alert-"][role="alert"] button {
+	width: calc(var(--gap) * 2);
+    height: calc(var(--gap) * 2);
+	line-height: 1;
+	overflow: hidden;
+	position: relative;
+	right: calc(var(--gap) * -3);
+	font-size: 5rem;
+	line-height: 0;
+}
+
+div[class*="alert-"][role="alert"] h4 {
+	font-size: 2.25rem;
+    vertical-align: middle;
+}
 
 
 /* CODE
