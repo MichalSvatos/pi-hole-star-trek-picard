@@ -44,6 +44,10 @@ Check my other theme
 ***
 
 ## Changelog
+**0.3.0**
+- Data tables + dropdown menus
+- FIX - adjusted input border color
+
 **0.2.2**
 - Page headers
 

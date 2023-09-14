@@ -1,6 +1,6 @@
 /*
 	- Document: Pi-hole LCARS Star Trek Picard Theme
-	- Version:  0.2.2
+	- Version:  0.3.0
 	- Author:   @MichalSvatos
 	- Description: Star Trek Picard LCARS Theme for Pi-hole dashboard.
 	- Disclaimer: Due to fact that I have the access only to CSS I was forced to use some !importants and a lot of IDs. I'm sorry.
@@ -60,6 +60,7 @@
 	--color-success-dark: #024b3b;
 	--color-disabled: #1f2228;
 	--color-supplement-01: #411e17;
+	--color-supplement-02: #131315;
 
 	/* -- typo */
 	--font-family: Antonio, Oswald, "Myriad Pro Cond", "Roboto Condensed", "Futura Condensed",
@@ -274,6 +275,16 @@ h6 {
 	margin-right: var(--gap25);
 }
 
+.btn-success {
+	background-color: var(--color-success-dark);
+	color: var(--color-success);
+}
+
+.btn-success:hover {
+	background-color: var(--color-link);
+	color: #fff;
+}
+
 #resetButton,
 .btn-danger {
 	background-color: var(--color-red-alert);
@@ -418,7 +429,7 @@ body [class*="icheck-"] > input:first-child:focus + label:before {
 
 .form-control,
 .select2-container--default .select2-search--dropdown .select2-search__field {
-	border-color: var(--color-tertiary);
+	border-color: var(--color-primary);
 	color: var(--color-tertiary-hover);
 	background-color: var(--color-disabled);
 	transition: background-color var(--transition), border-color var(--transition);
@@ -3939,6 +3950,8 @@ table.dataTable thead .sorting_desc_disabled:after {
 	border: 0;
 	margin-bottom: 0;
 	margin-top: calc(var(--gap) * 2);
+	border-top: var(--border-width) solid var(--color-disabled);
+	border-bottom: var(--border-width) solid var(--color-disabled);
 }
 
 .table-bordered > thead > tr > th,
@@ -4064,7 +4077,7 @@ table.dataTable thead .sorting::before {
 	color: var(--color-link);
 }
 
-.dataTables_wrapper table.dataTable th{
+.dataTables_wrapper table.dataTable th {
 	color: var(--color-tertiary-hover);
 }
 
@@ -4108,6 +4121,269 @@ table.dataTable thead .sorting::before {
     border-radius: var(--radius100);
 }
 
+/* --- Table selected rows + checkboxes */
+table.dataTable tbody > tr.selected,
+table.dataTable tbody > tr > .selected,
+table.dataTable tbody > tr:hover {
+	background-image: none;
+	background-color: var(--color-supplement-02);
+}
+
+table.dataTable tbody td.select-checkbox,
+table.dataTable tbody th.select-checkbox {
+	min-width: var(--gap);
+}
+
+table.dataTable tbody td.select-checkbox + td,
+table.dataTable tbody th.select-checkbox + th {
+	padding-left: var(--gap);
+}
+
+
+table.dataTable tbody .dropdown {
+	min-width: calc(var(--gap) * 9);
+}
+
+table.dataTable tbody .dropdown .btn-default {
+	background-color: var(--color-link);
+	color: var(--color-text-dark);
+	border-radius: calc(var(--radius100) * 1.5) 0 0 calc(var(--radius100) * 1.5);
+}
+
+table.dataTable tbody .dropdown .btn-default:hover,
+table.dataTable tbody .dropdown .btn-default:focus-within {
+	color: var(--color-text-dark);
+	background-color: var(--color-tertiary-hover);
+}
+
+table.dataTable .btn-xs {
+	padding: calc(var(--gap50) + var(--border-width)) calc(var(--gap) + var(--border-width));
+	border-radius: 0 calc(var(--radius100) * 1.5) calc(var(--radius100) * 1.5) 0;
+	min-width: calc(var(--gap) * 5);
+}
+
+table.dataTable .btn-xs.btn-danger {
+	background-color: var(--color-quinternary);
+}
+
+table.table-bordered.dataTable th:last-child,
+table.table-bordered.dataTable td:last-child {
+	text-align: right;
+}
+
+/* --- "Checkbox" */
+table.dataTable tbody td.select-checkbox::before,
+table.dataTable tbody th.select-checkbox::before,
+table.dataTable tr.selected td.select-checkbox::after,
+table.dataTable tr.selected th.select-checkbox::after {
+	height: calc(var(--gap) * 2 + var(--border-width));
+	border: 0;
+	border-radius: 0;
+	cursor: pointer;
+	margin: 0;
+	top: 50%;
+	translate: 0 -50%;
+}
+
+table.dataTable tbody td.select-checkbox::before,
+table.dataTable tbody th.select-checkbox::before {
+	width: var(--gap);
+    background: var(--color-disabled);
+    left: var(--gap25);
+}
+
+table.dataTable tr.selected td.select-checkbox::after,
+table.dataTable tr.selected th.select-checkbox::after {
+    width: calc(var(--gap) / 3);
+    background-color: var(--color-success-dark);
+    transform: translate(0);
+    left: calc(var(--gap) * 1.5);
+}
+
+table.dataTable tbody .selected td.select-checkbox::before,
+table.dataTable tbody .selected th.select-checkbox::before {
+	background-color: var(--color-success);
+}
+
+/* --- Dropdown menu */
+.open > .dropdown-menu {
+	overflow: visible !important;
+}
+
+.dropdown-menu.open {
+	background-color: var(--color-background);
+	min-width: calc(var(--gap) * 14);
+	padding: calc(var(--gap) * 1.5) var(--gap);
+	border: var(--border-width) solid var(--color-secondary);
+	border-left-width: calc(var(--border-width) * 4);
+	border-radius: var(--radius100);
+	box-shadow: 0 0 0 100vmax rgb(0 0 0 / 60%);
+}
+
+.dropdown-menu.open::before,
+.dropdown-menu.open::after {
+	--_horizontal-offset: calc(var(--gap25) - (var(--border-width) / 2));
+	width: var(--gap50);
+	display: block;
+	content: '';
+	position: absolute;
+	top: 50%;
+}
+
+.dropdown-menu.open::before {
+	left: 0;
+    background-color: var(--color-background);
+    transform: translateX(-100%) translateY(-50%);
+    border: var(--border-width) solid var(--color-secondary);
+    height: 75%;
+}
+
+.dropdown-menu.open::after {
+    right: var(--_horizontal-offset);
+    background: var(--color-secondary);
+    transform: translateX(100%) translateY(50%);
+    height: 20%;
+}
+
+.dropdown-menu.open .dropdown-menu.inner {
+	background-color: transparent;
+}
+
+.dropdown-menu.open .dropdown-menu li a {
+	padding: calc(var(--gap) / 2) var(--gap);
+	text-transform: uppercase;
+	position: relative;
+	border-left: calc(var(--gap) / 2) solid var(--color-background);
+}
+
+.dropdown-menu.open .dropdown-menu li a::before {
+	background-color: var(--color-primary);
+	width: calc(var(--gap) / 4);
+	height: 100%;
+	content: '';
+	position: absolute;
+	left: 0;
+	top: 0;
+	translate: -200% 0;
+	opacity: 0;
+	transition: opacity var(--transition);
+}
+
+.dropdown-menu.open .dropdown-menu li a:hover {
+	background-color: transparent;
+	color: var(--color-link);
+}
+
+.dropdown-menu.open .dropdown-menu li a.selected {
+	border-radius: 0 calc(var(--gap) * 2) calc(var(--gap) * 2) 0;
+	background-color: var(--color-link);
+	color: var(--color-text-dark);
+}
+
+.dropdown-menu.open .dropdown-menu li a:hover::before,
+.dropdown-menu.open .dropdown-menu li a.selected::before {
+	opacity: 1;
+}
+
+.bootstrap-select.show-tick .dropdown-menu .selected span.check-mark {
+	top: calc(var(--gap) * .75);
+	right: 0;
+}
+
+.bs-actionsbox {
+	padding: 0;
+}
+
+.bs-actionsbox button.btn {
+	background-color: var(--color-secondary);
+	color: var(--color-background);
+	font-weight: bold;
+}
+
+.bs-actionsbox button.btn:hover {
+	background-color: var(--color-secondary-hover);
+}
+
+.bs-actionsbox > button.btn[disabled] {
+	background-color: var(--color-disabled);
+	pointer-events: none;
+}
+
+.bs-actionsbox > button.btn-success {
+	background-color: var(--color-success-dark);
+	color: var(--color-success);
+}
+
+.bs-actionsbox > button.btn-success:hover {
+	background-color: var(--color-link) !important;
+    color: #fff;
+}
+
+.dropdown-menu.open .dropdown-menu li a span.text {
+	margin-right: 0;
+}
+
+.bs-actionsbox .btn-group {
+	display: flex;
+	flex-wrap: nowrap;
+	gap: calc(var(--gap) / 4);
+	border-bottom: .2rem solid var(--color-supplement02);
+	padding-bottom: var(--gap);
+}
+
+/* --- Toggle button */
+.toggle.btn-sm {
+	border-radius: 0;
+	min-height: calc(var(--gap) * 2 + var(--border-width));
+	min-width: calc(var(--gap) * 6) !important;
+}
+
+.toggle .toggle-group .btn {
+	padding-right: var(--gap);
+	border-radius: 0;
+}
+
+.toggle .toggle-group .btn.active {
+	color: var(--color-danger);
+    background-color: var(--color-supplement-01);
+}
+
+.toggle .toggle-handle {
+	display: none;
+}
+
+/* --- Table related buttons (select all, select more, delete) */
+div.dt-buttons {
+	margin: var(--gap) 0;
+}
+
+.dt-buttons .datatable-bt span {
+	font-size: inherit;
+}
+
+.dt-buttons .selectAll,
+.dt-buttons .removeAll,
+.dt-buttons .selectMore {
+	background-color: var(--color-secondary);
+	color: var(--color-text-dark);
+}
+
+.dt-buttons .selectAll:hover,
+.dt-buttons .removeAll:hover,
+.dt-buttons .selectMore:hover {
+	background-color: var(--color-secondary-hover);
+}
+
+.dt-buttons .deleteSelected {
+	background-color: var(--color-supplement-01);
+	color: #fff;
+}
+
+.dt-buttons .deleteSelected:hover {
+	background-color: var(--color-danger);
+}
+
+
 
 /* CODE
    ========================================================== */
@@ -4117,6 +4393,10 @@ section pre {
 	border-color: var(--color-disabled);
 	border-radius: var(--radius100);
 	min-height: calc(var(--gap) * 6) !important;
+}
+
+td pre {
+	min-height: auto !important;
 }
 
 section code {
