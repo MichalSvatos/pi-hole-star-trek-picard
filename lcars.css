@@ -1,6 +1,6 @@
 /*
 	- Document: Pi-hole LCARS Star Trek Picard Theme
-	- Version:  0.3.2
+	- Version:  0.3.3
 	- Author:   @MichalSvatos
 	- Description: Star Trek Picard LCARS Theme for Pi-hole dashboard.
 	- Disclaimer: Due to fact that I have the access only to CSS I was forced to use some !importants and a lot of IDs. I'm sorry.
@@ -428,11 +428,19 @@ body [class*="icheck-"] > input:first-child:focus + label:before {
    ========================================================== */
 
 .form-control,
+td > .form-group,
 .select2-container--default .select2-search--dropdown .select2-search__field {
 	border-color: var(--color-primary);
 	color: var(--color-tertiary-hover);
 	background-color: var(--color-disabled);
 	transition: background-color var(--transition), border-color var(--transition);
+}
+
+td > .form-group {
+	border-width: 1px;
+	border-style: solid;
+	padding: 5px 10px; /* from form.less */
+	font-size: 12px; /* from form.less */
 }
 
 .form-control[disabled],
@@ -443,9 +451,11 @@ fieldset[disabled] .form-control {
 }
 
 .form-control:focus,
+td > .form-group:focus,
 .select2-container--default .select2-search--dropdown .select2-search__field:focus {
 	border-color: var(--color-tertiary-hover);
 	background-color: var(--color-background);
+	outline: none;
 }
 
 .input-group .input-group-addon,
@@ -4011,6 +4021,18 @@ table.dataTable thead .sorting_desc_disabled:after {
 
 .table-bordered > tbody > tr > td:first-child a:hover:after {
 	background-color: var(--color-secondary-hover);
+}
+
+.table-bordered > thead > tr > th:last-child,
+.table-bordered > thead > tr > td:last-child,
+.table-bordered > tbody > tr > td:last-child,
+.table-bordered > tfoot > tr > td {
+	border: 0;
+}
+
+.table-bordered > tfoot > tr > td {
+	background-color: var(--color-supplement-02);
+	vertical-align: middle;
 }
 
 .table-striped > tbody > tr:nth-of-type(odd),

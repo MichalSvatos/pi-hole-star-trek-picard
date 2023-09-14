@@ -44,6 +44,9 @@ Check my other theme
 ***
 
 ## Changelog
+**0.3.3**
+- FIX - SETTINGS / DHCP table
+
 **0.3.2**
 - FIX - TOP tables border removed
 
