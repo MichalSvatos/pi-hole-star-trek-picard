@@ -44,6 +44,9 @@ Check my other theme
 ***
 
 ## Changelog
+**0.3.1**
+- Data tables responsive tweaks
+
 **0.3.0**
 - Data tables + dropdown menus
 - FIX - adjusted input border color

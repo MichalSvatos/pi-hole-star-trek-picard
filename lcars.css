@@ -1,6 +1,6 @@
 /*
 	- Document: Pi-hole LCARS Star Trek Picard Theme
-	- Version:  0.3.0
+	- Version:  0.3.1
 	- Author:   @MichalSvatos
 	- Description: Star Trek Picard LCARS Theme for Pi-hole dashboard.
 	- Disclaimer: Due to fact that I have the access only to CSS I was forced to use some !importants and a lot of IDs. I'm sorry.
@@ -4068,6 +4068,94 @@ table.dataTable thead .sorting_desc_disabled:after {
 	text-transform: none;
 }
 
+@media (max-width: 660px), (min-width: 767px) and (max-width: 960px) {
+	/* --- Group tables */
+	#groupsTable thead,
+	#clientsTable thead,
+	#adlistsTable thead {
+		display: none;
+	}
+
+	#groupsTable tr,
+	#clientsTable tr,
+	#adlistsTable tr {
+		display: flex;
+		flex-wrap: wrap;
+		padding-block: var(--gap25);
+		margin-block: var(--gap50);
+		border: var(--border-width) solid var(--color-disabled);
+		border-radius: var(--gap50);
+	}
+
+	#groupsTable tr td:nth-child(1),
+	#groupsTable tr td:nth-child(3) {
+		order: 0;
+		flex-grow: 1;
+		text-align: right;
+	}
+
+	#groupsTable tr td:nth-child(2) {
+		padding-left: var(--gap25);
+		width: 100%;
+		order: 1;
+	}
+
+	#groupsTable tr td:nth-child(4) {
+		width: 100%;
+		order: 2;
+	}
+
+	#groupsTable .btn-danger {
+		height: calc(var(--gap) * 2.15);
+	}
+
+	#clientsTable .btn-danger {
+		height: calc(var(--gap) * 2.3);
+	}
+
+	#clientsTable td:last-child,
+	#adlistsTable td:last-child,
+	#adlistsTable td:nth-child(5) {
+		flex-grow: 1;
+	}
+
+	#adlistsTable td:nth-child(3) {
+		width: 100%;
+	}
+
+	#domainsTable td:nth-child(1),
+	#domainsTable td:nth-child(2) {
+		border-bottom: 0;
+	}
+
+	#domainsTable td:nth-child(2) {
+		padding-bottom: var(--gap25);
+	}
+
+	#domainsTable td:nth-last-child(3) {
+		text-align: left;
+		width: 100%;
+	}
+
+	#domainsTable td:nth-last-child(2) {
+		text-align: left;
+	}
+
+	#domainsTable td:last-child {
+		width: calc(var(--gap) * 6);
+		order: 6;
+		padding-bottom: var(--gap25);
+		border-bottom: 0;
+		margin-bottom: 0;
+		flex-grow: 0;
+	}
+
+	#domainsTable tr.selected td.select-checkbox::after,
+	#domainsTable tr.selected th.select-checkbox::after {
+		transform: translate(0);
+	}
+}
+
 table.dataTable thead .sorting:after,
 table.dataTable thead .sorting_asc:after,
 table.dataTable thead .sorting_desc:after,
@@ -4167,7 +4255,7 @@ table.dataTable .btn-xs.btn-danger {
 }
 
 table.table-bordered.dataTable th:last-child,
-table.table-bordered.dataTable td:last-child {
+table.table-bordered.dataTable td:last-child:not(.dataTables_empty) {
 	text-align: right;
 }
 
