@@ -52,6 +52,7 @@ Check my other theme
 
 <details>
 	<summary>Pre-release versions log</summary>
+
 	**0.7.2**
 	- Code cleaning
 
@@ -190,6 +191,7 @@ Check my other theme
 
 	**0.5.0**
 	- First commit containing - header, sidebar + menu, total queries, clients and user panel, basic animations
+
 </details>
 
 ## Thanks to ...
