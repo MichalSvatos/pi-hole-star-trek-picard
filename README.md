@@ -44,6 +44,9 @@ Check my other theme
 ***
 
 ## Changelog
+**0.6.0**
+- Code cleaning
+
 **0.5.0**
 - Datepicker
 

@@ -1,6 +1,6 @@
 /*
 	- Document: Pi-hole LCARS Star Trek Picard Theme
-	- Version:  0.5.0
+	- Version:  0.6.0
 	- Author:   @MichalSvatos
 	- Description: Star Trek Picard LCARS Theme for Pi-hole dashboard.
 	- Disclaimer: Due to fact that I have the access only to CSS I was forced to use some !importants and a lot of IDs. I'm sorry.
@@ -43,7 +43,6 @@
 	--color-background: #000;
 	--color-primary: #313748;
 	--color-primary-text: #9fa5b8;
-	/*--color-primary-hover: var(--lcars-golden-tanoi);*/
 	--color-secondary: #53596c;
 	--color-secondary-hover: #9fa5b8;
 	--color-tertiary: #6e748a;
@@ -84,7 +83,6 @@
 
 /*
 	TODO: Unify small labels (eg. content: attr(id))
-	TODO: pulseBg animation --> 2 vars (to avoid overwritting --color-background)
 	TODO: calc(var(--border-width) * 4) --> new var
 */
 
@@ -121,22 +119,6 @@ h6 {
 
 .sidebar-collapse {
 	--sidebar-width: var(--collapsed-width);
-}
-
-
-/* DEV ========================================================== */
-.layout-boxed,
-.content-wrapper {
-	background: var(--color-background);
-	/*outline: 1px solid hotpink;*/
-}
-
-.content {
-	/*display: none;*/
-}
-
-.user-panel {
-	/*opacity: 0;*/
 }
 
 
@@ -643,6 +625,7 @@ div.dataTables_wrapper div.dataTables_length select {
 
 /* PAGINATION
    ========================================================== */
+
 .pagination {
 	font-size: 1.6rem;
 }
@@ -1352,6 +1335,7 @@ div.dataTables_wrapper div.dataTables_length select {
 
 /* MAIN DROPDOWN MENU
    ========================================================== */
+
 .navbar-custom-menu > .navbar-nav > li > .dropdown-menu {
 	background-color: var(--color-background);
 	width: 90vw;
@@ -1559,6 +1543,7 @@ div.dataTables_wrapper div.dataTables_length select {
 
 /* MAIN SIDEBAR
    ========================================================== */
+
 .main-sidebar {
 	background: linear-gradient(0deg, var(--color-secondary) 80%, black 80%);
 	padding-top: calc(var(--gap) * 5.615);
@@ -1816,6 +1801,7 @@ div.dataTables_wrapper div.dataTables_length select {
 
 /* USER PANEL (status)
    ========================================================== */
+
 .user-panel {
 	color: var(--color-text-dark);
 	padding-top: calc(var(--gap) * 4);
@@ -1934,8 +1920,15 @@ div.dataTables_wrapper div.dataTables_length select {
 	border-radius: var(--radius50);
 }
 
+
 /* CONTENT
    ========================================================== */
+
+.layout-boxed,
+.content-wrapper {
+	background: var(--color-background);
+}
+
 @media (max-width: 767px) {
 	.sidebar-open .content-wrapper,
 	.sidebar-open .main-footer {
@@ -1985,6 +1978,7 @@ div.dataTables_wrapper div.dataTables_length select {
 
 /* STATS (4 small boxes on the homepage)
    ========================================================== */
+
 .small-box[class*="bg-"] {
 	border-radius: 0;
 	background-color: var(--color-primary) !important;
@@ -2182,6 +2176,7 @@ div.dataTables_wrapper div.dataTables_length select {
 
 /* CUSTOM HEADERS - VARIOUS LCARS PANELS
    ========================================================== */
+
 :root {
 	--border-panel-width: calc(var(--border-width) * 40);
 }
@@ -2591,6 +2586,7 @@ div.dataTables_wrapper div.dataTables_length select {
 
 /* PIE CHARTS BOXES
    ========================================================== */
+
 #query-types-pie,
 #forward-destinations-pie {
 	padding: var(--gap25) var(--gap25);
@@ -2818,6 +2814,7 @@ div.dataTables_wrapper div.dataTables_length select {
 
 /* FOOTER
    ========================================================== */
+
 .main-footer {
 	--footer-color: var(--color-tertiary-hover);
 	--footer-color-text: var(--color-red-alert);
@@ -3162,6 +3159,7 @@ div.dataTables_wrapper div.dataTables_length select {
 
 /* NAV CUSTOM TABS (settings page)
    ========================================================== */
+
 .nav-tabs-custom {
 	border-radius: 0;
 }
@@ -3218,6 +3216,7 @@ div.dataTables_wrapper div.dataTables_length select {
 
 /* SYSTEM (settings page)
    ========================================================== */
+
 #sysadmin .table-striped {
 	margin-top: 0;
 }
@@ -3416,6 +3415,7 @@ div.dataTables_wrapper div.dataTables_length select {
 
 /* DNS (settings page)
    ========================================================== */
+
 #dns {
 	margin-top: calc(var(--gap) * 2);
 }
@@ -3823,6 +3823,7 @@ div.dataTables_wrapper div.dataTables_length select {
 
 /* DATEPICKER
    ========================================================== */
+
 .daterangepicker {
 	background-color: var(--color-background);
 	padding: calc(var(--gap) * 1.5) var(--gap);
@@ -4251,6 +4252,7 @@ div.dataTables_wrapper div.dataTables_length select {
 
 /* TABLES
    ========================================================== */
+
 .table tr th,
 .table > tbody > tr > th,
 .table > tfoot > tr > th,
@@ -4871,6 +4873,7 @@ div.dt-buttons {
 
 /* ALERTS
    ========================================================== */
+
 div[class*="alert-"][role="alert"] {
 	border-radius: var(--radius100) 0 0 var(--radius100);
 	color: var(--color-text-dark) !important;
@@ -4917,6 +4920,7 @@ div[class*="alert-"][role="alert"] h4 {
 
 /* CODE
    ========================================================== */
+
 section pre {
 	background-color: var(--color-background);
 	color: var(--color-success);
