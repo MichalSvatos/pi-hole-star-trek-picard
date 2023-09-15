@@ -1,6 +1,6 @@
 /*
 	- Document: Pi-hole LCARS Star Trek Picard Theme
-	- Version:  0.7.0
+	- Version:  0.7.1
 	- Author:   @MichalSvatos
 	- Description: Star Trek Picard LCARS Theme for Pi-hole dashboard.
 	- Disclaimer: Due to fact that I have the access only to CSS I was forced to use some !importants and a lot of IDs. I'm sorry.
@@ -4409,12 +4409,12 @@ table.dataTable thead .sorting_desc_disabled:after {
 	z-index: 5;
 }
 
-.table-bordered > tbody > tr > td:first-child a:after {
+.table-bordered:not(#network-entries) > tbody > tr > td:first-child a:after {
 	inset: 0 auto 0 calc(var(--gap) * -.75);
 	background-color: var(--table-color);
 }
 
-.table-bordered > tbody > tr > td:first-child a:hover:after {
+.table-bordered:not(#network-entries) > tbody > tr > td:first-child a:hover:after {
 	background-color: var(--color-secondary-hover);
 }
 
