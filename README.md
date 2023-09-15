@@ -37,6 +37,9 @@ _Note: I didn't test it myself._
 ## Preview
 ![Pi-hole Star Trek Picard LCARS Theme Dashboard Preview](https://github.com/MichalSvatos/pi-hole-star-trek-picard/raw/main/previews/pi-hole-star-trek-picard-lcars-showcase.png)
 
+## Gecko browsers (Firefox, Mullvad, LibreFox ... )
+- Some cosmetics, such as login error and same height of the top tables on dashboard, don't work due to the lack of `:has()` support
+
 ***
 
 ## Do you prefer more colorful LCARS?
