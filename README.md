@@ -44,6 +44,9 @@ Check my other theme
 ***
 
 ## Changelog
+**0.5.0**
+- Datepicker
+
 **0.4.0**
 - Alert modal quick styling
 

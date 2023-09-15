@@ -1,6 +1,6 @@
 /*
 	- Document: Pi-hole LCARS Star Trek Picard Theme
-	- Version:  0.4.0
+	- Version:  0.5.0
 	- Author:   @MichalSvatos
 	- Description: Star Trek Picard LCARS Theme for Pi-hole dashboard.
 	- Disclaimer: Due to fact that I have the access only to CSS I was forced to use some !importants and a lot of IDs. I'm sorry.
@@ -429,6 +429,10 @@ body [class*="icheck-"] > input:first-child:focus + label:before {
 
 .form-control,
 td > .form-group,
+.daterangepicker select.yearselect,
+.daterangepicker select.monthselect,
+.daterangepicker select.hourselect,
+.daterangepicker select.minuteselect,
 .select2-container--default .select2-search--dropdown .select2-search__field {
 	border-color: var(--color-primary);
 	color: var(--color-tertiary-hover);
@@ -3815,6 +3819,370 @@ div.dataTables_wrapper div.dataTables_length select {
 	top: 0;
 	margin: 0;
 }
+
+
+/* DATEPICKER
+   ========================================================== */
+.daterangepicker {
+	background-color: var(--color-background);
+	padding: calc(var(--gap) * 1.5) var(--gap);
+	border: var(--border-width) solid var(--color-primary);
+	border-right: 0;
+	border-left-width: var(--border-panel-width);
+	border-radius: var(--radius100) 0 0 var(--radius100);
+	box-shadow: 0 0 0 100vmax rgb(0 0 0 / 80%);
+}
+
+.daterangepicker[style*="display: block"] {
+	display: flex !important;
+	flex-direction: column;
+	align-items: center;
+	max-width: calc(var(--gap) * 60);
+	translate: 0 calc(var(--gap) * -3.5);
+}
+
+@media (min-width: 992px) {
+	.daterangepicker[style*="display: block"] {
+		flex-direction: row;
+		flex-wrap: wrap;
+		align-items: flex-start;
+		padding-block: calc(var(--gap) * 2.5);
+		padding-right: 0;
+	}
+}
+
+.daterangepicker.openscenter::before,
+.daterangepicker.openscenter::after {
+	display: none;
+}
+
+@media (min-width: 768px) {
+	.daterangepicker.openscenter::after {
+		display: block;
+		position: absolute;
+		inset: 0 auto 0 calc(var(--gap) * -1);
+		width: var(--gap);
+		border: 0;
+		background: var(--color-background);
+		border-radius: var(--radius50) 0 0 var(--radius50);
+	}
+
+	.daterangepicker.openscenter::before {
+		content: 'DTPCKR_36525';
+		border: calc(var(--border-width) * 2) solid var(--color-background);
+		inset: 10% auto 10% calc(var(--border-panel-width) * -1);
+		width: calc(var(--border-panel-width) - var(--gap));
+		background-color: var(--color-quinternary);
+		border-inline: 0;
+		text-transform: uppercase;
+		font-size: 1rem;
+		color: var(--color-text-dark);
+		padding: var(--gap25) var(--gap25);
+		text-align: right;
+		display: flex;
+		align-items: flex-end;
+		justify-content: flex-end;
+	}
+}
+
+.daterangepicker .ranges {
+	min-width: calc(var(--gap) * 13);
+}
+
+@media (min-width: 992px) {
+	.daterangepicker .ranges {
+		flex: 0 0 20%;
+		padding-right: var(--gap);
+		min-width: calc(var(--gap) * 10);
+	}
+}
+
+.daterangepicker .ranges ul {
+	width: auto;
+}
+
+.daterangepicker .ranges li {
+	font-size: 1.5rem;
+	padding: calc(var(--gap) / 2) var(--gap);
+	text-transform: uppercase;
+	position: relative;
+}
+
+.daterangepicker .ranges li:hover {
+	background-color: transparent;
+	color: var(--color-link);
+}
+
+.daterangepicker .ranges li.active {
+	border-radius: var(--radius100);
+	background-color: var(--color-link);
+    color: var(--color-text-dark);
+}
+
+.daterangepicker .ranges li:before {
+	background-color: rgb(0 0 0 / 40%);
+	width: calc(var(--gap) * 2);
+	content: '';
+	position: absolute;
+	inset: 0 0 0 auto;
+	opacity: 0;
+	transition: opacity var(--transition);
+	border-left: calc(var(--border-width) * 2) solid var(--color-background);
+}
+
+.daterangepicker .ranges li.active:before {
+	opacity: 1;
+}
+
+.daterangepicker.show-ranges.ltr .drp-calendar {
+	--_dtpckr-border: var(--border-width) solid var(--color-primary);
+	border: var(--_dtpckr-border);
+	margin-left: calc(var(--gap) * -1);
+	padding: var(--gap) var(--gap50) var(--gap50) var(--gap50);
+}
+
+.daterangepicker.show-ranges.ltr .drp-calendar.left::after,
+.daterangepicker.show-ranges.ltr .drp-calendar.right::after {
+	display: none;
+	content: 'MTH-PNL_31';
+	text-transform: uppercase;
+	color: var(--color-secondary);
+	position: absolute;
+	inset: 0 var(--gap25) auto auto;
+	font-size: 1rem;
+}
+
+@media (max-width: 991px) {
+	.daterangepicker.show-ranges.ltr .drp-calendar.left {
+		border-bottom: 0;
+		border-left: var(--_dtpckr-border); /* rewrite for datepicker.min.css */
+		border-radius: var(--radius50) var(--radius50) 0 0;
+		position: relative;
+		margin-top: var(--gap);
+	}
+
+	.daterangepicker.show-ranges.ltr .drp-calendar.left::after {
+		display: block;
+	}
+
+	.daterangepicker.show-ranges.ltr .drp-calendar.right {
+		border-top: 0;
+		border-radius: 0 0 var(--radius50) var(--radius50);
+	}
+}
+
+@media (min-width: 992px) {
+	.daterangepicker.show-ranges.ltr .drp-calendar.left,
+	.daterangepicker.show-ranges.ltr .drp-calendar.right {
+		flex: 1 0 40%;
+		margin-left: 0;
+		position: relative;
+		max-width: none;
+		margin-top: var(--gap);
+		padding-top: calc(var(--gap) * 1.5);
+		padding-bottom: var(--gap);
+	}
+
+	.daterangepicker.show-ranges.ltr .drp-calendar.left {
+		border-block: var(--_dtpckr-border);
+		border-inline: 0;
+	}
+
+	.daterangepicker.show-ranges.ltr .drp-calendar.right {
+		border: var(--_dtpckr-border);
+		border-left: 0;
+		border-radius: 0 vaR(--radius100) var(--radius100) 0;
+	}
+
+	.daterangepicker.show-ranges.ltr .drp-calendar.right::after {
+		display: block;
+		right: var(--gap75);
+	}
+}
+
+.daterangepicker .prev.available,
+.daterangepicker .next.available {
+	background-color: var(--color-secondary);
+	padding: 0;
+}
+
+.daterangepicker .prev.available {
+	border-radius: var(--radius100) 0 0 0;
+}
+
+.daterangepicker .next.available {
+	border-radius: 0 var(--radius100) 0 0;
+}
+
+.daterangepicker .prev.available span,
+.daterangepicker .next.available span {
+	padding: 0;
+	border: 6px solid transparent;
+	transform: rotate(0);
+}
+
+.daterangepicker .prev.available span {
+	border-right-color: var(--color-background);
+	translate: -3px 0;
+}
+
+.daterangepicker .next.available span {
+	border-left-color: var(--color-background);
+	translate: 3px 0;
+}
+
+.daterangepicker .calendar-table td,
+.daterangepicker .calendar-table th {
+	border-radius: 0;
+}
+
+@media (min-width: 992px) {
+	.daterangepicker .calendar-table td,
+	.daterangepicker .calendar-table th {
+		min-width: var(--gap);
+		width: var(--gap);
+		font-size: 1.5rem;
+		border: 0;
+	}
+}
+
+.daterangepicker th.month {
+	padding: 0;
+}
+
+.daterangepicker.show-ranges .left tr:first-child th.month + th,
+.daterangepicker.show-ranges .right tr:first-child th:first-child {
+	padding-block: 0;
+	background: var(--color-supplement-02);
+	border-radius: 0 var(--radius100) 0 0;
+}
+
+.daterangepicker.show-ranges .right tr:first-child th:first-child {
+	border-radius: var(--radius100) 0 0 0;
+}
+
+.daterangepicker .drp-calendar tr:nth-child(2) th {
+	background-color: var(--color-disabled);
+	text-transform: uppercase;
+}
+
+.daterangepicker .calendar-table {
+	background-color: transparent;
+	border: 0;
+}
+
+.daterangepicker .calendar-table table {
+	border-spacing: calc(var(--gap) / 8);
+	border-collapse: separate;
+}
+
+.daterangepicker .left .calendar-time {
+	position: relative;
+}
+
+@media (min-width: 576px) {
+	.daterangepicker .calendar-table table {
+		border-spacing: calc(var(--gap) / 4);
+	}
+}
+
+.daterangepicker .drp-buttons {
+	border-top: 0;
+}
+
+.daterangepicker.show-calendar .drp-buttons {
+	display: inline-flex;
+	align-items: center;
+	flex-direction: column;
+	gap: var(--gap);
+}
+
+@media (min-width: 992px) {
+	.daterangepicker .drp-buttons {
+		margin-left: 20%;
+		padding-bottom: var(--gap);
+		flex-grow: 1;
+		position: relative;
+	}
+
+	.daterangepicker.show-calendar .drp-buttons {
+		flex-direction: row;
+		align-items: stretch;
+	}
+}
+
+.daterangepicker .drp-buttons .btn {
+	padding: var(--gap) var(--gap) var(--gap50) var(--gap);
+	margin-left: 0;
+}
+
+.daterangepicker .drp-selected {
+	font-size: 1.6rem;
+	line-height: 1.5;
+	color: var(--color-danger-bright);
+}
+
+@media (max-width: 991px) {
+	.daterangepicker .drp-selected {
+		padding-right: 0;
+		text-align: center;
+	}
+}
+
+@media (min-width: 992px) {
+	.daterangepicker .drp-selected {
+		flex-grow: 1;
+		display: inline-flex;
+		align-items: center;
+		justify-content: flex-end;
+	}
+}
+
+.daterangepicker select.yearselect,
+.daterangepicker select.monthselect,
+.daterangepicker select.hourselect,
+.daterangepicker select.minuteselect {
+	font-size: 1.5rem;
+	padding: var(--gap25) var(--gap50);
+	min-width: calc(var(--gap) * 4.5);
+}
+
+.daterangepicker td {
+	transition: background-color var(--transition);
+}
+
+.daterangepicker td.off,
+.daterangepicker td.off.end-date,
+.daterangepicker td.off.in-range,
+.daterangepicker td.off.start-date {
+	background-color: var(--color-supplement-02);
+}
+
+.daterangepicker td.active,
+.daterangepicker td.active:hover,
+.daterangepicker td.active.end-date {
+	background-color: var(--color-danger-bright);
+	color: var(--color-text-dark);
+}
+
+.daterangepicker td.active {
+	border-radius: var(--radius100) 0 0 var(--radius100);
+}
+
+.daterangepicker td.active.end-date {
+	border-radius: 0 var(--radius100) var(--radius100) 0;
+}
+
+.daterangepicker td.in-range {
+	background-color: var(--color-danger);
+}
+
+.daterangepicker td.available:hover,
+.daterangepicker th.available:hover {
+	background-color: var(--color-primary);
+	color: var(--color-text-dark);
+}
+
 
 /* COLORS FOR GRAPHS, TABLES, ETC.
    ========================================================== */
