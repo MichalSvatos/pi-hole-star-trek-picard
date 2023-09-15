@@ -1,6 +1,6 @@
 /*
 	- Document: Pi-hole LCARS Star Trek Picard Theme
-	- Version:  0.7.1
+	- Version:  0.7.2
 	- Author:   @MichalSvatos
 	- Description: Star Trek Picard LCARS Theme for Pi-hole dashboard.
 	- Disclaimer: Due to fact that I have the access only to CSS I was forced to use some !importants and a lot of IDs. I'm sorry.
@@ -4187,13 +4187,13 @@ div.dataTables_wrapper div.dataTables_length select {
 
 /* COLORS FOR GRAPHS, TABLES, ETC.
    ========================================================== */
-/* TODO: Change to vars */
+
 .not-used {
-	background-color: #222;
+	background-color: var(--color-supplement-02);
 }
 
 .not-used:hover {
-	background-color: #444;
+	background-color: var(--color-disabled);
 }
 
 .used {
@@ -4201,19 +4201,19 @@ div.dataTables_wrapper div.dataTables_length select {
 }
 
 .used:hover {
-	background-color: #ddd;
+	background-color: var(--color-tertiary-hover);
 }
 
 .graphs-grid {
-	background-color: #202429;
+	background-color: var(--color-supplement-01);
 }
 
 .graphs-ticks {
-	color: #9ab;
+	color: var(--color-tertiary-hover);
 }
 
 .progress-bar {
-	background-color: #48f;
+	background-color: var(--color-danger-bright);
 }
 
 .queries-permitted {
@@ -4284,14 +4284,14 @@ div.dataTables_wrapper div.dataTables_length select {
 .table > thead > tr > th {
 	width: auto !important;
 	color: #fff;
-	padding: calc(var(--gap) / 2) calc(var(--gap) / 4);
+	padding: var(--gap50) var(--gap25);
 }
 
 .table tr td,
 .table > tbody > tr > td,
 .table > tfoot > tr > td,
 .table > thead > tr > td {
-	padding: calc(var(--gap) / 2) calc(var(--gap) / 4);
+	padding: var(--gap50) var(--gap25);
 	font-size: 1.6rem;
 	font-weight: var(--font-regular);
 	text-transform: none;
@@ -4313,7 +4313,7 @@ table.dataTable thead .sorting::before {
 	content: "\25B3";
 	position: absolute;
 	bottom: var(--gap);
-	right: calc(var(--gap) / 2);
+	right: var(--gap50);
 	display: block;
 	font-family: "Glyphicons Halflings";
 	opacity: 0.3;
