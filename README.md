@@ -44,6 +44,9 @@ Check my other theme
 ***
 
 ## Changelog
+**0.7.0**
+- Network overview table
+
 **0.6.0**
 - Code cleaning
 
