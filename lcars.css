@@ -4441,7 +4441,7 @@ table.dataTable thead .sorting_desc_disabled:after {
 }
 
 .blocked-row td {
-	background-color: var(--color-red-alert);
+	background-color: var(--color-danger);
 	color: #fff;
 }
 
