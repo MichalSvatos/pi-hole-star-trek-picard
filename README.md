@@ -49,6 +49,9 @@ Check my other theme
 ***
 
 ## Changelog
+**1.0.1**
+- 🧹🗑️ Cleaning, tiny refactoring
+
 **1.0.0**
 - Version 1.0.0 released!
 - NEW - updated preview

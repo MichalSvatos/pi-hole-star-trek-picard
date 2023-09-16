@@ -1,7 +1,7 @@
 /*
 	- Document: Pi-hole LCARS Star Trek Picard Theme
-	- Version:  0.7.2
-	- Author:   @MichalSvatos
+	- Version:  1.0.1
+	- Author:   @MichalSvatos (svatos.dev)
 	- Description: Star Trek Picard LCARS Theme for Pi-hole dashboard.
 	- Disclaimer: Due to fact that I have the access only to CSS I was forced to use some !importants and a lot of IDs. I'm sorry.
 	- Resources: mewho.com, Star Trek Picard, various LCARS images and websites
@@ -20,7 +20,6 @@
 */
 
 :root {
-
 	/* -- gaps, sizes */
 	--gap: 1.6rem;
 	--gap75: calc(var(--gap) * .75);
@@ -36,6 +35,7 @@
 	--radius25: var(--gap25);
 	--lcars-space: var(--gap25);
 	--border-width: calc(var(--gap) / 8);
+	--border-width-thick: calc(var(--gap) / 2);
 	--pie-chart-border-width: calc(var(--gap) * 9);
 	--form-fields-height: 34px;
 
@@ -64,6 +64,7 @@
 	/* -- typo */
 	--font-family: Antonio, Oswald, "Myriad Pro Cond", "Roboto Condensed", "Futura Condensed",
 	"Helvetica Condensed", "Arial Narrow", sans-serif;
+	--font-family-mono:  "Ubuntu Mono", Consolas, "Courier New", monospace;
 	--font-light: 300;
 	--font-regular: 400;
 	--font-bold: 600;
@@ -80,11 +81,6 @@
 	/* -- LCARS panels and gradients */
 	--background-grid: linear-gradient(var(--color-supplement-01) .1rem, transparent .1rem), linear-gradient(90deg, var(--color-supplement-01) .1rem, transparent .1rem);
 }
-
-/*
-	TODO: Unify small labels (eg. content: attr(id))
-	TODO: calc(var(--border-width) * 4) --> new var
-*/
 
 /* GLOBAL STYLES
    ========================================================== */
@@ -119,6 +115,10 @@ h6 {
 
 .sidebar-collapse {
 	--sidebar-width: var(--collapsed-width);
+}
+
+.svg-inline--fa {
+	vertical-align: inherit;
 }
 
 
@@ -243,7 +243,7 @@ h6 {
 	width: calc(var(--gap) * 2);
 	height: calc(var(--gap) * 2 + var(--border-width));
 	padding: 0 var(--gap50);
-	border-right: calc(var(--border-width) * 1) solid var(--color-background);
+	border-right: var(--border-width) solid var(--color-background);
 }
 
 .btn-xs.btn-whitelist > svg.svg-inline--fa,
@@ -257,13 +257,15 @@ h6 {
 	margin-right: var(--gap25);
 }
 
-.btn-success {
+.btn-success,
+.bs-actionsbox > button.btn-success {
 	background-color: var(--color-success-dark);
 	color: var(--color-success);
 }
 
-.btn-success:hover {
-	background-color: var(--color-link);
+.btn-success:hover,
+.bs-actionsbox > button.btn-success:hover {
+	background-color: var(--color-link) !important;
 	color: #fff;
 }
 
@@ -277,7 +279,7 @@ h6 {
 .btn-danger:hover {
 	--pulse-color: #fff;
 	--pulse-color-background: var(--color-red-alert);
-	color: #000;
+	color: var(--color-background);
 	animation: pulseBg 2s ease-in-out infinite;
 }
 
@@ -366,7 +368,7 @@ body [class*=icheck-] > input:first-child + label:after {
 	background-color: var(--color-primary);
 	width: var(--gap75);
 	height: 1.4rem;
-	inset: calc(var(--border-width) * 4) auto 0 calc(var(--border-width) * 4);
+	inset: var(--border-width-thick) auto 0 var(--border-width-thick);
 	position: absolute;
 	transition: inset var(--transition);
 }
@@ -380,7 +382,7 @@ body [class*=icheck-] > input:first-child:checked + label:after {
 	border: none;
 	top: auto;
 	left: auto;
-	inset: calc(var(--border-width) * 4) auto 0 calc(var(--border-width) * 10);
+	inset: var(--border-width-thick) auto 0 calc(var(--border-width) * 10);
 }
 
 /* --- radios */
@@ -393,7 +395,7 @@ body [class*=icheck-] > input[type=radio]:first-child + input[type=hidden] + lab
 body [class*=icheck-] > input[type=radio]:first-child + label:after {
 	background-color: var(--color-disabled);
 	width: calc(var(--gap) * 1.5);
-	inset: calc(var(--border-width) * 4) auto 0 calc(var(--border-width) * 4);
+	inset: var(--border-width-thick) auto 0 var(--border-width-thick);
 }
 
 body [class*=icheck-] > input[type=radio]:first-child:checked + input[type=hidden] + label:after,
@@ -500,7 +502,6 @@ div.dataTables_wrapper div.dataTables_length select {
 .select2-container--default.select2-container--open.select2-container--below .select2-selection--multiple {
 	background-color: var(--color-secondary);
     border-color: var(--color-secondary);
-    border-bottom-color: var(--color-secondary);
 }
 
 .select2-container--default .select2-selection__placeholder {
@@ -610,7 +611,7 @@ div.dataTables_wrapper div.dataTables_length select {
 }
 
 .select2-results__option + .select2-results__option {
-	border-top: calc(var(--border-width) * 4) solid var(--color-background);
+	border-top: var(--border-width-thick) solid var(--color-background);
 }
 
 .select2-container--default .select2-results__option--highlighted[aria-selected] {
@@ -632,7 +633,6 @@ div.dataTables_wrapper div.dataTables_length select {
 
 .pagination > li > a {
 	margin: 0 calc(var(--gap) / 8);
-	padding: 3px 4px 4px;
 	min-width: calc(var(--gap) * 2);
 	background: var(--color-tertiary);
 	color: var(--color-text-dark);
@@ -670,7 +670,6 @@ div.dataTables_wrapper div.dataTables_length select {
 }
 
 #all-queries_wrapper .pagination > li > a {
-	min-width: calc(var(--gap) * 2);
 	padding: calc(var(--gap) / 2) calc(var(--gap) / 2);
 	line-height: 1;
 }
@@ -764,7 +763,6 @@ div.dataTables_wrapper div.dataTables_length select {
 @media (min-width: 768px) {
 	.login-box section {
 		display: flex;
-		/* align-items: center; */
 		padding: calc(var(--gap) * 3) calc(var(--gap) * 3) !important;
 	}
 }
@@ -777,7 +775,7 @@ div.dataTables_wrapper div.dataTables_length select {
 	width: 75%;
 	height: calc(var(--gap) * 3);
 	background-color: var(--_login-title-bg-color);
-	outline: calc(var(--border-width) * 4) solid var(--color-background);
+	outline: var(--border-width-thick) solid var(--color-background);
 	left: 50%;
 	text-align: right;
 	padding: var(--gap25);
@@ -1076,7 +1074,7 @@ div.dataTables_wrapper div.dataTables_length select {
 .main-footer > .row:first-child > div {
 	position: relative;
     border: var(--border-width) solid var(--color-success-dark);
-    border-bottom: calc(var(--border-width) * 4) solid var(--color-success-dark);
+    border-bottom: var(--border-width-thick) solid var(--color-success-dark);
     border-radius: calc(var(--radius100) * 2) calc(var(--radius100) * 2) calc(var(--radius100) * 2) 0;
     padding: calc(var(--gap) * 2) var(--gap) calc(var(--gap) * 2) var(--gap);
 	color: var(--color-success-dark);
@@ -1103,7 +1101,7 @@ div.dataTables_wrapper div.dataTables_length select {
 	content: '';
 	position: absolute;
 	border-top: calc(var(--border-width) * 2) solid var(--color-background);
-	border-bottom: calc(var(--border-width) * 4) solid var(--color-background);
+	border-bottom: var(--border-width-thick) solid var(--color-background);
 	height: calc(var(--gap) * 5);
 	inset: calc(var(--gap) * 2) calc(var(--gap50) * -1) auto calc(var(--gap50) * -1);
 }
@@ -1500,7 +1498,7 @@ div.dataTables_wrapper div.dataTables_length select {
 		display: block;
 		position: absolute;
 		right: calc(var(--gap) * -3);
-		top: calc(var(--gap) * 1);
+		top: var(--gap);
 		width: calc(var(--gap) * 2.5);
 		background-color: var(--color-secondary);
 		z-index: 6;
@@ -1545,7 +1543,7 @@ div.dataTables_wrapper div.dataTables_length select {
    ========================================================== */
 
 .main-sidebar {
-	background: linear-gradient(0deg, var(--color-secondary) 80%, black 80%);
+	background: linear-gradient(0deg, var(--color-secondary) 80%, var(--color-background) 80%);
 	padding-top: calc(var(--gap) * 5.615);
 	padding-bottom: calc(var(--gap) * 10);
 	width: var(--sidebar-width);
@@ -1624,8 +1622,8 @@ div.dataTables_wrapper div.dataTables_length select {
 
 .sidebar-menu > li,
 .treeview-menu > li {
-	border-left: calc(var(--border-width) * 4) solid var(--color-background);
-	border-top: calc(var(--border-width) * 4) solid var(--color-background);
+	border-left: var(--border-width-thick) solid var(--color-background);
+	border-top: var(--border-width-thick) solid var(--color-background);
 }
 
 .sidebar-menu > li svg {
@@ -1782,22 +1780,6 @@ div.dataTables_wrapper div.dataTables_length select {
 	}
 }
 
-/* na tecky */
-/*xxxxxxx {*/
-/*	border: 1px solid orange;*/
-/*	height: 40px;*/
-/*	margin: 10px auto;*/
-/*	max-width: 90%;*/
-/*	width: 800px;*/
-/*	background-image:*/
-/*			radial-gradient(circle at center, white 0, white 6px, black 6px, black 100%),*/
-/*			radial-gradient(circle at center, gray 0, gray 6px, black 6px, black 100%),*/
-/*			radial-gradient(circle at center, lightgray 0, lightgray 6px, black 6px, black 100%);*/
-/*	background-repeat: no-repeat;*/
-/*	background-position: 0 0, 24px 0, 48px 0;*/
-/*	background-size: 24px 24px;*/
-/*}*/
-
 
 /* USER PANEL (status)
    ========================================================== */
@@ -1814,7 +1796,7 @@ div.dataTables_wrapper div.dataTables_length select {
 	content: '';
 	position: absolute;
 	bottom: calc(var(--gap) * -1);
-	left: calc(var(--border-width) * 4);
+	left: var(--border-width-thick);
 	width: calc(var(--gap) * 2);
 	padding: var(--gap50);
 	background-color: var(--color-background);
@@ -1881,7 +1863,7 @@ div.dataTables_wrapper div.dataTables_length select {
 	position: absolute;
 	width: calc(var(--gap) * 2.5);
 	background-color: var(--color-background);
-	border-left: calc(var(--border-width) * 4) solid var(--color-secondary);
+	border-left: var(--border-width-thick) solid var(--color-secondary);
 }
 
 .user-panel .info > span svg {
@@ -1944,7 +1926,7 @@ div.dataTables_wrapper div.dataTables_length select {
 }
 
 .content {
-	border-top: calc(var(--border-width) * 4) solid var(--color-secondary);
+	border-top: var(--border-width-thick) solid var(--color-secondary);
 	margin-top: calc(var(--border-width) * 1.5);
 	position: relative;
 	padding: calc(var(--gap) * 2) calc(var(--gap) * 1.5);
@@ -2003,7 +1985,6 @@ div.dataTables_wrapper div.dataTables_length select {
 }
 
 .col-xs-12:has(.small-box) .small-box .inner:before {
-	/*display: none;*/
 	bottom: 0;
 }
 
@@ -2068,9 +2049,7 @@ div.dataTables_wrapper div.dataTables_length select {
 }
 
 .col-lg-3 + .col-lg-3 .small-box:after {
-	/*background-image: linear-gradient(0deg, rgba(0, 0, 0, 1) 0%, rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 1) 100%);*/
 	background-image: linear-gradient(0deg, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0) 49%, rgba(0, 0, 0, 1) 51%, rgba(0, 0, 0, 1) 100%);
-	/*background-size: var(--gap) var(--gap);*/
 	background-position: 0 0;
 	z-index: 2;
 	animation: backgroundPositionAnimation 5s linear infinite;
@@ -2183,7 +2162,7 @@ div.dataTables_wrapper div.dataTables_length select {
 
 @media (max-width: 767px) {
 	:root {
-		--border-panel-width: calc(var(--border-width) * 4);
+		--border-panel-width: var(--border-width-thick);
 	}
 }
 
@@ -2202,18 +2181,17 @@ div.dataTables_wrapper div.dataTables_length select {
 	content: '';
 	position: absolute;
 	inset: auto 0 0 0;
-	height: calc(var(--gap) * 1);
+	height: var(--gap);
 	border-top: calc(var(--border-width) * 3) solid var(--color-background);
 	z-index: 0;
 }
 
 .page-header h1 {
 	font-weight: 400;
-	margin: 0;
 	position: relative;
 	z-index: 1;
 	background-color: var(--color-background);
-	margin-left: var(--gap);
+	margin: 0 0 0 var(--gap);
 	padding: var(--gap25) var(--gap);
 	color: var(--color-tertiary-hover);
 }
@@ -2239,7 +2217,7 @@ div.dataTables_wrapper div.dataTables_length select {
 
 #queries-over-time,
 #clients {
-	border: calc(var(--border-width) * 4) solid var(--color-primary);
+	border: var(--border-width-thick) solid var(--color-primary);
 	border-radius: 0 var(--radius100) 0 0;
 	border-bottom: 0;
 	border-left: 0;
@@ -2252,7 +2230,7 @@ div.dataTables_wrapper div.dataTables_length select {
 
 #clients {
 	border-top: 0;
-	border-bottom: calc(var(--border-width) * 4) solid var(--color-primary);
+	border-bottom: var(--border-width-thick) solid var(--color-primary);
 	border-color: var(--color-tertiary);
 	border-radius: 0 0 var(--radius100) 0;
 	margin-top: 0;
@@ -2386,7 +2364,7 @@ div.dataTables_wrapper div.dataTables_length select {
 	}
 }
 
-/* --- additional line + animated box (Total queries box) */
+/* --- additional line on the side and top + animated box ("total queries" box) */
 #queries-over-time:after {
 	content: '';
 	position: absolute;
@@ -2472,7 +2450,7 @@ div.dataTables_wrapper div.dataTables_length select {
 	--table-color: var(--color-secondary);
 	position: relative;
 	margin-top: calc(var(--gap) * 2);
-	border: calc(var(--border-width) * 4) solid var(--table-color);
+	border: var(--border-width-thick) solid var(--table-color);
 	border-right: 0;
 	border-top-width: calc(var(--gap) * 1.6);
 	border-radius: var(--radius100) 0 0 var(--radius100);
@@ -2537,7 +2515,7 @@ div.dataTables_wrapper div.dataTables_length select {
 	background-color: transparent;
 	width: calc(100% - var(--gap));
 	height: calc(var(--gap) * 1.5);
-	border: calc(var(--border-width) * 4) solid var(--color-background);
+	border: var(--border-width-thick) solid var(--color-background);
 	border-radius: 0 var(--radius100) var(--radius100) 0;
 	margin: var(--gap75);
 }
@@ -2553,7 +2531,7 @@ div.dataTables_wrapper div.dataTables_length select {
 	width: calc(100% - var(--gap50));
 	height: calc(var(--gap) * 2);
 	margin: var(--gap50);
-	border: calc(var(--border-width) * 4) solid var(--color-primary);
+	border: var(--border-width-thick) solid var(--color-primary);
 	border-radius: 0 var(--radius100) var(--radius100) 0;
 	animation: topBoxesScanner 15s cubic-bezier(0.87, 0, 0.13, 1) infinite;
 }
@@ -2591,7 +2569,7 @@ div.dataTables_wrapper div.dataTables_length select {
 #forward-destinations-pie {
 	padding: var(--gap25) var(--gap25);
 	margin-top: calc(var(--gap) * 2);
-	border: calc(var(--border-width) * 4) solid var(--color-primary);
+	border: var(--border-width-thick) solid var(--color-primary);
 	border-radius: var(--radius100);
 }
 
@@ -2617,7 +2595,7 @@ div.dataTables_wrapper div.dataTables_length select {
 		padding: var(--gap25) var(--gap75);
 		text-align: right;
 		position: absolute;
-		inset: calc(var(--gap) * 1) calc(var(--gap) * -9) auto auto;
+		inset: var(--gap) calc(var(--gap) * -9) auto auto;
 		font-size: 1.2rem;
 		text-transform: uppercase;
 		color: var(--color-text-dark);
@@ -2627,7 +2605,7 @@ div.dataTables_wrapper div.dataTables_length select {
 
 	#forward-destinations-pie:before {
 		justify-content: flex-start;
-		inset: calc(var(--gap) * 1) auto auto calc(var(--gap) * -9);
+		inset: var(--gap) auto auto calc(var(--gap) * -9);
 	}
 }
 
@@ -2895,8 +2873,8 @@ div.dataTables_wrapper div.dataTables_length select {
 	display: flex;
 	background-color: var(--color-secondary-hover);
 	width: calc(var(--gap) * 2);
-	border-left: calc(var(--border-width) * 1) solid var(--color-background);
-	border-right: calc(var(--border-width) * 4) solid var(--color-background);
+	border-left: var(--border-width) solid var(--color-background);
+	border-right: var(--border-width-thick) solid var(--color-background);
 	position: absolute;
 	inset: 0 auto 0 var(--gap);
 }
@@ -2930,7 +2908,7 @@ div.dataTables_wrapper div.dataTables_length select {
 
 	.version-info > div:before {
 		background-color: var(--color-background);
-		border-left: calc(var(--border-width) * 4) solid var(--color-background);
+		border-left: var(--border-width-thick) solid var(--color-background);
 	}
 
 	.version-info > div:after {
@@ -2984,7 +2962,7 @@ div.dataTables_wrapper div.dataTables_length select {
 	.version-info .list-inline > li:before {
 		inset: 0 0 0 auto;
 		width: calc(var(--gap) * 12.15);
-		border: calc(var(--border-width) * 1) solid var(--color-disabled);
+		border: var(--border-width) solid var(--color-disabled);
 		border-right-width: calc(var(--border-width) * 25);
 		border-bottom: 0;
 		translate: calc(100% + (var(--border-width) * 4)) 0;
@@ -3038,11 +3016,11 @@ div.dataTables_wrapper div.dataTables_length select {
 /* --- shameless self-promo */
 .version-info .list-inline:after {
 	content: 'github.com/MichalSvatos | LCARS';
-	border-top: calc(var(--border-width) * 4) solid var(--color-background);
+	border-top: var(--border-width-thick) solid var(--color-background);
 }
 
 .version-info .list-inline > li + li {
-	border-top: calc(var(--border-width) * 4) solid var(--color-background);
+	border-top: var(--border-width-thick) solid var(--color-background);
 }
 
 .version-info .list-inline strong {
@@ -3058,7 +3036,7 @@ div.dataTables_wrapper div.dataTables_length select {
 	--pulse-color: var(--color-red-alert);
 	--pulse-color-background: var(--color-disabled);
 	padding: var(--gap25) var(--gap50);
-	border-left: calc(var(--border-width) * 4) solid var(--color-text-dark);
+	border-left: var(--border-width-thick) solid var(--color-text-dark);
 	color: #fff;
 	position: absolute;
 	inset: 0 0 0 auto;
@@ -3084,7 +3062,7 @@ div.dataTables_wrapper div.dataTables_length select {
 	align-items: center;
 	background-color: var(--color-background);
 	padding: var(--gap) var(--gap);
-	margin-top: calc(var(--border-width) * 1) !important;
+	margin-top: var(--border-width) !important;
 	border: var(--border-width) solid var(--color-installation-panel);
 	border-bottom: 0;
 	border-right: 0;
@@ -3124,7 +3102,7 @@ div.dataTables_wrapper div.dataTables_length select {
 .version-info p:after {
 	content: '';
 	background-color: rgba(222, 222, 222, 20%);
-	border-top: calc(var(--border-width) * 1) solid var(--color-background);
+	border-top: var(--border-width) solid var(--color-background);
 	position: absolute;
 	inset: calc(var(--border-width) * -2) 0 auto calc(var(--border-width) * -4);
 }
@@ -3137,7 +3115,7 @@ div.dataTables_wrapper div.dataTables_length select {
 	border-radius: 0;
 	margin-left: var(--gap50);
 	border: var(--border-width) solid var(--color-disabled);
-	font-family: monospace;
+	font-family: var(--font-family-mono);
 	font-size: 1.2rem;
 }
 
@@ -3255,7 +3233,7 @@ div.dataTables_wrapper div.dataTables_length select {
 #sysadmin .table > tbody > tr > td {
 	padding: var(--gap) var(--gap75) var(--gap50) var(--gap75);
 	text-transform: uppercase;
-	border: calc(var(--border-width) * 4) solid var(--color-background);
+	border: var(--border-width-thick) solid var(--color-background);
 	position: relative;
 	font-size: inherit;
 }
@@ -3298,12 +3276,12 @@ div.dataTables_wrapper div.dataTables_length select {
 }
 
 #sysadmin .table-bordered > tbody > tr > td:before {
-	height: calc(var(--border-width) * 4);
+	height: var(--border-width-thick);
 	inset: 0 0 auto 0;
 }
 
 #sysadmin .table-bordered > tbody > tr > td:after {
-	width: calc(var(--border-width) * 4);
+	width: var(--border-width-thick);
 	inset: 0 auto 0 0;
 }
 
@@ -3355,7 +3333,7 @@ div.dataTables_wrapper div.dataTables_length select {
 #sysadmin .box-warning {
 	padding: var(--gap25) var(--gap25);
 	margin-top: calc(var(--gap) * 2);
-	border: calc(var(--border-width) * 4) solid var(--color-quinternary);
+	border: var(--border-width-thick) solid var(--color-quinternary);
 	border-radius: var(--radius100);
 }
 
@@ -3585,7 +3563,7 @@ div.dataTables_wrapper div.dataTables_length select {
 .danger-area:after {
 	content: '';
 	position: absolute;
-	width: calc(var(--gap) * 1);
+	width: var(--gap);
 	height: calc(var(--gap) + (var(--border-width) * 2));
 	background-color: var(--color-background);
 	bottom: calc(var(--gap) * -1);
@@ -3602,7 +3580,7 @@ div.dataTables_wrapper div.dataTables_length select {
 	content: '';
 	position: absolute;
 	inset: auto calc(var(--gap) * -.25) calc(var(--border-width) * -8) auto;
-	width: calc(var(--gap) * 1);
+	width: var(--gap);
 	height: calc(var(--border-width) * 8);
 	background-color: var(--color-success-dark);
 	border-radius: 0 var(--radius100) var(--radius100) 0;
@@ -3782,12 +3760,6 @@ div.dataTables_wrapper div.dataTables_length select {
 	border-top-left-radius: 0;
 	border-top-right-radius: 0;
 	padding-left: calc(var(--gap) * 2);
-}
-
-
-/* OTHER ..... */
-.svg-inline--fa {
-	vertical-align: inherit;
 }
 
 /* --- notification "dot" */
@@ -4015,6 +3987,7 @@ div.dataTables_wrapper div.dataTables_length select {
 	border-radius: 0 var(--radius100) 0 0;
 }
 
+/* --- "arrows" */
 .daterangepicker .prev.available span,
 .daterangepicker .next.available span {
 	padding: 0;
@@ -4302,7 +4275,7 @@ table.dataTable {
 }
 
 .table.table-bordered.dataTable > tbody > tr + tr > td {
-	border-top: calc(var(--gap) / 4) solid var(--color-text-dark) !important;
+	border-top: var(--gap25) solid var(--color-text-dark) !important;
 }
 
 .table.table-bordered.dataTable > tbody > tr > td {
@@ -4315,9 +4288,9 @@ table.dataTable thead .sorting::before {
 	bottom: var(--gap);
 	right: var(--gap50);
 	display: block;
-	font-family: "Glyphicons Halflings";
-	opacity: 0.3;
-	font-size: 0.6em;
+	font-family: "Glyphicons Halflings", sans-serif;
+	opacity: .3;
+	font-size: .6em;
 }
 
 table.dataTable thead .sorting:after,
@@ -4325,13 +4298,13 @@ table.dataTable thead .sorting_asc:after,
 table.dataTable thead .sorting_desc:after,
 table.dataTable thead .sorting_asc_disabled:after,
 table.dataTable thead .sorting_desc_disabled:after {
-	opacity: 0.6;
+	opacity: .6;
 }
 
 table.dataTable thead .sorting:after {
-	opacity: 0.3;
+	opacity: .3;
 	content: "\25BD";
-	font-size: 0.6em;
+	font-size: .6em;
 }
 
 table.dataTable thead .sorting_asc::after {
@@ -4479,7 +4452,7 @@ table.dataTable thead .sorting_desc_disabled:after {
 }
 
 #all-queries td:nth-of-type(3) {
-    font-family: "Ubuntu Mono", Consolas, "Courier New", monospace;
+    font-family: var(--font-family-mono);
     font-weight: var(--font-light);
     color: var(--color-success);
 	text-transform: none;
@@ -4589,7 +4562,7 @@ table.dataTable thead .sorting::before {
 table[id="network-entries"] td:first-child a  {
 	background-color: var(--color-background);
     color: var(--color-success);
-    font-family: "Courier New", monospace;
+	font-family: var(--font-family-mono);
     display: inline-block;
     font-size: 1.2rem;
     padding: var(--gap25) var(--gap50);
@@ -4743,7 +4716,7 @@ table.dataTable tbody .selected th.select-checkbox::before {
 	min-width: calc(var(--gap) * 14);
 	padding: calc(var(--gap) * 1.5) var(--gap);
 	border: var(--border-width) solid var(--color-secondary);
-	border-left-width: calc(var(--border-width) * 4);
+	border-left-width: var(--border-width-thick);
 	border-radius: var(--radius100);
 	box-shadow: 0 0 0 100vmax rgb(0 0 0 / 60%);
 }
@@ -4822,7 +4795,7 @@ table.dataTable tbody .selected th.select-checkbox::before {
 	padding: 0;
 }
 
-.bs-actionsbox button.btn {
+.bs-actionsbox button.btn:not(.btn-success) {
 	background-color: var(--color-secondary);
 	color: var(--color-background);
 	font-weight: bold;
@@ -4837,16 +4810,6 @@ table.dataTable tbody .selected th.select-checkbox::before {
 	pointer-events: none;
 }
 
-.bs-actionsbox > button.btn-success {
-	background-color: var(--color-success-dark);
-	color: var(--color-success);
-}
-
-.bs-actionsbox > button.btn-success:hover {
-	background-color: var(--color-link) !important;
-    color: #fff;
-}
-
 .dropdown-menu.open .dropdown-menu li a span.text {
 	margin-right: 0;
 }
@@ -4854,8 +4817,7 @@ table.dataTable tbody .selected th.select-checkbox::before {
 .bs-actionsbox .btn-group {
 	display: flex;
 	flex-wrap: nowrap;
-	gap: calc(var(--gap) / 4);
-	border-bottom: .2rem solid var(--color-supplement02);
+	gap: var(--gap25);
 	padding-bottom: var(--gap);
 }
 
@@ -4945,7 +4907,6 @@ div[class*="alert-"][role="alert"]::after {
 div[class*="alert-"][role="alert"] button {
 	width: calc(var(--gap) * 2);
     height: calc(var(--gap) * 2);
-	line-height: 1;
 	overflow: hidden;
 	position: relative;
 	right: calc(var(--gap) * -3);
@@ -4979,6 +4940,7 @@ section code {
 	color: var(--color-success);
 	border-radius: var(--radius75);
 	padding-inline: var(--gap75);
+	font-family: var(--font-family-mono);
 }
 
 
