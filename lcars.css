@@ -92,23 +92,27 @@ html {
 
 /* --- Chrome & Safari scrollbar */
 html::-webkit-scrollbar,
-.wrapper::-webkit-scrollbar {
+.wrapper::-webkit-scrollbar,
+#output::-webkit-scrollbar {
 	width: var(--gap50);
 	height: var(--gap50);
 }
 
 html::-webkit-scrollbar-thumb,
-.wrapper::-webkit-scrollbar-thumb {
+.wrapper::-webkit-scrollbar-thumb,
+#output::-webkit-scrollbar-thumb {
 	background: var(--color-primary);
 	border-radius: var(--radius25);
 }
 
 html::-webkit-scrollbar-track,
-.wrapper::-webkit-scrollbar-track {
+.wrapper::-webkit-scrollbar-track,
+#output::-webkit-scrollbar-track {
 	background: var(--color-disabled);
 }
 
-.wrapper {
+.wrapper,
+#output {
 	scrollbar-color: var(--color-primary) var(--color-disabled);
 }
 
