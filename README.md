@@ -49,6 +49,9 @@ Check my other theme
 ***
 
 ## Changelog
+**1.2.1**
+- FIX - scrollbar colors
+
 **1.2.0**
 - NEW - SETTINGS / PRIVACY added LCARS panel
 - NEW - SETTINGS / WEB INTERFACE added LCARS panels

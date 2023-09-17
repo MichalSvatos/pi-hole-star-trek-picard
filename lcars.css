@@ -1,6 +1,6 @@
 /*
 	- Document: Pi-hole LCARS Star Trek Picard Theme
-	- Version:  1.2.0
+	- Version:  1.2.1
 	- Author:   @MichalSvatos (svatos.dev)
 	- Description: Star Trek Picard LCARS Theme for Pi-hole dashboard.
 	- Disclaimer: Due to fact that I have the access only to CSS I was forced to use some !importants and a lot of IDs. I'm sorry.
@@ -87,6 +87,39 @@
 
 html {
 	font-size: 62.5%;
+	scrollbar-color: var(--color-primary) var(--color-disabled); /* Firefox only scrollbar */
+}
+
+/* --- Chrome & Safari scrollbar */
+html::-webkit-scrollbar,
+.wrapper::-webkit-scrollbar {
+	width: var(--gap50);
+	height: var(--gap50);
+}
+
+html::-webkit-scrollbar-thumb,
+.wrapper::-webkit-scrollbar-thumb {
+	background: var(--color-primary);
+	border-radius: var(--radius25);
+}
+
+html::-webkit-scrollbar-track,
+.wrapper::-webkit-scrollbar-track {
+	background: var(--color-disabled);
+}
+
+.wrapper {
+	scrollbar-color: var(--color-primary) var(--color-disabled);
+}
+
+.layout-boxed .wrapper {
+	box-shadow: none;
+}
+
+@media (min-width: 768px) {
+	.layout-boxed .wrapper {
+		padding-inline: var(--gap25);
+	}
 }
 
 body {
@@ -105,12 +138,6 @@ h6 {
 	font-family: var(--font-family);
 	text-transform: uppercase;
 	font-weight: var(--font-bold);
-}
-
-@media (min-width: 768px) {
-	.layout-boxed .wrapper {
-		padding-inline: var(--gap25);
-	}
 }
 
 .sidebar-collapse {
