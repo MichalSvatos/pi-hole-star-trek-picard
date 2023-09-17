@@ -1,6 +1,6 @@
 /*
 	- Document: Pi-hole LCARS Star Trek Picard Theme
-	- Version:  1.1.0
+	- Version:  1.2.0
 	- Author:   @MichalSvatos (svatos.dev)
 	- Description: Star Trek Picard LCARS Theme for Pi-hole dashboard.
 	- Disclaimer: Due to fact that I have the access only to CSS I was forced to use some !importants and a lot of IDs. I'm sorry.
@@ -421,14 +421,20 @@ td > .form-group,
 .daterangepicker select.monthselect,
 .daterangepicker select.hourselect,
 .daterangepicker select.minuteselect,
-.select2-container--default .select2-search--dropdown .select2-search__field {
+.select2-container--default .select2-search--dropdown .select2-search__field,
+input[type="number"],
+select[id="tempunit-selector"],
+select[id="iCheckStyle"] {
 	border-color: var(--color-primary);
 	color: var(--color-tertiary-hover);
 	background-color: var(--color-disabled);
 	transition: background-color var(--transition), border-color var(--transition);
 }
 
-td > .form-group {
+td > .form-group,
+input[type="number"],
+select[id="tempunit-selector"],
+select[id="iCheckStyle"] {
 	border-width: 1px;
 	border-style: solid;
 	padding: 5px 10px; /* from form.less */
@@ -444,7 +450,10 @@ fieldset[disabled] .form-control {
 
 .form-control:focus,
 td > .form-group:focus,
-.select2-container--default .select2-search--dropdown .select2-search__field:focus {
+.select2-container--default .select2-search--dropdown .select2-search__field:focus,
+input[type="number"]:focus,
+select[id="tempunit-selector"]:focus,
+select[id="iCheckStyle"]:focus {
 	border-color: var(--color-tertiary-hover);
 	background-color: var(--color-background);
 	outline: none;
@@ -3684,8 +3693,10 @@ div.dataTables_wrapper div.dataTables_length select {
 	color: var(--color-danger-bright);
 }
 
-/* --- advanced settings */
-#dns form > .row:nth-child(2) h4 {
+/* --- headers + lcars panels (advanced settings, privacy)  */
+#dns form > .row:nth-child(2) h4,
+#privacy .box-header h3,
+#web > .row > div:first-child .box-header h3 {
 	color: var(--color-danger-bright);
 	padding-left: var(--gap);
 	padding-top: var(--gap25);
@@ -3700,7 +3711,11 @@ div.dataTables_wrapper div.dataTables_length select {
 
 @media (min-width: 768px) {
 	#dns form > .row:nth-child(2) h4::before,
-	#dns form > .row:nth-child(2) h4::after {
+	#dns form > .row:nth-child(2) h4::after,
+	#privacy .box-header h3::before,
+	#privacy .box-header h3::after,
+	#web > .row > div:first-child .box-header h3::before,
+	#web > .row > div:first-child .box-header h3::after {
 		content: '';
 		position: absolute;
 		inset: 0 auto auto 0;
@@ -3709,17 +3724,23 @@ div.dataTables_wrapper div.dataTables_length select {
 		background-color: hotpink;
 	}
 
-	#dns form > .row:nth-child(2) h4::before {
+	#dns form > .row:nth-child(2) h4::before,
+	#privacy .box-header h3::before,
+	#web > .row > div:first-child .box-header h3::before {
 		background-color: var(--color-primary);
 	}
 
-	#dns form > .row:nth-child(2) h4::after {
+	#dns form > .row:nth-child(2) h4::after,
+	#privacy .box-header h3::after,
+	#web > .row > div:first-child .box-header h3::after {
 		background-color: var(--color-background);
 		border-radius: var(--radius50) 0 0 0;
 	}
 }
 
-#dns form > .row:nth-child(2) h4 ~ p {
+#dns form > .row:nth-child(2) h4 ~ p,
+#privacy .box-body,
+#web > .row > div:first-child .box-body {
 	margin-top: 0;
 	padding-top: var(--gap);
 	padding-left: var(--gap);
@@ -3733,7 +3754,12 @@ div.dataTables_wrapper div.dataTables_length select {
 #dns form > .row:nth-child(2) h4:nth-of-type(2) ~ p:nth-of-type(6),
 #dns form > .row:nth-child(2) h4:nth-of-type(2) ~ p:nth-of-type(7),
 #dns form > .row:nth-child(2) h4:nth-of-type(2) ~ p:nth-of-type(8),
-#dns form > .row:nth-child(2) .form-group {
+#dns form > .row:nth-child(2) .form-group,
+#privacy .box-header h3,
+#privacy .box-body,
+#web > .row > div:first-child .box-header h3,
+#web > .row > div:first-child .box-body
+{
 	border-left: var(--border-width) solid var(--color-primary);
 }
 
@@ -3752,7 +3778,11 @@ div.dataTables_wrapper div.dataTables_length select {
 	#dns form > .row:nth-child(2) h4:nth-of-type(2) ~ p:nth-of-type(6),
 	#dns form > .row:nth-child(2) h4:nth-of-type(2) ~ p:nth-of-type(7),
 	#dns form > .row:nth-child(2) h4:nth-of-type(2) ~ p:nth-of-type(8),
-	#dns form > .row:nth-child(2) .form-group {
+	#dns form > .row:nth-child(2) .form-group,
+	#privacy .box-header h3,
+	#privacy .box-body,
+	#web > .row > div:first-child .box-header h3,
+	#web > .row > div:first-child .box-body {
 		border-left-width: calc(var(--border-panel-width) / 2);
 	}
 }
@@ -3774,13 +3804,24 @@ div.dataTables_wrapper div.dataTables_length select {
 	display: none;
 }
 
+#privacy .box-header,
+#web > .row > div:first-child .box-header {
+	padding: 0;
+}
+
+#privacy .box-header h3,
+#web > .row > div:first-child .box-header h3 {
+	display: block;
+}
+
 
 /* Double border text areas
    ========================================================== */
 
 #dns p,
 #dns .icheck-primary,
-#all-queries_wrapper ~ p {
+#all-queries_wrapper ~ p,
+#web > .row > div:nth-child(2) .box {
 	font-weight: 100;
 	line-height: 1.5;
 	letter-spacing: .015rem;
@@ -3791,7 +3832,8 @@ div.dataTables_wrapper div.dataTables_length select {
 #dns .table + p,
 #dns .col-lg-12 > .icheck-primary,
 #all-queries_wrapper ~ p,
-#all-queries_wrapper ~ p + ul {
+#all-queries_wrapper ~ p + ul,
+#web > .row > div:nth-child(2) .box {
 	padding: var(--gap);
 	border: calc(var(--border-width) * 2) double var(--color-disabled);
 	border-radius: var(--radius100);
@@ -3808,6 +3850,21 @@ div.dataTables_wrapper div.dataTables_length select {
 	border-top-left-radius: 0;
 	border-top-right-radius: 0;
 	padding-left: calc(var(--gap) * 2);
+}
+
+#web > .row > div:nth-child(2) .box {
+	margin-top: calc(var(--gap) * 2);
+}
+
+@media (min-width: 992px) {
+	#web > .row > div:nth-child(2) .box {
+		border-left: 0;
+		border-radius: 0 var(--radius100) var(--radius100) 0;
+	}
+}
+
+#web > .row > div:nth-child(2) .box-body {
+	padding: 0;
 }
 
 /* --- notification "dot" */

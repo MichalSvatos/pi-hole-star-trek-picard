@@ -49,6 +49,12 @@ Check my other theme
 ***
 
 ## Changelog
+**1.2.0**
+- NEW - SETTINGS / PRIVACY added LCARS panel
+- NEW - SETTINGS / WEB INTERFACE added LCARS panels
+- FIX - SETTINGS / WEB INTERFACE input and select styled
+- FIX - SETTINGS / DNS inputs styled
+
 **1.1.0**
 - NEW - DOMAINS page visual tweaks
 - NEW - updated _danger area_ on SYSTEM page with new animations
