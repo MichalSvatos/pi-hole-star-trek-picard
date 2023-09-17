@@ -49,6 +49,16 @@ Check my other theme
 ***
 
 ## Changelog
+**1.1.0**
+- NEW - DOMAINS page visual tweaks
+- NEW - updated _danger area_ on SYSTEM page with new animations
+- NEW - _Status_panel-47a_ updated with colors reflecting the actual state (active/disabled)
+- NEW - DISABLE BLOCKING / CUSTOM TIME modal window styled
+- FIX - DOMAINS page - checkbox labels on one line
+- FIX - _Show X entries_ vertical align
+- FIX - _Pagination_ margins
+- FIX - In some _dataTables_ added rounded corners to buttons (= not visually connected to other elements) 
+
 **1.0.1**
 - 🧹🗑️ Cleaning, tiny refactoring
 

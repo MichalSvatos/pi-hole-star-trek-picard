@@ -1,6 +1,6 @@
 /*
 	- Document: Pi-hole LCARS Star Trek Picard Theme
-	- Version:  1.0.1
+	- Version:  1.1.0
 	- Author:   @MichalSvatos (svatos.dev)
 	- Description: Star Trek Picard LCARS Theme for Pi-hole dashboard.
 	- Disclaimer: Due to fact that I have the access only to CSS I was forced to use some !importants and a lot of IDs. I'm sorry.
@@ -184,12 +184,14 @@ h6 {
 	background-color: var(--color-secondary-hover);
 }
 
-.btn-warning {
+.btn-warning,
+#add-group .btn-toolbar #add2black {
 	background-color: var(--color-supplement-01);
 	color: var(--color-danger-bright);
 }
 
-.btn-warning:hover {
+.btn-warning:hover,
+#add-group .btn-toolbar #add2black:hover {
 	background-color: var(--color-danger);
 	color: var(--color-background);
 }
@@ -258,13 +260,15 @@ h6 {
 }
 
 .btn-success,
-.bs-actionsbox > button.btn-success {
+.bs-actionsbox > button.btn-success,
+#add-group .btn-toolbar #add2white {
 	background-color: var(--color-success-dark);
 	color: var(--color-success);
 }
 
 .btn-success:hover,
-.bs-actionsbox > button.btn-success:hover {
+.bs-actionsbox > button.btn-success:hover,
+#add-group .btn-toolbar #add2white:hover {
 	background-color: var(--color-link) !important;
 	color: #fff;
 }
@@ -488,6 +492,12 @@ div.dataTables_wrapper div.dataTables_length select {
 	margin-inline: var(--gap25);
 }
 
+.dataTables_length[id="all-queries_length"],
+.dataTables_info[id="all-queries_info"] {
+	margin-top: var(--gap);
+	padding-top: 0;
+}
+
 /* -- select2 */
 .select2-container--default .select2-selection--single {
 	height: var(--form-fields-height);
@@ -629,6 +639,7 @@ div.dataTables_wrapper div.dataTables_length select {
 
 .pagination {
 	font-size: 1.6rem;
+	margin: var(--gap) 0 !important;
 }
 
 .pagination > li > a {
@@ -1874,8 +1885,17 @@ div.dataTables_wrapper div.dataTables_length select {
 }
 
 /* --- user panel blocks variants */
-.user-panel #status {
-	background-color: var(--color-disabled);
+.user-panel span[id="status"] {
+	background-color: var(--color-success-dark);
+	color: var(--color-success);
+}
+
+.user-panel span[id="status"]::before {
+	border-color: var(--color-success-dark);
+}
+
+.user-panel span[id="status"] svg path {
+	fill: var(--color-success);
 }
 
 .user-panel .info > span:has(.text-orange) {
@@ -1893,8 +1913,11 @@ div.dataTables_wrapper div.dataTables_length select {
 
 .user-panel .info > span:has(.text-red):before {
 	background-color: var(--color-text-dark);
-	color: var(--color-primary-text);
-	border-color: var(--color-secondary-hover);
+	border-color: var(--color-danger-bright);
+}
+
+.user-panel .info > span:has(.text-red) svg path {
+	fill: var(--color-red-alert);
 }
 
 /* --- collapsed */
@@ -2307,7 +2330,8 @@ div.dataTables_wrapper div.dataTables_length select {
 }
 
 /* --- box footer */
-.box-footer {
+.box-footer,
+#add-group .btn-toolbar {
 	border-top: calc(var(--border-width) * 2) double var(--color-background);
 	background-color: var(--color-disabled);
 	padding: var(--gap) var(--gap);
@@ -3333,8 +3357,14 @@ div.dataTables_wrapper div.dataTables_length select {
 #sysadmin .box-warning {
 	padding: var(--gap25) var(--gap25);
 	margin-top: calc(var(--gap) * 2);
-	border: var(--border-width-thick) solid var(--color-quinternary);
+	border: var(--border-width-thick) solid var(--color-supplement-01);
 	border-radius: var(--radius100);
+	transition: border-color var(--transition-slow), padding var(--transition-slow);
+}
+
+#sysadmin .box-warning:hover {
+	border-color: var(--color-quinternary);
+	padding: calc(var(--gap) * 1.5) var(--gap25);
 }
 
 @media (min-width: 768px) {
@@ -3343,13 +3373,13 @@ div.dataTables_wrapper div.dataTables_length select {
 		text-align: right;
 	}
 
-	#sysadmin .box-warning:before {
+	#sysadmin .box-warning::before {
 		content: "danger.area.74656";
 		display: flex;
 		align-items: flex-end;
 		width: calc(var(--gap) * 9);
 		min-height: calc(var(--gap) * 4);
-		background-color: var(--color-danger-bright);
+		background-color: var(--color-danger);
 		padding: var(--gap25) var(--gap75);
 		text-align: right;
 		position: absolute;
@@ -3361,6 +3391,29 @@ div.dataTables_wrapper div.dataTables_length select {
 		z-index: 1;
 		justify-content: flex-end;
 		inset: var(--gap) auto auto calc(var(--gap) * -9);
+		transition: background-color var(--transition-slow);
+	}
+
+	#sysadmin .box-warning:hover::before {
+		--pulse-color: #fff;
+		--pulse-color-background: var(--color-danger-bright);
+		animation: pulseBg 2s var(--transition-fast) infinite;
+	}
+}
+
+#sysadmin .box-warning::after {
+	content: '';
+	border: var(--border-width) solid var(--color-background);
+	border-radius: var(--radius75) 0 0 var(--radius75);
+	background-color: transparent;
+	position: absolute;
+	inset: calc(var(--gap25) * -1) calc(var(--gap25) * 32) calc(var(--gap25) * -1) calc(var(--gap25) * -1);
+	z-index: 0;
+}
+
+@media (min-width: 768px) {
+	#sysadmin .box-warning::after {
+		inset: calc(var(--gap25) * -1) calc(var(--gap25) * 32) calc(var(--gap25) * -1) calc(var(--gap25) * -10);
 	}
 }
 
@@ -3369,25 +3422,20 @@ div.dataTables_wrapper div.dataTables_length select {
 	z-index: 1;
 }
 
-#sysadmin .box-warning:after {
+#sysadmin .box-warning .box-body::after {
 	content: '';
-	border: var(--border-width) solid var(--color-background);
-	border-radius: 0 var(--radius75) var(--radius75) 0;
-	background-color: transparent;
+	width: calc(var(--gap) * 7);
+	font-size: 1rem;
+	color: var(--color-quinternary);
 	position: absolute;
-	inset: calc(var(--gap25) * -1) calc(var(--gap25) * -1) calc(var(--gap25) * -1) calc(var(--gap25) * 32);
-	z-index: 0;
+	inset: calc(var(--gap) * -1) var(--gap) auto auto;
+	transition: opacity var(--transition-slow);
+	opacity: 0;
 }
 
-#sysadmin .box-warning:after {
-	inset: calc(var(--gap25) * -1) calc(var(--gap25) * 32) calc(var(--gap25) * -1) calc(var(--gap25) * -1);
-	border-radius: var(--radius75) 0 0 var(--radius75);
-}
-
-@media (min-width: 768px) {
-	#sysadmin .box-warning:after {
-		inset: calc(var(--gap25) * -1) calc(var(--gap25) * 32) calc(var(--gap25) * -1) calc(var(--gap25) * -10);
-	}
+#sysadmin .box-warning:hover .box-body::after {
+	opacity: 1;
+	animation: runningDots 1s steps(10, end) infinite alternate;
 }
 
 
@@ -4158,6 +4206,206 @@ div.dataTables_wrapper div.dataTables_length select {
 }
 
 
+/* DOMAIN MANAGEMENT
+   ========================================================== */
+
+#add-group .nav-tabs-custom + div {
+	border-top: calc(var(--border-width) * 2) double var(--color-background);
+	background-color: var(--color-disabled);
+	padding: var(--gap) var(--gap) var(--gap) var(--gap);
+	margin-top: var(--gap);
+}
+
+#add-group .nav-tabs-custom + div strong {
+	margin-bottom: var(--gap);
+	color: var(--color-tertiary-hover);
+	text-transform: uppercase;
+}
+
+#add-group .btn-toolbar {
+	float: none !important;
+	display: flex;
+	justify-content: flex-end;
+	margin: 0;
+	border: 0;
+}
+
+#add-group .btn-toolbar #add2black {
+	background-color: var(--color-quinternary); /* adjusted color for better readability */
+}
+
+#domains-list {
+	margin-top: calc(var(--gap) * 2);
+}
+
+.filter_types span {
+	width: auto;
+	min-width: calc(var(--gap) * 7.5);
+}
+
+
+/* MODAL (currently only "custom disable timeout"?)
+   ========================================================== */
+
+div.modal {
+	background-color: rgba(0, 0, 0, .6);
+}
+
+@media (min-width: 768px) {
+	div.modal-sm {
+		width: 100%;
+		max-width: calc(var(--gap) * 30);
+	}
+}
+
+div.modal-content {
+	--_modal-border-color: var(--color-primary); /* ready for variants */
+	display: flex;
+	flex-direction: column;
+	padding: calc(var(--gap) * 1.5) calc(var(--gap) * 1.5) var(--gap) var(--gap50);
+	border-radius: var(--radius100) var(--radius100) var(--radius100) 0;
+	background-color: var(--color-background);
+	border: var(--border-width) solid var(--_modal-border-color);
+	border-width: calc(var(--border-width) * 2) calc(var(--border-width) * 2) calc(var(--border-width) * 28) calc(var(--border-width) * 14);
+}
+
+div.modal-content > div {
+	z-index: 1;
+}
+
+/* --- fake corners + horizontal lines */
+div.modal-content::before,
+div.modal-content::after {
+	content: '';
+	position: absolute;
+	z-index: 0;
+}
+
+div.modal-content::before {
+	background-color: var(--color-background);
+	inset: 0 0 calc(var(--gap) * -1) calc(var(--gap) * -1);
+	border-radius: var(--radius75) var(--radius75) var(--radius75) 0;
+}
+
+div.modal-content::after {
+	inset: calc(var(--gap) * 3) calc(var(--gap) * -.25) 0 calc(var(--gap) * -1.75);
+	border-block: calc(var(--border-width) * 2) solid var(--color-background);
+}
+
+div.modal-header {
+	padding: 0;
+	border: 0;
+	color: var(--color-danger-bright);
+	font-size: 2.25rem;
+	font-weight: var(--font-regular);
+	position: relative;
+}
+
+/* --- top lcars line */
+div.modal-header::before {
+	content: '';
+	position: absolute;
+	background-color: var(--color-quinternary);
+	inset: calc(var(--gap) * -2) calc(var(--gap) * 5) auto 0;
+	border: calc(var(--border-width) * 2) solid var(--color-background);
+	display: block;
+	height: var(--gap75);
+}
+
+div.modal-title {
+	border-top: calc(var(--border-width) * 2) solid var(--color-primary);
+}
+
+/* --- close button */
+div.modal-header .close {
+	margin-top: 0;
+	width: calc(var(--gap) * 4);
+	height: calc(var(--gap) * 2);
+	opacity: 1;
+	border: var(--border-width) solid var(--_modal-border-color);
+	border-top: 0;
+	border-right: 0;
+	border-radius: 0 0 0 var(--radius75);
+	color: var(--color-danger);
+	font-size: 1.25rem;
+	text-shadow: none;
+	transition: color var(--transition-fast);
+	position: absolute;
+	inset: calc(var(--gap) * -1.5) calc(var(--gap) * -1.5) auto auto;
+}
+
+div.modal-header .close:hover {
+	color: #fff;
+}
+
+div.modal-header .close::before {
+	content: attr(aria-label);
+	text-transform: uppercase;
+}
+
+div.modal-header .close span {
+	display: none;
+}
+
+div.modal-body {
+	padding: 0;
+	margin-top: calc(var(--gap) * 2);
+}
+
+div.modal-footer {
+	border: 0;
+	padding: 0;
+	margin-top: calc(var(--gap) * 2);
+	position: relative;
+}
+
+/* --- bottom numbers and pattern */
+div.modal-footer::before,
+div.modal-footer::after {
+	display: block;
+	position: absolute;
+}
+
+div.modal-footer::before {
+	background-color: var(--color-background);
+	content: '365•24•60';
+	inset: auto auto calc(var(--gap) * -4.5) calc(var(--gap) * -2.25);
+	font-size: 2.25rem;
+	height: calc(var(--gap) * 2.5);
+	overflow: hidden;
+	color: var(--color-supplement-01);
+	padding-left: var(--gap25);
+	padding-right: var(--gap50);
+	border: calc(var(--border-width) * 2) solid var(--_modal-border-color);
+	border-left: 0;
+}
+
+div.modal-footer::after {
+	content: '╿╿╽╿╿╿╿╿╿╿╿╽╽╿╿╿';
+	inset: auto auto calc(var(--gap) * -4) calc(var(--gap) * 4);
+	color: var(--color-text-dark);
+	font-size: 2rem;
+	letter-spacing: calc(var(--gap25) * -1);
+}
+
+input[id="customTimeout"] {
+	border-radius: var(--radius100) 0 0 var(--radius100);
+}
+
+input[id="customTimeout"] + .input-group-btn label.btn-default {
+	background-color: var(--color-primary);
+}
+
+input[id="customTimeout"] + .input-group-btn label.active {
+	outline: 0;
+	background-color: var(--color-danger-bright);
+}
+
+input[id="customTimeout"] + .input-group-btn label.active:hover {
+	background-color: var(--color-danger);
+}
+
+
 /* COLORS FOR GRAPHS, TABLES, ETC.
    ========================================================== */
 
@@ -4665,6 +4913,11 @@ table.dataTable .btn-xs {
 
 table.dataTable .btn-xs.btn-danger {
 	background-color: var(--color-quinternary);
+}
+
+.dataTable[id="network-entries"] .btn-xs,
+.dataTable[id="DHCPStaticLeasesTable"] .btn-xs {
+	border-radius: calc(var(--radius100) * 1.5);
 }
 
 table.table-bordered.dataTable th:last-child,
