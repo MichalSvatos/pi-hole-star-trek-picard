@@ -1,6 +1,6 @@
 /*
 	- Document: Pi-hole LCARS Star Trek Picard Theme
-	- Version:  1.3.1
+	- Version:  1.3.2
 	- Author:   @MichalSvatos (svatos.dev)
 	- Description: Star Trek Picard LCARS Theme for Pi-hole dashboard.
 	- Disclaimer: Due to fact that I have the access only to CSS I was forced to use some !importants and a lot of IDs. I'm sorry.
@@ -90,6 +90,7 @@
 html {
 	font-size: 62.5%;
 	scrollbar-color: var(--color-primary) var(--color-disabled); /* Firefox only scrollbar */
+	color-scheme: dark;
 }
 
 /* --- Chrome & Safari scrollbar */

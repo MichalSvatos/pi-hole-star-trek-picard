@@ -49,6 +49,9 @@ Check my other theme
 ***
 
 ## Changelog
+**1.3.2**
+- Add `color-scheme: dark` to avoid problems with browser's "Force dark mode" option (copy of the commit [7c2ebef](https://github.com/MichalSvatos/AdminLTE/commit/7c2ebef62b4c79844afed24e5b61d698e93618f1) )
+
 **1.3.1**
 - FIX - Scrollbar colors for CLIENTS `select2`
 
