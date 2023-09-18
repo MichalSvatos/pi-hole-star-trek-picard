@@ -49,6 +49,9 @@ Check my other theme
 ***
 
 ## Changelog
+**1.3.1**
+- FIX - Scrollbar colors for CLIENTS `select2`
+
 **1.3.0**
 - NEW - Completely redesigned much cooler looking FOOTER
 - FIX - Dynamic `border-radius` of the main sidebar through custom property 
