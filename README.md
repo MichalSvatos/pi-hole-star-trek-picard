@@ -5,7 +5,14 @@
 
 LCARS Theme for [Pi-hole](https://github.com/pi-hole/pi-hole) dashboard. Written completely from scratch.
 
-**🎉 🎉 🎉 VERSION 1.0 RELEASED! 🎉 🎉 🎉**
+***
+<h1 align="center">Announcement</h1>
+
+|                                                                                        🎉 🎉 🎉                                                                                        |
+|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
+| **I'm honored to announce that my Picard LCARS theme will be a part of the Pi-hole open-source project as an additional new official theme with the next update!<br/>Thank you guys!** |
+|                                             The plan is to keep this repo alive and updated. You'll still be able to install it manually.                                              |
+
 
 ## Installation
 #### ℹ️ This theme replaces the original blue LCARS theme
@@ -32,8 +39,6 @@ sudo git reset --hard
 ## Docker installation
 Run the same commands directly in the container as shown [here](https://github.com/MichalSvatos/pi-hole-lcars-next-gen/issues/1#issuecomment-1372378045).
 
-_Note: I didn't test it myself._
-
 ## Preview
 ![Pi-hole Star Trek Picard LCARS Theme Dashboard Preview](https://github.com/MichalSvatos/pi-hole-star-trek-picard/raw/main/previews/pi-hole-star-trek-picard-lcars-showcase.png)
 
@@ -49,6 +54,19 @@ Check my other theme
 ***
 
 ## Changelog
+**1.4.0**
+- **A couple of changes I made to unify the coding standards with the [Pi-hole/AdminLTE](https://github.com/pi-hole/AdminLTE/) (see [announcement](#announcement))**
+  - NEW - Tabs &rarr; spaces
+  - NEW - Added `.editorconfig`
+- FIX - The height of the QUERY TYPES and UPSTREAM SERVERS graph box on the dashboard is now dynamic + mobile version update
+- FIX - Sidebar spacing and round corners while using fluid layout
+- FIX - Notification number in the header aligned properly to the side
+- FIX - Network table hostname link color (for better readability)
+- FIX - FOOTER on Docker version (shameless self promo removed)
+- FIX - added min-height to `.content` to avoid incorrect footer position when TOOLS menu is open
+- FIX - corrected position of the "timer" number in the right corner (boxed vs fluid layout)
+- FIX - showed icons in the 4 status boxes on dashboard on mobile
+
 **1.3.2**
 - Add `color-scheme: dark` to avoid problems with browser's "Force dark mode" option (copy of the commit [7c2ebef](https://github.com/MichalSvatos/AdminLTE/commit/7c2ebef62b4c79844afed24e5b61d698e93618f1) )
 
@@ -57,7 +75,7 @@ Check my other theme
 
 **1.3.0**
 - NEW - Completely redesigned much cooler looking FOOTER
-- FIX - Dynamic `border-radius` of the main sidebar through custom property 
+- FIX - Dynamic `border-radius` of the main sidebar through custom property
 
 **1.2.1**
 - FIX - scrollbar colors
@@ -76,7 +94,7 @@ Check my other theme
 - FIX - DOMAINS page - checkbox labels on one line
 - FIX - _Show X entries_ vertical align
 - FIX - _Pagination_ margins
-- FIX - In some _dataTables_ added rounded corners to buttons (= not visually connected to other elements) 
+- FIX - In some _dataTables_ added rounded corners to buttons (= not visually connected to other elements)
 
 **1.0.1**
 - 🧹🗑️ Cleaning, tiny refactoring
