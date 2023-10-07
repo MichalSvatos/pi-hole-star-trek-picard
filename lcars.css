@@ -1,6 +1,6 @@
 /*
   - Document: Pi-hole LCARS Star Trek Picard Theme
-  - Version:  1.4.0
+  - Version:  1.4.1
   - Author:   @MichalSvatos (svatos.dev)
   - Description: Star Trek Picard LCARS Theme for Pi-hole dashboard.
   - Disclaimer: Due to fact that I have the access only to CSS I was forced to use some !importants and a lot of IDs. I'm sorry.
@@ -63,6 +63,9 @@
   --color-disabled: #1f2228;
   --color-supplement-01: #411e17;
   --color-supplement-02: #131315;
+  --color-supplement-02: #131315;
+  --color-supplement-03: #bcbc53;
+  --color-supplement-04: #a856a8;
 
   /* -- typo */
   --font-family: Antonio, Oswald, "Myriad Pro Cond", "Roboto Condensed", "Futura Condensed",
@@ -362,9 +365,11 @@ h6 {
 .login-box button.btn-primary {
   background-color: var(--color-disabled) !important;
   color: var(--color-link);
-  padding: var(--gap50) var(--gap);
+  padding: var(--gap50) var(--gap) var(--gap50) calc(var(--gap) * 3.5);
   position: relative;
   text-align: right;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .navbar-nav > .user-menu > .dropdown-menu > .user-footer .btn-link:hover,
@@ -5459,6 +5464,42 @@ section pre {
   border-color: var(--color-disabled);
   border-radius: var(--radius100);
   min-height: calc(var(--gap) * 6) !important;
+}
+
+#output {
+  color: var(--color-primary-text);
+}
+
+.log-red {
+  color: var(--color-red-alert);
+}
+
+.log-green {
+  color: var(--color-success);
+}
+
+.log-yellow {
+  color: var(--color-supplement-03);
+}
+
+.log-blue {
+  color: var(--color-link);
+}
+
+.log-purple {
+  color: var(--color-supplement-04);
+}
+
+.log-cyan {
+  color: var(--color-tertiary-hover);
+}
+
+.log-gray {
+  color: var(--color-primary-text);
+}
+
+.text-muted {
+  color: var(--color-primary);
 }
 
 td pre {

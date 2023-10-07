@@ -54,6 +54,10 @@ Check my other theme
 ***
 
 ## Changelog
+**1.4.1**
+- FIX - colored log has actually colors
+- FIX - menu and login buttons tweaks (padding + overflow, ellipsis)
+
 **1.4.0**
 - **A couple of changes I made to unify the coding standards with the [Pi-hole/AdminLTE](https://github.com/pi-hole/AdminLTE/) (see [announcement](#announcement))**
   - NEW - Tabs &rarr; spaces
