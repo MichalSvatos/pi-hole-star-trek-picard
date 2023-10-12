@@ -1,6 +1,6 @@
 /*
   - Document: Pi-hole LCARS Star Trek Picard Theme
-  - Version:  1.4.1
+  - Version:  1.4.2
   - Author:   @MichalSvatos (svatos.dev)
   - Description: Star Trek Picard LCARS Theme for Pi-hole dashboard.
   - Disclaimer: Due to fact that I have the access only to CSS I was forced to use some !importants and a lot of IDs. I'm sorry.
@@ -62,7 +62,6 @@
   --color-success-dark: #024b3b;
   --color-disabled: #1f2228;
   --color-supplement-01: #411e17;
-  --color-supplement-02: #131315;
   --color-supplement-02: #131315;
   --color-supplement-03: #bcbc53;
   --color-supplement-04: #a856a8;
@@ -394,19 +393,29 @@ h6 {
 
 /* CHECKBOXES, RADIOS
   ========================================================== */
+/* body[class*="lcars"][class*="lcars"] is a small dirty trick to avoid even more deep "!important hell" */
 
-body [class*="icheck-"] > label {
+body[class*="lcars"][class*="lcars"] [class*="icheck-"] > label {
   padding-left: calc(var(--gap) * 3.5) !important;
+  line-height: 22px; /* from icheck-bootstrap.min.css */
 }
 
-body [class*="icheck-"] > input:first-child:checked + input[type="hidden"] + label,
-body [class*="icheck-"] > input:first-child:checked + label {
+body[class*="lcars"][class*="lcars"]
+[class*="icheck-"]
+> input:first-child:checked
++ input[type="hidden"]
++ label,
+body[class*="lcars"][class*="lcars"] [class*="icheck-"] > input:first-child:checked + label {
   color: var(--color-tertiary-hover);
 }
 
 /* --- border */
-body [class*="icheck-"] > input:first-child + input[type="hidden"] + label:before,
-body [class*="icheck-"] > input:first-child + label:before {
+body[class*="lcars"][class*="lcars"]
+[class*="icheck-"]
+> input:first-child
++ input[type="hidden"]
++ label:before,
+body[class*="lcars"][class*="lcars"] [class*="icheck-"] > input:first-child + label:before {
   content: "";
   width: calc(var(--gap) * 2.5);
   margin-left: calc(var(--gap) * -3.5) !important;
@@ -415,27 +424,39 @@ body [class*="icheck-"] > input:first-child + label:before {
   transition:
     border-color var(--transition-fast),
     background-color var(--transition-fast);
+  height: 22px; /* from icheck-bootstrap.min.css */
 }
 
-body .icheck-primary > input:first-child:checked + input[type="hidden"] + label:before,
-body .icheck-primary > input:first-child:checked + label:before {
+body[class*="lcars"][class*="lcars"]
+.icheck-primary
+> input:first-child:checked
++ input[type="hidden"]
++ label:before,
+body[class*="lcars"][class*="lcars"] .icheck-primary > input:first-child:checked + label:before {
   background-color: transparent;
   border-color: var(--color-success-dark);
 }
 
-body
+body[class*="lcars"][class*="lcars"]
 [class*="icheck-"]
 > input:first-child:not(:checked):not(:disabled):hover
 + input[type="hidden"]
 + label:before,
-body [class*="icheck-"] > input:first-child:not(:checked):not(:disabled):hover + label:before {
+body[class*="lcars"][class*="lcars"]
+[class*="icheck-"]
+> input:first-child:not(:checked):not(:disabled):hover
++ label:before {
   border-width: calc(var(--border-width) * 2);
   border-color: var(--color-secondary);
 }
 
 /* --- switch */
-body [class*="icheck-"] > input:first-child + input[type="hidden"] + label:after,
-body [class*="icheck-"] > input:first-child + label:after {
+body[class*="lcars"][class*="lcars"]
+[class*="icheck-"]
+> input:first-child
++ input[type="hidden"]
++ label:after,
+body[class*="lcars"][class*="lcars"] [class*="icheck-"] > input:first-child + label:after {
   content: "";
   background-color: var(--color-primary);
   width: var(--gap75);
@@ -445,8 +466,12 @@ body [class*="icheck-"] > input:first-child + label:after {
   transition: inset var(--transition);
 }
 
-body [class*="icheck-"] > input:first-child:checked + input[type="hidden"] + label:after,
-body [class*="icheck-"] > input:first-child:checked + label:after {
+body[class*="lcars"][class*="lcars"]
+[class*="icheck-"]
+> input:first-child:checked
++ input[type="hidden"]
++ label:after,
+body[class*="lcars"][class*="lcars"] [class*="icheck-"] > input:first-child:checked + label:after {
   background-color: var(--color-success);
   width: var(--gap75);
   height: 1.4rem;
@@ -456,28 +481,45 @@ body [class*="icheck-"] > input:first-child:checked + label:after {
 }
 
 /* --- radios */
-body [class*="icheck-"] > input[type="radio"]:first-child + input[type="hidden"] + label:before,
-body [class*="icheck-"] > input[type="radio"]:first-child + label:before {
+body[class*="lcars"][class*="lcars"]
+[class*="icheck-"]
+> input[type="radio"]:first-child
++ input[type="hidden"]
++ label:before,
+body[class*="lcars"][class*="lcars"]
+[class*="icheck-"]
+> input[type="radio"]:first-child
++ label:before {
   border-radius: 0;
 }
 
-body [class*="icheck-"] > input[type="radio"]:first-child + input[type="hidden"] + label:after,
-body [class*="icheck-"] > input[type="radio"]:first-child + label:after {
+body[class*="lcars"][class*="lcars"]
+[class*="icheck-"]
+> input[type="radio"]:first-child
++ input[type="hidden"]
++ label:after,
+body[class*="lcars"][class*="lcars"]
+[class*="icheck-"]
+> input[type="radio"]:first-child
++ label:after {
   background-color: var(--color-disabled);
   width: calc(var(--gap) * 1.5);
   inset: var(--border-width-thick) auto 0 var(--border-width-thick);
 }
 
-body
+body[class*="lcars"][class*="lcars"]
 [class*="icheck-"]
 > input[type="radio"]:first-child:checked
 + input[type="hidden"]
 + label:after,
-body [class*="icheck-"] > input[type="radio"]:first-child:checked + label:after {
+body[class*="lcars"][class*="lcars"]
+[class*="icheck-"]
+> input[type="radio"]:first-child:checked
++ label:after {
   background-color: var(--color-success);
 }
 
-body [class*="icheck-"] > input:first-child:focus + label:before {
+body[class*="lcars"][class*="lcars"] [class*="icheck-"] > input:first-child:focus + label:before {
   outline-color: transparent;
 }
 
@@ -3145,7 +3187,7 @@ div.dataTables_wrapper div.dataTables_length select {
   height: var(--gap50);
 }
 
-.version-info .list-inline {
+.version-info ul[class*="list-"] {
   display: flex;
   flex-direction: column;
   margin: 0;
@@ -3156,7 +3198,7 @@ div.dataTables_wrapper div.dataTables_length select {
 }
 
 @media (min-width: 992px) {
-  .version-info .list-inline {
+  .version-info ul[class*="list-"] {
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-between;
@@ -3164,8 +3206,8 @@ div.dataTables_wrapper div.dataTables_length select {
   }
 }
 
-.version-info .list-inline > li,
-.version-info .list-inline::after {
+.version-info ul[class*="list-"] > li,
+.version-info ul[class*="list-"]::after {
   padding: var(--gap25) calc(var(--gap) * 8) var(--gap25) var(--gap);
   text-transform: uppercase;
   color: var(--color-primary-text);
@@ -3176,21 +3218,21 @@ div.dataTables_wrapper div.dataTables_length select {
 }
 
 @media (min-width: 992px) {
-  .version-info .list-inline > li,
-  .version-info .list-inline::after {
+  .version-info ul[class*="list-"] > li,
+  .version-info ul[class*="list-"]::after {
     width: calc(50% - var(--gap25));
   }
 }
 
-.version-info .list-inline > li::after,
-.version-info .list-inline > li::before {
+.version-info ul[class*="list-"] > li::after,
+.version-info ul[class*="list-"] > li::before {
   content: "";
   position: absolute;
   inset: 0;
   pointer-events: none;
 }
 
-.version-info .list-inline > li::before {
+.version-info ul[class*="list-"] > li::before {
   border: var(--border-width) solid var(--color-disabled);
   border-right-width: calc(var(--border-width) * 25);
   border-bottom: 0;
@@ -3198,7 +3240,7 @@ div.dataTables_wrapper div.dataTables_length select {
   z-index: 1;
 }
 
-.version-info .list-inline > li::after {
+.version-info ul[class*="list-"] > li::after {
   --color-footer-scanner: var(--color-primary);
   display: block;
   height: calc(var(--gap25));
@@ -3219,17 +3261,17 @@ div.dataTables_wrapper div.dataTables_length select {
   animation: footerScanner 20s var(--transition-function) infinite;
 }
 
-.version-info .list-inline > li:nth-child(2)::after {
+.version-info ul[class*="list-"] > li:nth-child(2)::after {
   animation-delay: 2s;
   animation-duration: 16s;
 }
 
-.version-info .list-inline > li:nth-child(3)::after {
+.version-info ul[class*="list-"] > li:nth-child(3)::after {
   animation-delay: 1s;
   animation-duration: 12s;
 }
 
-.version-info .list-inline > li:nth-child(4)::after {
+.version-info ul[class*="list-"] > li:nth-child(4)::after {
   animation-delay: 0.75s;
   animation-duration: 18s;
 }
@@ -3257,7 +3299,7 @@ div.dataTables_wrapper div.dataTables_length select {
 }
 
 /* --- fake corner */
-.version-info .list-inline::before {
+.version-info ul[class*="list-"]::before {
   content: "";
   height: var(--gap);
   background-color: var(--color-background);
@@ -3266,7 +3308,7 @@ div.dataTables_wrapper div.dataTables_length select {
   border-radius: var(--radius100) 0 0 0;
 }
 
-.version-info .list-inline strong {
+.version-info ul[class*="list-"] strong {
   font-weight: var(--font-regular);
 }
 
@@ -3381,7 +3423,7 @@ div.dataTables_wrapper div.dataTables_length select {
 
 .version-info p code a {
   display: block;
-  padding: var(--gap50) var(--gap);
+  padding: var(--gap25) var(--gap);
   color: var(--color-danger-bright) !important;
 }
 
@@ -5414,7 +5456,7 @@ div.dt-buttons {
   ========================================================== */
 
 div[class*="alert-"][role="alert"] {
-  border-radius: var(--radius100) 0 0 var(--radius100);
+  border-radius: var(--radius50);
   color: var(--color-text-dark) !important;
   padding-right: calc(var(--gap) * 4);
   position: relative;
@@ -5429,14 +5471,14 @@ div[class*="alert-"][role="alert"]::after {
 
 div[class*="alert-"][role="alert"]::before {
   inset: 0 0 0 auto;
-  width: calc(var(--gap) * 4.3);
+  width: calc(var(--gap) * 4);
   background-color: var(--color-background);
   opacity: 0.5;
 }
 
 div[class*="alert-"][role="alert"]::after {
   inset: 0 calc(var(--gap) * 4) 0 auto;
-  width: var(--gap25);
+  width: var(--border-width);
   background-color: var(--color-background);
 }
 
@@ -5446,13 +5488,49 @@ div[class*="alert-"][role="alert"] button {
   overflow: hidden;
   position: relative;
   right: calc(var(--gap) * -3);
-  font-size: 5rem;
+  font-size: 4rem;
   line-height: 0;
+  text-shadow: none;
+  opacity: 1;
 }
 
 div[class*="alert-"][role="alert"] h4 {
   font-size: 2.25rem;
   vertical-align: middle;
+}
+
+/* --- color variants */
+.bg-aqua,
+.callout.callout-info,
+.alert-info,
+.label-info,
+.modal-info .modal-body {
+  background-color: var(--color-link) !important;
+}
+
+.bg-red,
+.callout.callout-danger,
+.alert-danger,
+.alert-error,
+.label-danger,
+.modal-danger .modal-body {
+  background-color: var(--color-danger) !important;
+}
+
+.bg-green,
+.callout.callout-success,
+.alert-success,
+.label-success,
+.modal-success .modal-body {
+  background-color: var(--color-success) !important;
+}
+
+.bg-yellow,
+.callout.callout-warning,
+.alert-warning,
+.label-warning,
+.modal-warning .modal-body {
+  background-color: var(--color-supplement-03) !important;
 }
 
 /* CODE

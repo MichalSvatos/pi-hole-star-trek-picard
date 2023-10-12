@@ -54,6 +54,11 @@ Check my other theme
 ***
 
 ## Changelog
+**1.4.2**
+- FIX - checkboxes and radios for both `lcars` classes
+- FIX - more general selector for footer styling `.list-inline` --> `ul[class*="list-"]`
+- FIX - alert colors, border-radius and close button styling
+
 **1.4.1**
 - FIX - colored log has actually colors
 - FIX - menu and login buttons tweaks (padding + overflow, ellipsis)
