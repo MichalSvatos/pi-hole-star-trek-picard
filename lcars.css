@@ -1,6 +1,6 @@
 /*
   - Document: Pi-hole LCARS Star Trek Picard Theme
-  - Version:  1.4.2
+  - Version:  1.4.3
   - Author:   @MichalSvatos (svatos.dev)
   - Description: Star Trek Picard LCARS Theme for Pi-hole dashboard.
   - Disclaimer: Due to fact that I have the access only to CSS I was forced to use some !importants and a lot of IDs. I'm sorry.
@@ -393,29 +393,19 @@ h6 {
 
 /* CHECKBOXES, RADIOS
   ========================================================== */
-/* body[class*="lcars"][class*="lcars"] is a small dirty trick to avoid even more deep "!important hell" */
 
-body[class*="lcars"][class*="lcars"] [class*="icheck-"] > label {
+body[class*="lcars"] [class*="icheck-"] > label {
   padding-left: calc(var(--gap) * 3.5) !important;
-  line-height: 22px; /* from icheck-bootstrap.min.css */
 }
 
-body[class*="lcars"][class*="lcars"]
-[class*="icheck-"]
-> input:first-child:checked
-+ input[type="hidden"]
-+ label,
-body[class*="lcars"][class*="lcars"] [class*="icheck-"] > input:first-child:checked + label {
+body[class*="lcars"] [class*="icheck-"] > input:first-child:checked + input[type="hidden"] + label,
+body[class*="lcars"] [class*="icheck-"] > input:first-child:checked + label {
   color: var(--color-tertiary-hover);
 }
 
 /* --- border */
-body[class*="lcars"][class*="lcars"]
-[class*="icheck-"]
-> input:first-child
-+ input[type="hidden"]
-+ label:before,
-body[class*="lcars"][class*="lcars"] [class*="icheck-"] > input:first-child + label:before {
+body[class*="lcars"] [class*="icheck-"] > input:first-child + input[type="hidden"] + label:before,
+body[class*="lcars"] [class*="icheck-"] > input:first-child + label:before {
   content: "";
   width: calc(var(--gap) * 2.5);
   margin-left: calc(var(--gap) * -3.5) !important;
@@ -424,25 +414,24 @@ body[class*="lcars"][class*="lcars"] [class*="icheck-"] > input:first-child + la
   transition:
     border-color var(--transition-fast),
     background-color var(--transition-fast);
-  height: 22px; /* from icheck-bootstrap.min.css */
 }
 
-body[class*="lcars"][class*="lcars"]
+body[class*="lcars"]
 .icheck-primary
 > input:first-child:checked
 + input[type="hidden"]
 + label:before,
-body[class*="lcars"][class*="lcars"] .icheck-primary > input:first-child:checked + label:before {
+body[class*="lcars"] .icheck-primary > input:first-child:checked + label:before {
   background-color: transparent;
   border-color: var(--color-success-dark);
 }
 
-body[class*="lcars"][class*="lcars"]
+body[class*="lcars"]
 [class*="icheck-"]
 > input:first-child:not(:checked):not(:disabled):hover
 + input[type="hidden"]
 + label:before,
-body[class*="lcars"][class*="lcars"]
+body[class*="lcars"]
 [class*="icheck-"]
 > input:first-child:not(:checked):not(:disabled):hover
 + label:before {
@@ -451,12 +440,8 @@ body[class*="lcars"][class*="lcars"]
 }
 
 /* --- switch */
-body[class*="lcars"][class*="lcars"]
-[class*="icheck-"]
-> input:first-child
-+ input[type="hidden"]
-+ label:after,
-body[class*="lcars"][class*="lcars"] [class*="icheck-"] > input:first-child + label:after {
+body[class*="lcars"] [class*="icheck-"] > input:first-child + input[type="hidden"] + label:after,
+body[class*="lcars"] [class*="icheck-"] > input:first-child + label:after {
   content: "";
   background-color: var(--color-primary);
   width: var(--gap75);
@@ -466,12 +451,12 @@ body[class*="lcars"][class*="lcars"] [class*="icheck-"] > input:first-child + la
   transition: inset var(--transition);
 }
 
-body[class*="lcars"][class*="lcars"]
+body[class*="lcars"]
 [class*="icheck-"]
 > input:first-child:checked
 + input[type="hidden"]
 + label:after,
-body[class*="lcars"][class*="lcars"] [class*="icheck-"] > input:first-child:checked + label:after {
+body[class*="lcars"] [class*="icheck-"] > input:first-child:checked + label:after {
   background-color: var(--color-success);
   width: var(--gap75);
   height: 1.4rem;
@@ -481,45 +466,36 @@ body[class*="lcars"][class*="lcars"] [class*="icheck-"] > input:first-child:chec
 }
 
 /* --- radios */
-body[class*="lcars"][class*="lcars"]
+body[class*="lcars"]
 [class*="icheck-"]
 > input[type="radio"]:first-child
 + input[type="hidden"]
 + label:before,
-body[class*="lcars"][class*="lcars"]
-[class*="icheck-"]
-> input[type="radio"]:first-child
-+ label:before {
+body[class*="lcars"] [class*="icheck-"] > input[type="radio"]:first-child + label:before {
   border-radius: 0;
 }
 
-body[class*="lcars"][class*="lcars"]
+body[class*="lcars"]
 [class*="icheck-"]
 > input[type="radio"]:first-child
 + input[type="hidden"]
 + label:after,
-body[class*="lcars"][class*="lcars"]
-[class*="icheck-"]
-> input[type="radio"]:first-child
-+ label:after {
+body[class*="lcars"] [class*="icheck-"] > input[type="radio"]:first-child + label:after {
   background-color: var(--color-disabled);
   width: calc(var(--gap) * 1.5);
   inset: var(--border-width-thick) auto 0 var(--border-width-thick);
 }
 
-body[class*="lcars"][class*="lcars"]
+body[class*="lcars"]
 [class*="icheck-"]
 > input[type="radio"]:first-child:checked
 + input[type="hidden"]
 + label:after,
-body[class*="lcars"][class*="lcars"]
-[class*="icheck-"]
-> input[type="radio"]:first-child:checked
-+ label:after {
+body[class*="lcars"] [class*="icheck-"] > input[type="radio"]:first-child:checked + label:after {
   background-color: var(--color-success);
 }
 
-body[class*="lcars"][class*="lcars"] [class*="icheck-"] > input:first-child:focus + label:before {
+body[class*="lcars"] [class*="icheck-"] > input:first-child:focus + label:before {
   outline-color: transparent;
 }
 
@@ -1624,15 +1600,6 @@ div.dataTables_wrapper div.dataTables_length select {
 }
 
 /* --- additional visual tweaks */
-.navbar-custom-menu > .navbar-nav > li > .dropdown-menu::after {
-  content: "LCARS theme by @MichalSvatos";
-  text-transform: uppercase;
-  font-size: 1rem;
-  position: absolute;
-  inset: auto auto var(--gap25) var(--gap);
-  color: var(--color-secondary);
-}
-
 @media (min-width: 768px) {
   .navbar-nav > .user-menu > .dropdown-menu > li.user-header::before {
     content: "";
@@ -5187,6 +5154,24 @@ table[id="network-entries"] td:nth-child(4) a:not(:hover) {
 #client-frequency .table-responsive .table-bordered,
 #client-frequency-blocked .table-responsive .table-bordered {
   border: 0;
+}
+
+@media (min-width: 992px) {
+  /* --- fix for tables in TOOLS/AUDIT LOG */
+  .page-header + .row:has(#domain-frequency),
+  .page-header + .row:has(#client-frequency) {
+    flex-wrap: wrap;
+  }
+
+  .page-header + .row #domain-frequency .table-responsive .table-bordered tr td:nth-child(1),
+  .page-header + .row #ad-frequency .table-responsive .table-bordered tr td:nth-child(1) {
+    width: 70%;
+  }
+
+  .page-header + .row #domain-frequency .table-responsive .table-bordered tr td:nth-child(3),
+  .page-header + .row #ad-frequency .table-responsive .table-bordered tr td:nth-child(3) {
+    white-space: nowrap;
+  }
 }
 
 /* --- table "processing..." loader */
