@@ -5,28 +5,25 @@
 
 LCARS Theme for [Pi-hole](https://github.com/pi-hole/pi-hole) dashboard. Written completely from scratch.
 
+## ℹ️ Officially part of the Pi-hole project
+Since [web v5.21](https://github.com/pi-hole/web/releases/tag/v5.21) you can choose new _Star Trek Picard LCARS theme (dark)_ in _SETTINGS/WEB INTERFACE_.
+
 ***
-<h1 align="center">Announcement</h1>
 
-|                                                                                        🎉 🎉 🎉                                                                                        |
-|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| **I'm honored to announce that my Picard LCARS theme will be a part of the Pi-hole open-source project as an additional new official theme with the next update!<br/>Thank you guys!** |
-|                                             The plan is to keep this repo alive and updated. You'll still be able to install it manually.                                              |
-
-
-## Installation
-#### ℹ️ This theme replaces the original blue LCARS theme
-Type the following commands into SSH, line by line.
+## Manual installation
+Type the following commands into SSH, line by line to install the newest version.
 
 ```
 cd /var/www/html/admin/style/themes/
 sudo git clone https://github.com/MichalSvatos/pi-hole-star-trek-picard.git
-sudo rm -f lcars.css
-sudo cp pi-hole-star-trek-picard/lcars.css .
+sudo rm -f lcars-picard.css
+sudo cp pi-hole-star-trek-picard/lcars-picard.css .
 sudo rm -rf pi-hole-star-trek-picard
 ```
 
 ⚠️ Check the trailing " ." on the 3rd line (it's not a typo - it means copy to current directory).
+
+ℹ️ For WEB INTERFACE version older than 5.21, use `lcars.css` in the code above. That will replace the original blue LCARS theme.
 
 ## Uninstall/Revert
 Type the following commands into SSH, line by line.
@@ -264,6 +261,13 @@ Check my other theme
 ## Thanks to ...
 - [meWho.com](https://mewho.com) - creator of the famous SYSTEM47 screensaver and various LCARS projects
 - [Jacob Bates](https://github.com/jacobbates) for this installation process
+
+## Like my work?️
+Just **spread the word**. But if you feel like it, any donations are highly appreciated ❤️!
+
+#### Monero
+![Monero QR code](https://github.com/MichalSvatos/pi-hole-star-trek-picard/raw/main/imgs/qr-monero.png)
+`82cdV2a1RU34pnv7x4tQtV4pTv1wgM5DjFEM1SQz8keF2z6ZidSbpNq51p8S3NMdYwh5PecSRBuSkAthbEmJUisoHVj6W8o`
 
 ---
 ### License
