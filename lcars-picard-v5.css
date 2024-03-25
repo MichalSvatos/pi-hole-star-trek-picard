@@ -1,6 +1,6 @@
 /*
   - Document: Pi-hole LCARS Star Trek Picard Theme
-  - Version:  2.0.0 (Pi-hole v6)
+  - Version:  1.4.3
   - Author:   @MichalSvatos (svatos.dev)
   - Description: Star Trek Picard LCARS Theme for Pi-hole dashboard.
   - Disclaimer: Due to fact that I have the access only to CSS I was forced to use some !importants and a lot of IDs. I'm sorry.
@@ -180,10 +180,6 @@ h6 {
 
 .svg-inline--fa {
   vertical-align: inherit;
-}
-
-svg:not(:host).svg-inline--fa, svg:not(:root).svg-inline--fa {
-  box-sizing: border-box;
 }
 
 /* BUTTONS
@@ -1835,7 +1831,6 @@ div.dataTables_wrapper div.dataTables_length select {
 
 .sidebar-menu li > a > .pull-right-container {
   right: 0;
-  margin-top: 0;
 }
 
 .treeview .pull-right-container > svg {
@@ -1922,45 +1917,6 @@ div.dataTables_wrapper div.dataTables_length select {
   > span {
     padding: var(--gap50) var(--gap);
   }
-}
-
-/* --- labels */
-.sidebar-menu .pull-right-container {
-  display: flex;
-  position: absolute;
-  inset: 50% 0 auto auto;
-  translate: 0 -50%;
-}
-
-.label {
-  min-width: calc(var(--gap) * 2);
-  border-radius: 100vmax;
-}
-
-.sidebar-menu > li .label {
-  border-radius: 100vmax 0 0 100vmax;
-  margin-right: 0;
-}
-
-.sidebar-menu > li .label.label-primary,
-.sidebar-menu > li .label.bg-blue,
-.sidebar-menu > li .label.bg-yellow {
-  background-color: var(--color-disabled) !important;
-  color: var(--color-primary-text) !important;
-}
-
-.sidebar-menu > li .label.bg-green {
-  color: var(--color-success-dark) !important;
-}
-
-.sidebar-menu > li .label.bg-red {
-  background-color: var(--color-danger-bright) !important;
-  color: var(--color-quinternary) !important;
-}
-
-.sidebar-menu .label + .label {
-  border-radius: 0;
-  margin-left: var(--gap25);
 }
 
 /* USER PANEL (status)
@@ -2424,10 +2380,6 @@ div.dataTables_wrapper div.dataTables_length select {
   box-shadow: none;
 }
 
-.box {
-  overflow: visible;
-}
-
 #queries-over-time,
 #clients {
   border: var(--border-width-thick) solid var(--color-primary);
@@ -2502,12 +2454,6 @@ div.dataTables_wrapper div.dataTables_length select {
 .box-header .box-title {
   font-size: 2.25rem;
   font-weight: var(--font-regular);
-}
-
-.zoom-info {
-  position: relative;
-  z-index: 1;
-  margin-right: var(--gap25);
 }
 
 .box-body {
@@ -3369,7 +3315,7 @@ div.dataTables_wrapper div.dataTables_length select {
 }
 
 /* --- installation panel */
-#update-hint {
+.version-info p {
   --color-installation-panel: var(--color-danger);
   display: flex;
   align-items: center;
@@ -3387,7 +3333,7 @@ div.dataTables_wrapper div.dataTables_length select {
   height: calc(var(--gap) * 3.5);
 }
 
-#update-hint::before {
+.version-info p::before {
   content: "";
   background: var(--color-installation-panel);
   width: var(--gap);
@@ -3407,7 +3353,7 @@ div.dataTables_wrapper div.dataTables_length select {
 }
 
 @media (min-width: 992px) {
-  #update-hint::before {
+  .version-info p::before {
     content: "installation instructions";
     width: auto;
     padding-left: var(--gap);
@@ -3419,7 +3365,15 @@ div.dataTables_wrapper div.dataTables_length select {
   }
 }
 
-#update-hint code {
+.version-info p::after {
+  content: "";
+  background-color: rgba(222, 222, 222, 20%);
+  border-top: var(--border-width) solid var(--color-background);
+  position: absolute;
+  inset: calc(var(--border-width) * -2) 0 auto calc(var(--border-width) * -4);
+}
+
+.version-info p code {
   text-transform: none;
   background-color: transparent;
   padding: 0;
@@ -3430,35 +3384,19 @@ div.dataTables_wrapper div.dataTables_length select {
   font-size: 1.5rem;
 }
 
-#update-hint code:hover {
+.version-info p code:hover {
   border-color: var(--color-red-alert);
 }
 
-#update-hint code a {
+.version-info p code a {
   display: block;
   padding: var(--gap25) var(--gap);
   color: var(--color-danger-bright) !important;
 }
 
-#update-hint code:hover a {
+.version-info p code:hover a {
   background-color: var(--color-disabled);
   color: #fff !important;
-}
-
-/* --- installation panel - empty */
-#update-hint:empty {
-  --color-installation-panel: var(--color-tertiary);
-}
-
-@media (min-width: 992px) {
-  #update-hint:empty::before {
-    content: "Components status";
-  }
-}
-
-#update-hint:empty::after {
-  content: "No new updates available";
-  color: var(--color-secondary);
 }
 
 /* NAV CUSTOM TABS (settings page)
@@ -4194,7 +4132,6 @@ div.dataTables_wrapper div.dataTables_length select {
   right: calc(var(--gap) * 2.5 - var(--border-width));
   top: 0;
   margin: 0;
-  translate: 0;
 }
 
 /* DATEPICKER
@@ -5411,54 +5348,6 @@ table.dataTable tbody .selected th.select-checkbox::before {
 .dropdown-menu.open .dropdown-menu li a:hover::before,
 .dropdown-menu.open .dropdown-menu li a.selected::before {
   opacity: 1;
-}
-
-.dropdown-menu #advanced-info {
-  padding-left: calc(var(--gap) * 5);
-  border-block: 0;
-  border-right: var(--border-panel-width) solid var(--color-tertiary);
-  position: relative;
-  text-transform: uppercase;
-  color: var(--color-secondary);
-}
-
-@media (min-width: 768px) {
-  .dropdown-menu #advanced-info {
-    border-right-width: calc(var(--border-panel-width) - (var(--gap50)));
-  }
-}
-
-.dropdown-menu #advanced-info::before,
-.dropdown-menu #advanced-info::after {
-  content: "";
-  position: absolute;
-}
-
-.dropdown-menu #advanced-info::before {
-  width: var(--border-panel-width);
-  height: var(--border-width);
-  inset: 0 calc(var(--border-panel-width) * -1) auto auto;
-  background-color: var(--color-background);
-}
-
-.dropdown-menu #advanced-info::after {
-  width: calc(var(--gap50) * 33);
-  inset: 50% auto 0 calc(var(--gap) * 3);
-  background-color: transparent;
-  height: 100%;
-  translate: 0 -50%;
-  border: var(--border-width) solid var(--color-supplement-02);
-  border-right: 0;
-  border-radius: 100vmax 0 0 100vmax;
-  z-index: -1;
-}
-
-.dropdown-menu #advanced-info .fa-lock {
-  color: var(--color-success);
-}
-
-.dropdown-menu #advanced-info .fa-lock-open {
-  color: var(--color-danger-bright);
 }
 
 .bootstrap-select.show-tick .dropdown-menu .selected span.check-mark {

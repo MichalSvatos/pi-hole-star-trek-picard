@@ -51,6 +51,16 @@ Check my other theme
 ***
 
 ## Changelog
+**2.0.0 (Pi-hole v6)**
+- FIX - all the bells and whistles around the boxes visible
+- FIX - DROPDOWN MENU - icon sizes
+- NEW - DROPDOWN MENU - new information (client, render time) styled
+- NEW - MAIN MENU - labels shape and colors
+- NEW - BOX HEADER - zoom info icon
+- NEW - FOOTER - variant of the "INSTALLATION INSTRUCTIONS" panel when there're no updates
+
+***
+
 **1.4.3**
 - FIX - checkboxes & radios class refactoring
 - FIX - removed "LCARS theme by @MichalSvatos" from main menu
