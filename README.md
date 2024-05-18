@@ -23,6 +23,8 @@ sudo rm -rf pi-hole-star-trek-picard
 
 ⚠️ Check the trailing " ." on the 3rd line (it's not a typo - it means copy to current directory).
 
+ℹ️ Without editing `/var/www/html/admin/settings-xxxxx.lp` pages, the SYSTEM screens will not work properly.
+
 ℹ️ For WEB INTERFACE version older than 5.21, use `lcars.css` in the code above. That will replace the original blue LCARS theme.
 
 ## Uninstall/Revert
@@ -51,6 +53,29 @@ Check my other theme
 ***
 
 ## Changelog
+**2.1.0**
+- NEW - SAVE &amp; APPLY button
+- NEW - information on `:hover` on STATUS and MEMORY panels in STATUS_PANEL_47A
+- NEW - DOMAIN MANAGEMENT colored buttons and new tabs
+- NEW - DONATION BAR
+- NEW - ADVANCED FILTERING collapsible box
+- NEW - ALL SETTING basic styling
+- NEW - SETTINGS
+  - DNS
+  - DHCP
+  - WEB/API
+  - PRIVACY
+  - TELEPORT
+  - LOCAL DNS REPORTS
+- FIX - page header + BASIC/EXPERT MODE toggle button
+- FIX - box header - zoom info/reset button
+- FIX - added text to "SELECT/DESELECT ALL" button (thanks to [jammmekod's issue](https://github.com/MichalSvatos/pi-hole-star-trek-picard/issues/1))
+- FIX - Select2 width in CLIENT GROUP MANAGEMENT
+- FIX - Second level submenu (TAIL LOG FILES)
+- FIX - DOMAIN MANAGEMENT button wrap on mobile
+- FIX - FOOTER - _component status_ label while sidebar is collapsed
+- some unused code removed
+
 **2.0.0 (Pi-hole v6)**
 - FIX - all the bells and whistles around the boxes visible
 - FIX - DROPDOWN MENU - icon sizes
@@ -59,7 +84,8 @@ Check my other theme
 - NEW - BOX HEADER - zoom info icon
 - NEW - FOOTER - variant of the "INSTALLATION INSTRUCTIONS" panel when there're no updates
 
-***
+<details>
+  <summary>v1.0.0+</summary>
 
 **1.4.3**
 - FIX - checkboxes & radios class refactoring
@@ -123,6 +149,7 @@ Check my other theme
 **1.0.0**
 - Version 1.0.0 released!
 - NEW - updated preview
+</details>
 
 <details>
 	<summary>Pre-release versions log</summary>
