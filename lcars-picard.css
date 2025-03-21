@@ -1,6 +1,6 @@
 /*
   - Document: Pi-hole LCARS Star Trek Picard Theme
-  - Version:  2.0.0 (Pi-hole v6)
+  - Version:  2.1.0 (Pi-hole v6)
   - Author:   @MichalSvatos (svatos.dev)
   - Description: Star Trek Picard LCARS Theme for Pi-hole dashboard.
   - Disclaimer: Due to fact that I have the access only to CSS I was forced to use some !importants and a lot of IDs. I'm sorry.
@@ -4140,7 +4140,7 @@ div.dataTables_wrapper div.dataTables_length select {
 }
 
 /* --- teleporter */
-#settele {
+#setteleport {
   border: var(--border-width) solid var(--color-secondary);
   border-radius: var(--radius100);
   padding: var(--gap) var(--gap);
@@ -4152,7 +4152,7 @@ div.dataTables_wrapper div.dataTables_length select {
   padding-top: 0;
 }
 
-#settele::before {
+#setteleport::before {
   content: "";
   --border: 1px;
   --scannerBg: black;
@@ -4183,7 +4183,7 @@ div.dataTables_wrapper div.dataTables_length select {
   animation: tunnelScannerBlue 750ms ease-in-out infinite;
 }
 
-#settele::after {
+#setteleport::after {
   content: "Molecular imaging scanners ready";
   position: absolute;
   inset: 0 auto auto 50%;
@@ -4218,8 +4218,8 @@ div.dataTables_wrapper div.dataTables_length select {
   }
 }
 
-#settele > .row > .col-md-6:first-child p:first-child,
-#settele > .row > .col-md-6:first-child p.text-danger {
+#setteleport > .row > .col-md-6:first-child p:first-child,
+#setteleport > .row > .col-md-6:first-child p.text-danger {
   border: var(--border-width) solid var(--color-supplement-03);
   border-radius: var(--radius75);
   padding: var(--gap) var(--gap);
@@ -4227,13 +4227,13 @@ div.dataTables_wrapper div.dataTables_length select {
   position: relative;
 }
 
-#settele > .row > .col-md-6:first-child p.text-danger {
+#setteleport > .row > .col-md-6:first-child p.text-danger {
   border-color: var(--color-danger-bright);
   color: var(--color-danger-bright);
 }
 
-#settele > .row > .col-md-6:first-child p:first-child::before,
-#settele > .row > .col-md-6:first-child p.text-danger::before {
+#setteleport > .row > .col-md-6:first-child p:first-child::before,
+#setteleport > .row > .col-md-6:first-child p.text-danger::before {
   content: "■■■";
   position: absolute;
   inset: auto auto 0 0;
@@ -4245,12 +4245,12 @@ div.dataTables_wrapper div.dataTables_length select {
 }
 
 @media (min-width: 768px) {
-  #settele > .row > .col-md-6:first-child p:first-child,
-  #settele > .row > .col-md-6:first-child p.text-danger {
+  #setteleport > .row > .col-md-6:first-child p:first-child,
+  #setteleport > .row > .col-md-6:first-child p.text-danger {
     border-left-width: calc(var(--border-panel-width) / 2);
   }
 
-  #settele > .row::before {
+  #setteleport > .row::before {
     display: block;
     position: absolute;
     background-color: var(--color-background);
@@ -4261,13 +4261,13 @@ div.dataTables_wrapper div.dataTables_length select {
   }
 }
 
-#settele .pull-right {
+#setteleport .pull-right {
   float: none !important;
   display: flex;
   justify-content: flex-end;
 }
 
-#settele .btn-success {
+#setteleport .btn-success {
   display: flex;
   gap: var(--gap25);
   align-items: center;
@@ -4275,7 +4275,7 @@ div.dataTables_wrapper div.dataTables_length select {
   height: auto;
 }
 
-#settele .btn-success br {
+#setteleport .btn-success br {
   display: none;
 }
 
@@ -4320,7 +4320,7 @@ div.dataTables_wrapper div.dataTables_length select {
   #setdhcp .row:first-child div:nth-child(3) .box::before,
   #setdns .row:first-child div:nth-child(2) .box::before,
   #setdnsrec .row:first-child div .box::before,
-  #settele > .row > .col-md-6:first-child p::after,
+  #setteleport > .row > .col-md-6:first-child p::after,
   .box.box-warning:has([data-widget="collapse"])::before,
   .login-donate .text-center::before,
   .main-footer > .row:first-child > div::before {
@@ -4339,7 +4339,7 @@ div.dataTables_wrapper div.dataTables_length select {
   #setdhcp .row:first-child div:nth-child(3) .box::before,
   #setdns .row:first-child div:nth-child(2) .box::before,
   #setdnsrec .row:first-child div:nth-child(2) .box::before,
-  #settele > .row > .col-md-6:first-child p::after,
+  #setteleport > .row > .col-md-6:first-child p::after,
   .box.box-warning:has([data-widget="collapse"])::before,
   .login-donate .text-center::before,
   .main-footer > .row:first-child > div::before {
