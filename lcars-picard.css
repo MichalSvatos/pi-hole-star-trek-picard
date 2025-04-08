@@ -4323,7 +4323,8 @@ div.dataTables_wrapper div.dataTables_length select {
   #setteleport > .row > .col-md-6:first-child p::after,
   .box.box-warning:has([data-widget="collapse"])::before,
   .login-donate .text-center::before,
-  .main-footer > .row:first-child > div::before {
+  .main-footer > .row:first-child > div::before,
+  .bstreeview::before {
     content: "";
     position: absolute;
     background-color: var(--color-background);
@@ -4342,7 +4343,8 @@ div.dataTables_wrapper div.dataTables_length select {
   #setteleport > .row > .col-md-6:first-child p::after,
   .box.box-warning:has([data-widget="collapse"])::before,
   .login-donate .text-center::before,
-  .main-footer > .row:first-child > div::before {
+  .main-footer > .row:first-child > div::before,
+  .bstreeview::before {
     inset: 0 auto 0 calc(var(--gap50) * -1);
   }
 }
@@ -5219,6 +5221,177 @@ div.dataTables_wrapper div.dataTables_length select {
 .filter_types span {
   width: auto;
   min-width: calc(var(--gap) * 7.5);
+}
+
+/* TREE (Pi-hole interface overview)
+  ========================================================== */
+.bstreeview {
+  border: var(--border-width) solid var(--color-secondary-hover);
+  border-left-width: calc(var(--border-panel-width) / 2);
+  border-right: 0;
+  border-top-left-radius: var(--radius100);
+  border-bottom-left-radius: var(--radius100);
+  padding-block: calc((var(--gap) * 1.25) + var(--border-width));
+  overflow: visible;
+}
+
+.bstreeview::after {
+  content: 'TREE-A69\aINTRFC.3\a▼';
+  font-family: var(--font-light);
+  font-size: 1rem;
+  position: absolute;
+  white-space: pre-wrap;
+  padding-top: var(--gap25);
+  color: var(--color-danger);
+  width: calc(var(--gap) * 2);
+  inset: var(--gap) auto var(--gap) calc(var(--border-panel-width) * -.5);
+  background-color: var(--color-background);
+  border-block: var(--border-width) solid var(--color-background);
+  box-shadow: inset 0 2px 0px 0px var(--color-danger), inset 0 -2px 0px 0px var(--color-secondary);
+  z-index: 1;
+}
+
+.bstreeview .list-group-item {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: var(--gap25);
+  padding: var(--gap50) 0 var(--gap50) var(--gap);
+  border: 0;
+  border-top: var(--border-width) solid var(--color-disabled) !important;
+  transition: color var(--transition), border-color var(--transition);
+  overflow: hidden;
+  cursor: default;
+  z-index: 2;
+}
+
+.bstreeview .list-group-item:hover {
+  background-color: transparent;
+}
+
+.bstreeview .list-group-item:has(.state-icon) {
+  border-color: var(--color-primary) !important;
+  cursor: pointer;
+}
+
+.bstreeview .list-group-item:has(.state-icon):hover {
+  border-color: var(--color-link) !important;
+}
+
+.bstreeview .list-group-item:hover .state-icon::after {
+  background-color: var(--color-link);
+}
+
+.bstreeview .list-group-item:hover .state-icon::before {
+  color: var(--color-text-dark);
+}
+
+.bstreeview .list-group-item ~ .list-group-item {
+  margin-top: var(--gap25);
+}
+
+.bstreeview > .list-group-item {
+  margin-left: calc(var(--gap) * -2.5);
+}
+
+.bstreeview > .list-group-item:first-child {
+  margin-top: calc(var(--gap) * 3);
+}
+
+/* --- status text (loopback, down, up) */
+.bstreeview .list-group-item > span {
+  flex-grow: 1;
+  text-align: right;
+  padding-right: var(--gap50);
+  position: relative;
+}
+
+.bstreeview .list-group-item > span::after {
+  content: '';
+  width: var(--gap25);
+  aspect-ratio: 1;
+  position: absolute;
+  inset: auto 0 var(--gap25) auto;
+  translate: 0 calc(100% / 3);
+}
+
+.bstreeview .list-group-item > span.text-green::after {
+  background-color: var(--color-success-dark);
+}
+
+.bstreeview .list-group-item > span.text-red::after,
+.bstreeview .list-group-item > span.text-danger::after {
+  --pulse-color: var(--color-red-alert);
+  --pulse-color-background: var(--color-disabled);
+  background-color: var(--color-quinternary);
+  animation: pulseBg var(--transition-duration-slow) var(--transition-function) infinite;
+}
+
+/* --- list groups */
+
+.bstreeview > .list-group {
+  margin-left: calc(var(--gap) * -2.5);
+  margin-bottom: var(--gap);
+}
+
+.bstreeview .list-group {
+  margin-top: var(--gap25);
+  border: var(--border-width) solid var(--color-primary);
+  border-top: 0;
+  border-radius: 0 0 var(--radius100) var(--radius100);
+  overflow: hidden;
+  position: relative;
+  z-index: 2;
+}
+
+.bstreeview .list-group .list-group {
+  margin: auto var(--gap) var(--gap) calc(var(--gap) * 2 + var(--border-width));
+}
+
+.bstreeview .state-icon {
+  --_state-icon-width: calc(var(--gap) * 2);
+  --_state-icon-bg-color: var(--color-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--_state-icon-width);
+  position: relative;
+  transition: color var(--transition);
+  margin-right: 0;
+}
+
+.bstreeview .state-icon::after {
+  --_state-icon-position-offset: calc(var(--gap) * -1);
+  content: '';
+  position: absolute;
+  inset: var(--_state-icon-position-offset) var(--border-width) var(--_state-icon-position-offset) 0;
+  background-color: var(--color-primary);
+  transition: background-color var(--transition);
+  z-index: -1;
+}
+
+.bstreeview .state-icon.fa-angle-right::before {
+  content: '\f07b';
+}
+
+.bstreeview .state-icon.fa-angle-down::before {
+  content: '\f07c';
+}
+
+.bstreeview .item-icon {
+  font-size: 1.2rem;
+  width: calc(var(--gap)* 2);
+  aspect-ratio: 1;
+  display: grid;
+  align-content: center;
+}
+
+.bstreeview [aria-level="2"],
+.bstreeview [aria-level="3"],
+.bstreeview [aria-level="4"],
+.bstreeview [aria-level="5"] {
+  margin-left: calc((var(--gap) * 2) + var(--border-width)) !important;
+  padding-left: 0 !important;
 }
 
 /* MODAL (currently only "custom disable timeout"?)
