@@ -2148,9 +2148,9 @@ div.dataTables_wrapper div.dataTables_length select {
   border-left: var(--border-width-thick) solid var(--color-secondary);
 }
 
-.user-panel .info > span svg {
+.user-panel .info > span i {
   position: absolute;
-  left: calc(var(--gap) * 1.125);
+  left: calc(var(--gap) * 1.075);
   top: 50%;
   translate: 0 -50%;
 }
