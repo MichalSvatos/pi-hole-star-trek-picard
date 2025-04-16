@@ -1822,7 +1822,8 @@ div.dataTables_wrapper div.dataTables_length select {
   border: 0;
 }
 
-.sidebar-menu > li.header + li {
+.sidebar-menu > li.header + li,
+#pihole-enable {
   margin-top: calc(var(--gap) - (var(--border-width) * 2));
 }
 
@@ -1838,12 +1839,14 @@ div.dataTables_wrapper div.dataTables_length select {
 
 .sidebar-menu > li > a,
 .treeview-menu > li > a {
-  padding: var(--gap50) var(--gap);
+  padding: var(--gap50) var(--gap) var(--gap50) var(--gap25);
   background-color: var(--color-primary);
   color: var(--color-primary-text);
   font-size: 1.4rem;
   text-transform: uppercase;
   transition: background-color var(--transition-fast);
+  display: flex;
+  align-items: center;
 }
 
 .sidebar-menu > li > a:hover,
@@ -1860,6 +1863,17 @@ div.dataTables_wrapper div.dataTables_length select {
 
 .sidebar-menu > li.active.treeview {
   background-color: var(--color-quaternary);
+}
+
+.sidebar-menu > li > a > .fa,
+.sidebar-menu > li > a > .glyphicon,
+.sidebar-menu > li > a > .ion,
+.sidebar-menu > li > a > .icon,
+.treeview-menu > li > a > .fa,
+.treeview-menu > li > a > .glyphicon,
+.treeview-menu > li > a > .ion,
+.treeview-menu > li > a > .icon {
+  font-size: 1.2rem;
 }
 
 /* --- donate */
@@ -1890,15 +1904,18 @@ div.dataTables_wrapper div.dataTables_length select {
 
 .treeview-menu > li a {
   border-radius: calc(var(--radius100) * 1.5);
+  padding-left: var(--gap);
 }
 
-.treeview-menu > li svg {
+.treeview-menu > li i {
   display: block;
+  width: 20px; /* value from AdminLTE.min.css */
   position: absolute;
   right: 0;
   top: 50%;
   translate: -50% -50%;
   margin-right: 0;
+  font-size: 1.2rem;
   z-index: 1;
 }
 
@@ -1909,6 +1926,16 @@ div.dataTables_wrapper div.dataTables_length select {
   position: absolute;
   inset: 0 0 0 auto;
   z-index: 0;
+}
+
+.treeview > a {
+  padding-left: var(--gap25) !important;
+}
+
+.treeview > a > i {
+  position: static;
+  translate: 0;
+  margin-right: 0.5em; /* original value from pi-hole.css */
 }
 
 .sidebar-menu li > a > .pull-right-container {
@@ -6482,6 +6509,36 @@ section code {
   border-radius: var(--radius75);
   padding-inline: var(--gap75);
   font-family: var(--font-family-mono);
+}
+
+/* FONT AWESOME ICONS OVERRIDE
+  ========================================================== */
+
+.fa-stop {
+  --fa: "\f28b";
+}
+
+.fa-play {
+  --fa: "\f144";
+}
+
+.fa-user-friends,
+.fa-user-group {
+  --fa: "\e533";
+}
+
+.fa-shield-alt,
+.fa-shield-halved {
+  --fa: "\e4f0";
+}
+
+.fa-circle-dollar-to-slot,
+.fa-donate {
+  --fa: "\f004";
+}
+
+.fa-file-alt {
+  --fa: "\f46d";
 }
 
 /* ANIMATIONS
