@@ -1,6 +1,6 @@
 /*
   - Document: Pi-hole LCARS Star Trek Picard Theme
-  - Version:  2.1.0 (Pi-hole v6)
+  - Version:  2.2.0 (Pi-hole v6)
   - Author:   @MichalSvatos (svatos.dev)
   - Description: Star Trek Picard LCARS Theme for Pi-hole dashboard.
   - Disclaimer: Due to fact that I have the access only to CSS I was forced to use some !importants and a lot of IDs. I'm sorry.
@@ -408,6 +408,7 @@ svg:not(:host).svg-inline--fa, svg:not(:root).svg-inline--fa {
 }
 
 .navbar-nav > .user-menu > .dropdown-menu > .user-footer .btn-link svg,
+.navbar-nav > .user-menu > .dropdown-menu > .user-footer .btn-link i,
 .login-footer .btn-default svg,
 .login-box button.btn-primary svg {
   position: absolute;
@@ -418,6 +419,11 @@ svg:not(:host).svg-inline--fa, svg:not(:root).svg-inline--fa {
   inset: 0 auto 0 0;
   border-right: calc(var(--border-width) * 2) solid var(--color-background);
   border-radius: 18px 0 0 18px;
+  max-height: none;
+}
+
+.bootstrap-select.form-control {
+  background-color: transparent;
 }
 
 /* CHECKBOXES, RADIOS
@@ -1742,7 +1748,7 @@ div.dataTables_wrapper div.dataTables_length select {
   ========================================================== */
 
 .main-sidebar {
-  background: linear-gradient(0deg, var(--color-secondary) 80%, var(--color-background) 80%);
+  background: linear-gradient(0deg, var(--color-secondary) 88%, var(--color-background) 88%);
   padding-top: calc(var(--gap) * 5.615);
   padding-bottom: calc(var(--gap) * 10);
   width: var(--sidebar-width);
@@ -2719,13 +2725,13 @@ div.dataTables_wrapper div.dataTables_length select {
   border-bottom-right-radius: 100vmax;
 }
 
-.box-header .box-title > span[class] svg {
-  width: var(--gap);
-  height: var(--gap);
+.box-header .box-title > span[class]:empty {
+  display: none;
 }
 
-.box-header .box-title > span[class] svg path {
-  fill: var(--color-background);
+.box-header .box-title > span[class] i {
+  font-size: var(--gap);
+  color: var(--color-background) !important;
 }
 
 .zoom-info,
@@ -3746,7 +3752,7 @@ div.dataTables_wrapper div.dataTables_length select {
 /* ADVANCED SETTINGS (unfortunately different structure than other collapsible boxes)
   ========================================================== */
 
-.box.box-warning:has([data-widget="collapse"]) {
+.box:has(> .box-header[data-widget="collapse"]) {
   border: var(--border-width) solid var(--color-link);
   border-radius: var(--radius75) 0 0 var(--radius75);
   border-left-width: calc(var(--border-panel-width) / 2);
@@ -3754,18 +3760,18 @@ div.dataTables_wrapper div.dataTables_length select {
   margin-bottom: var(--gap);
 }
 
-.box.box-warning:has([data-widget="collapse"]) .box-header {
+.box:has(> .box-header[data-widget="collapse"]) .box-header {
   background-color: transparent;
   padding-right: calc(var(--gap) * 3);
   padding-left: var(--gap50);
 }
 
-.box.box-warning:has([data-widget="collapse"]) .box-header button {
+.box:has(> .box-header[data-widget="collapse"]) .box-header button {
   position: relative;
   outline: 0;
 }
 
-.box.box-warning:has([data-widget="collapse"]) .box-header .pull-right {
+.box:has(> .box-header[data-widget="collapse"]) .box-header .pull-right {
   float: none;
   display: flex;
   align-items: center;
@@ -3778,14 +3784,76 @@ div.dataTables_wrapper div.dataTables_length select {
   inset: calc(var(--gap25) * -1) calc(var(--gap) * -3) auto auto;
 }
 
-.box.box-warning:has([data-widget="collapse"]) .box-body {
+.box:has(> .box-header[data-widget="collapse"]) .box-body {
   padding: var(--gap) var(--gap);
 }
 
-.box.box-warning:has([data-widget="collapse"]) .box-footer {
+.box:has(> .box-header[data-widget="collapse"]) .box-footer {
   border-radius: 0;
   margin-bottom: 0;
   margin-left: var(--gap);
+}
+
+#advanced-settings-menu ul {
+  gap: var(--gap50);
+  justify-content: space-between;
+}
+
+#advanced-settings-menu ul > li {
+  --_width-divider: 2;
+  width: calc((100% / var(--_width-divider)) - var(--gap50));
+  flex: 0 0 auto;
+}
+
+@media (width >= 768px) {
+  #advanced-settings-menu ul > li {
+    --_width-divider: 3;
+  }
+}
+
+@media (width >= 1250px) {
+  #advanced-settings-menu ul > li {
+    --_width-divider: 4;
+  }
+}
+
+@media (width >= 1600px) {
+  body:not(.layout-boxed) #advanced-settings-menu ul > li {
+    --_width-divider: 5;
+  }
+}
+
+#advanced-settings-menu ul > li a {
+  border: 0;
+  border-radius: 0;
+  padding-left: calc(var(--gap) * 2.75);
+  padding-top: var(--gap75);
+  padding-bottom: var(--gap25);
+  font-weight: var(--font-regular);
+}
+
+#advanced-settings-menu ul > .active a {
+  background-color: var(--color-success-dark);
+  color: var(--color-success);
+  position: relative;
+  font-weight: var(--font-bold);
+}
+
+#advanced-settings-menu ul > .active a::after {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: calc(var(--gap) * 2);
+  background-color: var(--color-success);
+  border-right: var(--gap25) solid var(--color-primary);
+  border-radius: 0;
+  box-shadow: inset calc(var(--gap50) * -1) 0 var(--color-background), var(--gap25) 0 var(--color-background);
+}
+
+#advanced-settings-menu ul > li:not(.active) a:hover,
+#advanced-settings-menu ul > li:not(.active) a:focus {
+  background-color: var(--color-link);
+  color: #fff;
 }
 
 /* SYSTEM (settings page)
@@ -4114,7 +4182,7 @@ div.dataTables_wrapper div.dataTables_length select {
 /* --- UPSTREAM DNS SERVERS, DHCP SETTINGS, WEB API, TELEPORTER */
 #setpriv > .row div:first-child .box,
 #setapi > .row div:first-child .box,
-#setdhcp .row:first-child div:first-child .box,
+#setdhcp > .row:first-child div:first-child .box,
 #setdns .row:first-child div:first-child .box,
 #setdnsrec .row:first-child div:first-child .box {
   border: var(--border-width) solid var(--color-disabled);
@@ -4123,18 +4191,18 @@ div.dataTables_wrapper div.dataTables_length select {
 }
 
 #setpriv .row div:nth-child(1) div:nth-child(2) .box,
-#setapi > .row > div:nth-child(3) .box,
+#setapi > .row:nth-child(2) > div,
 #setdns > .row div:first-child .box + .box,
-#setdhcp .row:first-child div:nth-child(2) .box + .box,
-#setdhcp .row:first-child div:nth-child(3) .box + .box,
+#setdhcp > .row:first-child div:nth-child(2) .box + .box,
+#setdhcp > .row:nth-child(2) > div:nth-child(2),
 #setdns .row:first-child div:nth-child(2) .box + .box {
   margin-top: calc(var(--gap) * 2);
 }
 
 #setpriv > .row > div:nth-child(2) .box,
 #setapi > .row > div:nth-child(2) .box,
-#setdhcp .row:first-child div:nth-child(2) .box,
-#setdhcp .row:first-child div:nth-child(3) .box,
+#setdhcp > .row:first-child div:nth-child(2) .box,
+#setdhcp > .row:nth-child(2) > div:nth-child(2) > .box,
 #setdns .row:first-child div:nth-child(2) .box,
 #setdnsrec .row:first-child div:nth-child(2) .box {
   border: var(--border-width) solid var(--color-primary);
@@ -4176,7 +4244,9 @@ div.dataTables_wrapper div.dataTables_length select {
 }
 
 @media (min-width: 768px) {
-  padding-top: 0;
+  #setteleport {
+    padding-top: 0;
+  }
 }
 
 #setteleport::before {
@@ -4307,8 +4377,8 @@ div.dataTables_wrapper div.dataTables_length select {
 }
 
 @media (max-width: 1199px) {
-  #setdhcp .row:first-child div:nth-child(2) .box,
-  #setdhcp .row:first-child div:nth-child(3) .box,
+  #setdhcp > .row:first-child div:nth-child(2) .box,
+  #setdhcp > .row:nth-child(2) > div:nth-child(2) > .box,
   #setdns .row:first-child div:nth-child(2) .box {
     margin-top: var(--gap50);
   }
@@ -4322,7 +4392,7 @@ div.dataTables_wrapper div.dataTables_length select {
 @media (min-width: 768px) {
   #setpriv > .row > div:first-child .box,
   #setapi > .row > div:first-child .box,
-  #setdhcp .row:first-child div:first-child .box,
+  #setdhcp > .row:first-child div:first-child .box,
   #setdns .row:first-child div:first-child .box,
   #setdnsrec .row:first-child div:first-child .box {
     border-right-width: calc(var(--border-panel-width) / 2);
@@ -4330,8 +4400,8 @@ div.dataTables_wrapper div.dataTables_length select {
 
   #setpriv > .row > div:nth-child(2) .box,
   #setapi > .row > div:nth-child(2) .box,
-  #setdhcp .row:first-child div:nth-child(2) .box,
-  #setdhcp .row:first-child div:nth-child(3) .box,
+  #setdhcp > .row:first-child div:nth-child(2) .box,
+  #setdhcp > .row:nth-child(2) > div:nth-child(2) > .box,
   #setdns .row:first-child div:nth-child(2) .box,
   #setdnsrec .row:first-child div:nth-child(2) .box {
     border-left-width: calc(var(--border-panel-width) / 2);
@@ -4342,13 +4412,13 @@ div.dataTables_wrapper div.dataTables_length select {
 @media (min-width: 768px) {
   #setpriv .row div .box::after,
   #setapi .row div .box::after,
-  #setdhcp .row:first-child div:first-child .box::before,
-  #setdhcp .row:first-child div:nth-child(2) .box::before,
-  #setdhcp .row:first-child div:nth-child(3) .box::before,
+  #setdhcp > .row:first-child div:first-child .box::before,
+  #setdhcp > .row:first-child div:nth-child(2) .box::before,
+  #setdhcp > .row:nth-child(2) > div:nth-child(2) > .box::before,
   #setdns .row:first-child div:nth-child(2) .box::before,
   #setdnsrec .row:first-child div .box::before,
   #setteleport > .row > .col-md-6:first-child p::after,
-  .box.box-warning:has([data-widget="collapse"])::before,
+  .box:has(> .box-header[data-widget="collapse"])::before,
   .login-donate .text-center::before,
   .main-footer > .row:first-child > div::before,
   .bstreeview::before {
@@ -4363,12 +4433,12 @@ div.dataTables_wrapper div.dataTables_length select {
 
   #setpriv > .row > div:nth-child(2) .box::after,
   #setapi > .row > div:nth-child(2) .box::after,
-  #setdhcp .row:first-child div:nth-child(2) .box::before,
-  #setdhcp .row:first-child div:nth-child(3) .box::before,
+  #setdhcp > .row:first-child div:nth-child(2) .box::before,
+  #setdhcp > .row:nth-child(2) > div:nth-child(2) > .box::before,
   #setdns .row:first-child div:nth-child(2) .box::before,
   #setdnsrec .row:first-child div:nth-child(2) .box::before,
   #setteleport > .row > .col-md-6:first-child p::after,
-  .box.box-warning:has([data-widget="collapse"])::before,
+  .box:has(> .box-header[data-widget="collapse"])::before,
   .login-donate .text-center::before,
   .main-footer > .row:first-child > div::before,
   .bstreeview::before {
@@ -4380,7 +4450,7 @@ div.dataTables_wrapper div.dataTables_length select {
 @media (min-width: 768px) {
   #setpriv > .row div:nth-child(1) .box::before,
   #setapi > .row div:nth-child(1) .box::before,
-  #setdhcp .row:first-child div:first-child .box::after,
+  #setdhcp > .row:first-child div:first-child .box::after,
   #setdns .row:first-child div:first-child .box::after,
   #setdnsrec .row:first-child div:first-child .box::after {
     content: "STG 498 691";
@@ -4418,17 +4488,16 @@ div.dataTables_wrapper div.dataTables_length select {
   display: none;
 }
 
-#setdhcp .row:first-child div:nth-child(3) .box,
 #setdns .row:first-child .col-lg-6:first-child .box .col-sm-12 .box {
   border-color: var(--color-link);
 }
 
-#setdhcp .row:first-child div:nth-child(3) .box .box-header h3,
+#setdhcp > .row:nth-child(2)> div:nth-child(2) .box .box-header h3,
 #setdns .row:first-child .col-lg-6:first-child .box .col-sm-12 .box .box-header h3 {
   padding-right: calc(var(--gap) * 4);
 }
 
-#setdhcp .row:first-child div:nth-child(3) .box .box-header .box-tools,
+#setdhcp > .row:nth-child(2)> div:nth-child(2) .box .box-header .box-tools,
 #setdns .row:first-child .col-lg-6:first-child .box .col-sm-12 .box .box-header .box-tools {
   float: none !important;
   margin-block: 0;
@@ -4436,7 +4505,7 @@ div.dataTables_wrapper div.dataTables_length select {
   inset: 0 0 auto auto;
 }
 
-#setdhcp .row:first-child div:nth-child(3) .box .box-header .box-tools button,
+#setdhcp > .row:nth-child(2)> div:nth-child(2) .box .box-header .box-tools button,
 #setdns .row:first-child .col-lg-6:first-child .box .col-sm-12 .box .box-header .box-tools button {
   min-width: auto;
   width: calc(var(--gap) * 2);
@@ -4449,6 +4518,18 @@ div.dataTables_wrapper div.dataTables_length select {
 #setapi .select-checkbox,
 #setdhcp .select-checkbox {
   border: 0;
+}
+
+/* --- DHCP - currently active leases */
+#setdhcp > .row:nth-child(2) > div:nth-child(1) .box {
+  margin-top: calc(var(--gap) * 2);
+  border: var(--border-width) solid var(--color-disabled);
+  border-left: 0;
+  border-radius: 0 var(--radius100) var(--radius100) 0;
+}
+
+#setdhcp #DHCPLeasesTable_wrapper {
+  padding-left: var(--gap25);
 }
 
 /* --- SAFE/DANGER AREA */
@@ -4700,18 +4781,59 @@ div.dataTables_wrapper div.dataTables_length select {
 /* ALL SETTINGS
   ========================================================== */
 
-.col-lg-12[id^="advanced-content-"] > .box > .box-body {
-  padding-right: 0;
+div[id^="advanced-content-"] .settings-container {
+  --gap: 1.6rem; /* forced to redefine - pi-hole.css, line 1162, .settings-container */
 }
 
-.row[id^="advanced-content-"] .box > .box-header svg {
+div[id^="advanced-content-"] .box > .box-header svg {
   /*TODO: Unifying icons HTML in `settings-advanced.js` with `settings.js` (add span) */
 }
 
-.row[id^="advanced-content-"] .box > .box-header p {
+div[id^="advanced-content-"] .box > .box-header p {
   color: var(--color-secondary);
   margin-top: var(--gap50);
   font-weight: var(--font-light);
+}
+
+div[id^="advanced-content-"] .page-header {
+  background-color: transparent;
+  color: var(--color-danger);
+}
+
+div[id^="advanced-content-"] .page-header::after {
+  display: none;
+}
+
+div[id^="advanced-content-"] textarea,
+div[id^="advanced-content-"] input[type="text"] {
+  margin-bottom: var(--gap25);
+}
+
+div[id^="advanced-content-"] textarea + p,
+div[id^="advanced-content-"] input[type="text"] + p {
+  font-size: 1.4rem;
+  border-left: var(--border-width-thick) solid var(--color-quinternary);
+  margin-top: var(--gap50);
+  padding-left: var(--gap50);
+  color: var(--color-danger-bright);
+  transition: border-color var(--transition);
+}
+
+div[id^="advanced-content-"] textarea:focus + p,
+div[id^="advanced-content-"] input[type="text"]:focus + p {
+  border-color: var(--color-danger-bright);
+}
+
+div[id^="advanced-content-"] textarea + p small,
+div[id^="advanced-content-"] input[type="text"] + p small {
+  font-size: 100%;
+}
+
+div[id^="advanced-content-"] .box-footer {
+  border-top: 0;
+  border-radius: var(--radius50);
+  margin-bottom: 0;
+  background-color: var(--color-supplement-02);
 }
 
 .settings-container {
@@ -5248,6 +5370,34 @@ div.dataTables_wrapper div.dataTables_length select {
 .filter_types span {
   width: auto;
   min-width: calc(var(--gap) * 7.5);
+}
+
+/* Query Log - Advanced Filtering
+  ========================================================== */
+
+/* TODO: Keep an eye on this one - a risky selector */
+.box.box-warning.box-solid:has(#querytime) {
+  overflow: hidden;
+  margin-bottom: calc(var(--gap) * 2);
+  border-color: var(--color-link);
+  border-width: var(--border-width);
+}
+
+.box.box-warning.box-solid:has(#querytime) > .box-header {
+  background-color: var(--color-link);
+}
+
+.box.box-warning.box-solid:has(#querytime) .btn-box-tool:hover {
+  background-color: transparent;
+}
+
+.box.box-warning.box-solid:has(#querytime) .box-body {
+  padding: var(--gap) var(--gap);
+}
+
+.box.box-warning.box-solid:has(#querytime) .box-footer {
+  margin-bottom: 0;
+  border-radius: 0 0 var(--radius50) var(--radius50);
 }
 
 /* TREE (Pi-hole interface overview)

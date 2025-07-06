@@ -53,6 +53,14 @@ Check my other theme
 ***
 
 ## Changelog
+**2.2.0**
+- NEW - ALL SETTINGS page
+- FIX - left panel background on long pages (e.g. ALL SETTINGS)
+- FIX - Nav menu icons
+- FIX - removed empty "EXPERT WARNING" containers
+- FIX - ADVANCED SETTINGS sections
+- FIX - SETTINGS / DHCP
+
 **2.1.0**
 - NEW - SAVE &amp; APPLY button
 - NEW - information on `:hover` on STATUS and MEMORY panels in STATUS_PANEL_47A
