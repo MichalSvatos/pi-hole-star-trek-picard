@@ -5,9 +5,6 @@
 
 LCARS Theme for [Pi-hole](https://github.com/pi-hole/pi-hole) dashboard. Written completely from scratch.
 
-## ℹ️ Officially part of the Pi-hole project
-Since [web v5.21](https://github.com/pi-hole/web/releases/tag/v5.21) you can choose new _Star Trek Picard LCARS theme (dark)_ in _SETTINGS/WEB INTERFACE_.
-
 ***
 
 ## Manual installation
@@ -23,9 +20,9 @@ sudo rm -rf pi-hole-star-trek-picard
 
 ⚠️ Check the trailing " ." on the 3rd line (it's not a typo - it means copy to current directory).
 
-ℹ️ Without editing `/var/www/html/admin/settings-xxxxx.lp` pages, the SYSTEM screens will not work properly.
+ℹ️ **[v6]** Without editing `/var/www/html/admin/settings-xxxxx.lp` pages, the SYSTEM screens will not work properly.
 
-ℹ️ For WEB INTERFACE version older than 5.21, use `lcars.css` in the code above. That will replace the original blue LCARS theme.
+ℹ️ **[v5]** `lcars-picard-v5.css` - older version kept for a better compatibility if someone needs to run Pi-hole v5.
 
 ## Uninstall/Revert
 Type the following commands into SSH, line by line.
