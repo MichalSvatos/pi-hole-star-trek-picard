@@ -2519,6 +2519,32 @@ div.dataTables_wrapper div.dataTables_length select {
   font-size: 5rem;
 }
 
+/* --- small box icons override  */
+.small-box.bg-aqua .icon i {
+  animation: rotation360 10000ms linear infinite;
+  line-height: 0;
+}
+
+.small-box.bg-aqua .icon i::before {
+  content: "\f1ce";
+}
+
+.small-box.bg-red .icon i::before {
+  content: "\f05e";
+}
+
+.small-box.bg-red:hover .icon i::before {
+  animation: spock steps(2, end) 7500ms 100ms forwards;
+}
+
+.small-box.bg-yellow .icon i::before {
+  content: "\f682";
+}
+
+.small-box.bg-green .icon i::before {
+  content: "\f1c0";
+}
+
 .small-box .inner:before {
   content: "";
   width: calc(var(--gap) * 5);
@@ -7037,5 +7063,41 @@ section code {
   }
   100% {
     content: "□ □ □ □ □ □ □ □ □ □ ■";
+  }
+}
+
+@keyframes spock {
+  from {
+    content: "\f05e";
+  }
+  to {
+    content: "\f259";
+  }
+}
+
+@-webkit-keyframes spock {
+  from {
+    content: "\f05e";
+  }
+  to {
+    content: "\f259";
+  }
+}
+
+@keyframes rotation360 {
+  0% {
+    rotate: 0deg;
+  }
+  100% {
+    rotate: 360deg;
+  }
+}
+
+@-webkit-keyframes rotation360 {
+  0% {
+    rotate: 0deg;
+  }
+  100% {
+    rotate: 360deg;
   }
 }
