@@ -53,6 +53,9 @@ Check my other theme
 ***
 
 ## Changelog
+**2.2.1**
+- FIX - Login screen
+
 **2.2.0**
 - NEW - ALL SETTINGS page
 - FIX - left panel background on long pages (e.g. ALL SETTINGS)

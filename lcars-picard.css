@@ -409,8 +409,8 @@ svg:not(:host).svg-inline--fa, svg:not(:root).svg-inline--fa {
 
 .navbar-nav > .user-menu > .dropdown-menu > .user-footer .btn-link svg,
 .navbar-nav > .user-menu > .dropdown-menu > .user-footer .btn-link i,
-.login-footer .btn-default svg,
-.login-box button.btn-primary svg {
+.login-footer .btn-default i,
+.login-box button.btn-primary i {
   position: absolute;
   background-color: rgba(0, 0, 0, 0.35);
   padding: calc(var(--gap75));
@@ -1099,12 +1099,12 @@ div.dataTables_wrapper div.dataTables_length select {
 }
 
 .login-box button.btn-primary {
-  background-color: var(--color-primary-text) !important;
+  background-color: var(--color-success) !important;
   color: var(--color-background);
 }
 
 .login-box button.btn-primary:hover {
-  background-color: var(--color-success) !important;
+  background-color: var(--color-link) !important;
   color: var(--color-background);
 }
 
@@ -1123,26 +1123,25 @@ div.dataTables_wrapper div.dataTables_length select {
 }
 
 .login-box .card-body .box-header:hover {
-  background: var(--color-danger);
-  color: var(--color-background);
+  color: var(--color-red-alert);
 }
 
 .login-box .card-body .box-tools {
-  margin: 0;
+  inset: var(--gap25) 0 auto auto !important;
 }
 
 .login-box .card-body .btn-box-tool {
-  width: calc(var(--gap) * 3);
-  min-width: auto;
-  position: absolute;
-  inset: 0 0 0 auto;
-  background-color: rgba(0, 0, 0, 0.35);
-  border-radius: 0;
-  color: var(--color-danger-bright);
-  border-left: calc(var(--border-width) * 2) solid var(--color-background);
+  color: var(--color-text-dark);
 }
 
-.login-box .card-body .box-body {
+#dns-failure-label {
+  border: var(--border-width) solid var(--color-supplement-01);
+  border-radius: var(--radius75);
+  padding: var(--gap25);
+  margin-bottom: var(--gap);
+}
+
+.login-box .card > .card-body #insecure-box .box-body {
   padding: var(--gap) var(--gap);
   border: calc(var(--border-width) * 2) solid var(--color-supplement-01);
   border-radius: 0 0 var(--radius100) var(--radius100);
@@ -1202,8 +1201,9 @@ div.dataTables_wrapper div.dataTables_length select {
 /* --- login - form error message */
 .login-box-msg.has-error {
   text-align: left;
-  padding: var(--gap50) var(--gap50) var(--gap50) calc(var(--gap) * 4);
+  padding: var(--gap50) var(--gap50) var(--gap50) var(--gap);
   border-top: var(--border-width) solid var(--color-red-alert);
+  border-left: var(--border-width) solid var(--color-red-alert);
   position: relative;
   border-radius: var(--radius100) 0 0 0;
   overflow: hidden;
@@ -1231,6 +1231,42 @@ div.dataTables_wrapper div.dataTables_length select {
   display: block;
   height: calc(var(--gap) * 2.5);
   padding: var(--gap75);
+}
+
+#current-password {
+  border-radius: 100vmax;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  border-width: var(--border-width);
+  min-height: calc(var(--gap) * 2.5);
+  border-right: 0;
+}
+
+.login-options.has-error #current-password {
+  border-radius: 0 0 0 var(--radius100);
+  border-color: var(--color-red-alert);
+}
+
+#toggle-password {
+  background-color: var(--color-disabled);
+  color: var(--color-link);
+  border: var(--border-width) solid var(--color-primary);
+  border-left: 0;
+  height: calc(var(--gap) * 2.5);
+  transition: background-color var(--transition), border-color var(--transition);
+}
+
+#toggle-password:hover {
+  color: var(--color-red-alert);
+}
+
+.login-options.has-error #toggle-password {
+  border-color: var(--color-red-alert);
+}
+
+#current-password:focus ~ .input-group-btn #toggle-password {
+  background-color: var(--color-background);
+  border-color: var(--color-tertiary-hover);
 }
 
 /* DONATION BAR (login + other pages)
