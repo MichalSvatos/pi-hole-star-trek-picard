@@ -50,6 +50,9 @@ Check my other theme
 ***
 
 ## Changelog
+**2.2.3**
+- Changed color of the donate button to visually correspond with the donation bar
+
 **2.2.2**
 - NEW - changed the icons in the 4 small boxes on the dashboard
 - NEW - tiny easter egg
