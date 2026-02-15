@@ -5,6 +5,10 @@
 
 LCARS Theme for [Pi-hole](https://github.com/pi-hole/pi-hole) dashboard. Written completely from scratch.
 
+Thanks to the Pi-hole team's change (adding a page-specific class to each page), I was able to fix all the system pages. The theme is now once again **FULLY COMPATIBLE with Pi-hole**!
+
+> _**Personal note:** This project was part of the official Pi-hole repo for a time, however I discovered I'm not able to keep up with the regular updates required for a large open-source project like Pi-hole. Therefore I'll keep this project separate with a manual installation._
+
 ***
 
 ## Manual installation
@@ -13,14 +17,10 @@ Type the following commands into SSH, line by line to install the newest version
 ```
 cd /var/www/html/admin/style/themes/
 sudo git clone https://github.com/MichalSvatos/pi-hole-star-trek-picard.git
-sudo rm -f lcars-picard.css
-sudo cp pi-hole-star-trek-picard/lcars-picard.css .
+sudo rm -f lcars.css
+sudo cp pi-hole-star-trek-picard/lcars-picard.css ./lcars.css
 sudo rm -rf pi-hole-star-trek-picard
 ```
-
-⚠️ Check the trailing " ." on the 3rd line (it's not a typo - it means copy to current directory).
-
-ℹ️ **[v6]** Without editing `/var/www/html/admin/settings-xxxxx.lp` pages, the SYSTEM screens will not work properly.
 
 ℹ️ **[v5]** `lcars-picard-v5.css` - older version kept for a better compatibility if someone needs to run Pi-hole v5.
 
@@ -44,12 +44,18 @@ Run the same commands directly in the container as shown [here](https://github.c
 ***
 
 ## Do you prefer more colorful LCARS?
-Check my other theme
+Check my other theme (⚠️ NOT COMPATIBLE WITH THE V6 AT THE MOMENT)
 [![Pi-hole LCARS Next Generation Theme](https://github.com/MichalSvatos/pi-hole-star-trek-picard/raw/main/previews/pi-hole-tng-lcars.png)](https://github.com/MichalSvatos/pi-hole-lcars-next-gen)
 
 ***
 
 ## Changelog
+**2.3.0**
+- FIX - All system pages
+- FIX - logins screen normal/error state
+- FIX - Queries “Advanced filtering” collapse button
+- README changes
+
 **2.2.3**
 - Changed color of the donate button to visually correspond with the donation bar
 
@@ -320,6 +326,9 @@ Just **spread the word**. But if you feel like it, any donations are highly appr
 #### Monero
 ![Monero QR code](https://github.com/MichalSvatos/pi-hole-star-trek-picard/raw/main/imgs/qr-monero.png)
 `82cdV2a1RU34pnv7x4tQtV4pTv1wgM5DjFEM1SQz8keF2z6ZidSbpNq51p8S3NMdYwh5PecSRBuSkAthbEmJUisoHVj6W8o`
+
+#### Ko-fi
+[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/N4N01UB2M9)
 
 ---
 ### License

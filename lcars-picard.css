@@ -1152,48 +1152,45 @@ div.dataTables_wrapper div.dataTables_length select {
 }
 
 /* --- login - error */
-.login-box:has(.has-error)::after,
+.login-box:has(#forgot-pw-box:not(.collapsed-box))::after,
 .login-box:has(.error-headline)::after {
   --_login-main-bg-color: var(--color-supplement-01);
   animation: none;
 }
 
-.login-box:has(.has-error)::before,
+.login-box:has(#forgot-pw-box:not(.collapsed-box))::before,
 .login-box:has(.error-headline)::before {
   --_login-lines-bg-color: var(--color-danger);
   animation: none;
 }
 
-.login-box:has(.has-error) section::before,
-.login-box:has(.error-headline) section::before {
+.login-box:has(#forgot-pw-box:not(.collapsed-box)) section::before {
   content: "Encrypted access denied";
   --pulse-font-color-01: #fff;
   --pulse-font-color-02: var(--color-red-alert);
   animation: pulseFont var(--transition-duration-slow) infinite;
 }
 
-.login-box:has(.has-error) section::after,
-.login-box:has(.error-headline) section::after {
+.login-box:has(#forgot-pw-box:not(.collapsed-box)) section::after {
   --_login-section-border-color: var(--color-danger);
   --pulse-font-color-01: #fff;
   content: "Background neural net analysis: Failed";
 }
 
 @media (max-width: 991px) {
-  .login-box:has(.has-error) section::before,
-  .login-box:has(.error-headline) section::before {
+  .login-box:has(#forgot-pw-box:not(.collapsed-box)) section::before {
     --_login-title-bg-color: var(--color-supplement-01);
   }
 }
 
 @media (min-width: 992px) {
-  .login-box:has(.has-error) .card,
-  .login-box:has(.has-error) .login-logo {
+  .login-box:has(#forgot-pw-box:not(.collapsed-box)) .card,
+  .login-box:has(#forgot-pw-box:not(.collapsed-box)) .login-logo {
     opacity: 1;
     animation: none;
   }
 
-  .login-box:has(.has-error) .login-logo::before {
+  .login-box:has(#forgot-pw-box:not(.collapsed-box)) .login-logo::before {
     --_login-logo-bg-color: var(--color-supplement-01);
   }
 }
@@ -3846,6 +3843,11 @@ div.dataTables_wrapper div.dataTables_length select {
   inset: calc(var(--gap25) * -1) calc(var(--gap) * -3) auto auto;
 }
 
+/* --- collapse button fix */
+.page-queries .box:has(> .box-header[data-widget="collapse"]) .box-header .pull-right {
+  inset: calc(var(--gap25) * 1) 0 auto auto;
+}
+
 .box:has(> .box-header[data-widget="collapse"]) .box-body {
   padding: var(--gap) var(--gap);
 }
@@ -3921,61 +3923,61 @@ div.dataTables_wrapper div.dataTables_length select {
 /* SYSTEM (settings page)
    ========================================================== */
 
-#setsystem > .row > .col-md-6 {
+.page-settings-system .content > .row > .col-md-6 {
   width: 100%;
 }
 
-#setsystem .table-striped {
+.page-settings-system .content .table-striped {
   margin-top: 0;
   border-color: var(--color-background);
 }
 
-#setsystem .table-striped > tbody > tr {
+.page-settings-system .content .table-striped > tbody > tr {
   display: grid;
   grid-template-columns: 1fr 2fr;
 }
 
-#setsystem .table-striped > tbody > tr:nth-of-type(odd) {
+.page-settings-system .content .table-striped > tbody > tr:nth-of-type(odd) {
   background-color: transparent;
 }
 
-#setsystem .table-striped > tbody > tr:nth-child(2n + 1) th {
+.page-settings-system .content .table-striped > tbody > tr:nth-child(2n + 1) th {
   background-color: var(--color-secondary);
 }
 
-#setsystem .table-striped > tbody > tr:nth-child(3n + 1) th {
+.page-settings-system .content .table-striped > tbody > tr:nth-child(3n + 1) th {
   background-color: var(--color-tertiary);
 }
 
-#setsystem .table-striped > tbody > tr:hover td {
+.page-settings-system .content .table-striped > tbody > tr:hover td {
   color: var(--color-tertiary-hover);
 }
 
-#setsystem .table-striped > tbody > tr:hover th {
+.page-settings-system .content .table-striped > tbody > tr:hover th {
   background-color: var(--color-danger-bright);
   transition: background-color var(--transition-fast);
 }
 
-#setsystem .table-striped > tbody > tr:hover td:after,
-#setsystem .table-striped > tbody > tr:hover td:before {
+.page-settings-system .content .table-striped > tbody > tr:hover td:after,
+.page-settings-system .content .table-striped > tbody > tr:hover td:before {
   --setsystem-border-color: var(--color-danger-bright);
   transition: background-color var(--transition-fast);
 }
 
-#setsystem .table > tbody > tr.settings-level-expert {
+.page-settings-system .content .table > tbody > tr.settings-level-expert {
   display: grid !important;
 }
 
 @media (max-width: 767px) {
-  #setsystem .table-bordered > tbody > tr,
-  #setsystem .table > tbody > tr.settings-level-expert {
+  .page-settings-system .content .table-bordered > tbody > tr,
+  .page-settings-system .content .table > tbody > tr.settings-level-expert {
     display: flex !important;
     flex-direction: column;
   }
 }
 
-#setsystem .table > tbody > tr > th,
-#setsystem .table > tbody > tr > td {
+.page-settings-system .content .table > tbody > tr > th,
+.page-settings-system .content .table > tbody > tr > td {
   padding: var(--gap) var(--gap75) var(--gap50) var(--gap75);
   text-transform: uppercase;
   border: var(--border-width) solid var(--color-background);
@@ -3983,7 +3985,7 @@ div.dataTables_wrapper div.dataTables_length select {
   font-size: inherit;
 }
 
-#setsystem .table-bordered > tbody > tr > th {
+.page-settings-system .content .table-bordered > tbody > tr > th {
   border-left: 0;
   background-color: var(--color-tertiary-hover);
   color: var(--color-text-dark);
@@ -3992,7 +3994,7 @@ div.dataTables_wrapper div.dataTables_length select {
   font-weight: var(--font-regular);
 }
 
-#setsystem .table-bordered > tbody > tr > th:before {
+.page-settings-system .content .table-bordered > tbody > tr > th:before {
   content: "";
   background-color: var(--color-background);
   width: calc(var(--gap50));
@@ -4001,48 +4003,48 @@ div.dataTables_wrapper div.dataTables_length select {
   inset: var(--gap25) auto auto var(--gap25);
 }
 
-#setsystem .table-bordered > tbody > tr > td {
+.page-settings-system .content .table-bordered > tbody > tr > td {
   padding-left: var(--gap);
 }
 
 @media (max-width: 767px) {
-  #setsystem .table-bordered > tbody > tr > td {
+  .page-settings-system .content .table-bordered > tbody > tr > td {
     border-top: 0;
     border-left: 0;
   }
 }
 
-#setsystem .table-bordered > tbody > tr > td:before,
-#setsystem .table-bordered > tbody > tr > td:after {
+.page-settings-system .content .table-bordered > tbody > tr > td:before,
+.page-settings-system .content .table-bordered > tbody > tr > td:after {
   --setsystem-border-color: var(--color-secondary);
   content: "";
   position: absolute;
   background-color: var(--setsystem-border-color);
 }
 
-#setsystem .table-bordered > tbody > tr > td:before {
+.page-settings-system .content .table-bordered > tbody > tr > td:before {
   height: var(--border-width);
   inset: 0 0 auto;
 }
 
-#setsystem .table-bordered > tbody > tr > td:after {
+.page-settings-system .content .table-bordered > tbody > tr > td:after {
   width: var(--border-width);
   inset: 0 auto 0 0;
 }
 
-#setsystem .row .col-md-6 .box {
+.page-settings-system .content .row .col-md-6 .box {
   position: relative;
   margin-top: calc(var(--gap) * 2);
   border-top: calc(var(--gap) * 1.6) solid var(--color-secondary);
   border-radius: var(--radius100) 0 0 var(--radius100);
 }
 
-#setsystem .box:not(.box-warning) .box-header {
+.page-settings-system .content .box:not(.box-warning) .box-header {
   border-left: calc(var(--border-panel-width)) solid var(--color-secondary);
   min-height: calc(var(--gap) * 3);
 }
 
-#setsystem .box-title {
+.page-settings-system .content .box-title {
   position: absolute;
   inset: calc(var(--gap) * -1.6) 0 auto auto;
   background-color: var(--color-background);
@@ -4050,14 +4052,14 @@ div.dataTables_wrapper div.dataTables_length select {
   min-height: calc(var(--gap) * 1.6);
 }
 
-#setsystem .box-body {
+.page-settings-system .content .box-body {
   padding-right: 0;
   padding-top: 0;
 }
 
 /* --- fake corner */
-#setsystem .box:not(.box-warning) .box-header:before,
-#setsystem .box:not(.box-warning) .box-header:after {
+.page-settings-system .content .box:not(.box-warning) .box-header:before,
+.page-settings-system .content .box:not(.box-warning) .box-header:after {
   content: "";
   position: absolute;
   width: var(--gap);
@@ -4065,33 +4067,33 @@ div.dataTables_wrapper div.dataTables_length select {
   inset: 0 auto auto 0;
 }
 
-#setsystem .box:not(.box-warning) .box-header:before {
+.page-settings-system .content .box:not(.box-warning) .box-header:before {
   background-color: var(--color-secondary);
 }
 
-#setsystem .box:not(.box-warning) .box-header:after {
+.page-settings-system .content .box:not(.box-warning) .box-header:after {
   background-color: var(--color-background);
   border-radius: var(--radius50) 0 0 0;
 }
 
 /* --- pie chart */
-#setsystem div[id="cache-metrics-chart"] {
+.page-settings-system div[id="cache-metrics-chart"] {
   width: calc(100% - 30px);
   margin-inline: 15px;
 }
 
-#setsystem div[id="cache-metrics-chart"] > div:first-child {
+.page-settings-system div[id="cache-metrics-chart"] > div:first-child {
   aspect-ratio: 1;
 }
 
-#setsystem div[id="cache-metrics-chart"] .chart-legend {
+.page-settings-system div[id="cache-metrics-chart"] .chart-legend {
   translate: var(--gap) 0;
   align-self: center;
   margin-left: auto;
 }
 
 /* --- danger area buttons */
-#setsystem .box-warning {
+.page-settings-system .content .box-warning {
   padding: var(--gap25) var(--gap25);
   margin-top: calc(var(--gap) * 2);
   border: var(--border-width-thick) solid var(--color-supplement-01);
@@ -4101,18 +4103,18 @@ div.dataTables_wrapper div.dataTables_length select {
     padding var(--transition-slow);
 }
 
-#setsystem .box-warning:hover {
+.page-settings-system .content .box-warning:hover {
   border-color: var(--color-quinternary);
   padding: calc(var(--gap) * 1.5) var(--gap25);
 }
 
 @media (min-width: 768px) {
-  #setsystem .box-warning {
+  .page-settings-system .content .box-warning {
     border-left-width: var(--pie-chart-border-width);
     text-align: right;
   }
 
-  #setsystem .box-warning::before {
+  .page-settings-system .content .box-warning::before {
     content: "danger.area.74656";
     display: flex;
     align-items: flex-end;
@@ -4133,14 +4135,14 @@ div.dataTables_wrapper div.dataTables_length select {
     transition: background-color var(--transition-slow);
   }
 
-  #setsystem .box-warning:hover::before {
+  .page-settings-system .content .box-warning:hover::before {
     --pulse-color: #fff;
     --pulse-color-background: var(--color-danger-bright);
     animation: pulseBg 2s var(--transition-fast) infinite;
   }
 }
 
-#setsystem .box-warning::after {
+.page-settings-system .content .box-warning::after {
   content: "";
   border: var(--border-width) solid var(--color-background);
   border-radius: var(--radius75) 0 0 var(--radius75);
@@ -4152,22 +4154,22 @@ div.dataTables_wrapper div.dataTables_length select {
 }
 
 @media (min-width: 768px) {
-  #setsystem .box-warning::after {
+  .page-settings-system .content .box-warning::after {
     inset: calc(var(--gap25) * -1) calc(var(--gap25) * 32) calc(var(--gap25) * -1)
     calc(var(--gap25) * -10);
   }
 }
 
-#setsystem .box-warning .box-title {
+.page-settings-system .content .box-warning .box-title {
   top: 0;
 }
 
-#setsystem .box-warning .box-body {
+.page-settings-system .content .box-warning .box-body {
   padding: var(--gap) var(--gap);
   z-index: 1;
 }
 
-#setsystem .box-warning .box-body::after {
+.page-settings-system .content .box-warning .box-body::after {
   content: "";
   width: calc(var(--gap) * 7);
   font-size: 1rem;
@@ -4178,7 +4180,7 @@ div.dataTables_wrapper div.dataTables_length select {
   opacity: 0;
 }
 
-#setsystem .box-warning:hover .box-body::after {
+.page-settings-system .content .box-warning:hover .box-body::after {
   opacity: 1;
   animation: runningDots 1s steps(10, end) infinite alternate;
 }
@@ -4186,31 +4188,31 @@ div.dataTables_wrapper div.dataTables_length select {
 /* DNS (settings page)
   ========================================================== */
 
-#setdns {
+.page-settings-dns .content {
   margin-top: calc(var(--gap) * 2);
 }
 
-#setdns .table {
+.page-settings-dns .content .table {
   margin-top: 0;
 }
 
-#setdns .table th {
+.page-settings-dns .content .table th {
   color: var(--color-primary-text);
   padding-bottom: var(--gap);
 }
 
-#setdns .table-bordered td[title] {
+.page-settings-dns .content .table-bordered td[title] {
   position: relative;
 }
 
-#setdns .table-bordered td[title]:hover:before,
-#setdns .table-bordered td[title]:hover:after {
+.page-settings-dns .content .table-bordered td[title]:hover:before,
+.page-settings-dns .content .table-bordered td[title]:hover:after {
   opacity: 1;
   translate: 0;
 }
 
-#setdns .table-bordered td[title]:before,
-#setdns .table-bordered td[title]:after {
+.page-settings-dns .content .table-bordered td[title]:before,
+.page-settings-dns .content .table-bordered td[title]:after {
   opacity: 0;
   pointer-events: none;
   transition:
@@ -4219,7 +4221,7 @@ div.dataTables_wrapper div.dataTables_length select {
 }
 
 /* --- lines */
-#setdns .table-bordered td[title]:before {
+.page-settings-dns .content .table-bordered td[title]:before {
   content: "";
   position: absolute;
   inset: calc(var(--gap50) * -1) auto auto 0;
@@ -4232,7 +4234,7 @@ div.dataTables_wrapper div.dataTables_length select {
 }
 
 /* --- ip address */
-#setdns .table-bordered td[title]:after {
+.page-settings-dns .content .table-bordered td[title]:after {
   content: attr(title);
   position: absolute;
   inset: calc(var(--gap25) * -1) auto auto var(--gap50);
@@ -4242,39 +4244,41 @@ div.dataTables_wrapper div.dataTables_length select {
 }
 
 /* --- UPSTREAM DNS SERVERS, DHCP SETTINGS, WEB API, TELEPORTER */
-#setpriv > .row div:first-child .box,
-#setapi > .row div:first-child .box,
-#setdhcp > .row:first-child div:first-child .box,
-#setdns .row:first-child div:first-child .box,
-#setdnsrec .row:first-child div:first-child .box {
+.page-settings-privacy .content > .row div:first-child .box,
+.page-settings-api .content > .row:nth-of-type(2) .box,
+.page-settings-api .content > .row:nth-of-type(3) .box,
+.page-settings-dhcp .content > .row:nth-of-type(2) div:first-child .box,
+.page-settings-dns .content > .row:nth-of-type(2) div:first-child .box,
+.page-settings-dnsrecords .content > .row:nth-of-type(2) div:first-child .box {
   border: var(--border-width) solid var(--color-disabled);
   border-radius: 0 var(--radius100) var(--radius100) 0;
   border-left: 0;
 }
 
-#setpriv .row div:nth-child(1) div:nth-child(2) .box,
-#setapi > .row:nth-child(2) > div,
-#setdns > .row div:first-child .box + .box,
-#setdhcp > .row:first-child div:nth-child(2) .box + .box,
-#setdhcp > .row:nth-child(2) > div:nth-child(2),
-#setdns .row:first-child div:nth-child(2) .box + .box {
+.page-settings-privacy .content .row div:nth-child(1) div:nth-child(2) .box,
+.page-settings-api .content > .row:nth-of-type(2) > div,
+.page-settings-api .content > .row:nth-of-type(3) > div,
+.page-settings-dns .content > .row div:first-child .box + .box,
+.page-settings-dhcp .content > .row:nth-of-type(2) div:nth-child(2) .box + .box,
+.page-settings-dhcp .content > .row:nth-child(2) > div:nth-child(2),
+.page-settings-dns .content > .row:nth-of-type(2) div:nth-child(2) .box + .box {
   margin-top: calc(var(--gap) * 2);
 }
 
-#setpriv > .row > div:nth-child(2) .box,
-#setapi > .row > div:nth-child(2) .box,
-#setdhcp > .row:first-child div:nth-child(2) .box,
-#setdhcp > .row:nth-child(2) > div:nth-child(2) > .box,
-#setdns .row:first-child div:nth-child(2) .box,
-#setdnsrec .row:first-child div:nth-child(2) .box {
+.page-settings-privacy .content > .row > div:nth-child(2) .box,
+.page-settings-api .content > .row:nth-of-type(2) div:nth-child(2) .box,
+.page-settings-api .content > .row:nth-of-type(3) div:nth-child(1) .box,
+.page-settings-dhcp .content > .row:nth-of-type(2) div:nth-child(2) .box,
+.page-settings-dhcp .content > .row:nth-child(2) > div:nth-child(2) > .box,
+.page-settings-dns .content > .row:nth-of-type(2) div:nth-child(2) .box,
+.page-settings-dnsrecords .content > .row:nth-of-type(2) div:nth-child(2) .box {
   border: var(--border-width) solid var(--color-primary);
   border-radius: var(--radius100) 0 0 var(--radius100);
   border-right: 0;
   padding-left: var(--gap);
 }
 
-#setapi > .row > div:nth-child(1) div:nth-child(2) .box {
-  margin-top: var(--gap);
+.page-settings-api .content > .row:nth-of-type(2) > div:nth-child(1) .box {
   border-color: var(--color-danger);
   border-left-style: solid;
   border-left-width: var(--border-width);
@@ -4283,21 +4287,21 @@ div.dataTables_wrapper div.dataTables_length select {
   padding-left: var(--gap50);
 }
 
-#setpriv > .row div:first-child .box-body {
+.page-settings-privacy .content > .row div:first-child .box-body {
   padding-left: var(--gap25);
 }
 
-#setpriv .row .row div:nth-child(1) .box {
+.page-settings-privacy .content .row .row div:nth-child(1) .box {
   border-color: var(--color-secondary);
   margin-top: 0;
 }
 
-#setdnsrec .row:first-child div:nth-child(1) .box-footer {
+.page-settings-dnsrecords .content > .row:nth-of-type(2) div:nth-child(1) .box-footer {
   margin-right: var(--gap);
 }
 
 /* --- teleporter */
-#setteleport {
+.page-settings-teleporter .content > .row {
   border: var(--border-width) solid var(--color-secondary);
   border-radius: var(--radius100);
   padding: var(--gap) var(--gap);
@@ -4306,12 +4310,15 @@ div.dataTables_wrapper div.dataTables_length select {
 }
 
 @media (min-width: 768px) {
-  #setteleport {
+  .page-settings-teleporter .content > .row {
+    display: flex;
     padding-top: 0;
+    padding-top: calc(var(--gap) * 2);
+    margin-inline: 0;
   }
 }
 
-#setteleport::before {
+.page-settings-teleporter .content > .row::before {
   content: "";
   --border: 1px;
   --scannerBg: black;
@@ -4342,7 +4349,7 @@ div.dataTables_wrapper div.dataTables_length select {
   animation: tunnelScannerBlue 750ms ease-in-out infinite;
 }
 
-#setteleport::after {
+.page-settings-teleporter .content > .row::after {
   content: "Molecular imaging scanners ready";
   position: absolute;
   inset: 0 auto auto 50%;
@@ -4377,8 +4384,8 @@ div.dataTables_wrapper div.dataTables_length select {
   }
 }
 
-#setteleport > .row > .col-md-6:first-child p:first-child,
-#setteleport > .row > .col-md-6:first-child p.text-danger {
+.page-settings-teleporter .content > .row > .col-md-6:first-child p:first-child,
+.page-settings-teleporter .content > .row > .col-md-6:first-child p.text-danger {
   border: var(--border-width) solid var(--color-supplement-03);
   border-radius: var(--radius75);
   padding: var(--gap) var(--gap);
@@ -4386,13 +4393,13 @@ div.dataTables_wrapper div.dataTables_length select {
   position: relative;
 }
 
-#setteleport > .row > .col-md-6:first-child p.text-danger {
+.page-settings-teleporter .content > .row > .col-md-6:first-child p.text-danger {
   border-color: var(--color-danger-bright);
   color: var(--color-danger-bright);
 }
 
-#setteleport > .row > .col-md-6:first-child p:first-child::before,
-#setteleport > .row > .col-md-6:first-child p.text-danger::before {
+.page-settings-teleporter .content > .row > .col-md-6:first-child p:first-child::before,
+.page-settings-teleporter .content > .row > .col-md-6:first-child p.text-danger::before {
   content: "■■■";
   position: absolute;
   inset: auto auto 0 0;
@@ -4404,29 +4411,49 @@ div.dataTables_wrapper div.dataTables_length select {
 }
 
 @media (min-width: 768px) {
-  #setteleport > .row > .col-md-6:first-child p:first-child,
-  #setteleport > .row > .col-md-6:first-child p.text-danger {
+  .page-settings-teleporter .content > .row > .col-md-6:first-child::before,
+  .page-settings-teleporter .content > .row > .col-md-6:last-child::before {
+    content: '';
+    position: absolute;
+    background-color: var(--color-background);
+    inset: 0 calc(var(--gap) * -2) auto 0;
+    display: block;
+    z-index: 1;
+    height: calc(var(--gap) - var(--border-width));
+    translate: calc((var(--gap) - (var(--border-width) * .5)) * -1 - 1px) calc(var(--gap) * -2.8);
+    border-top-left-radius: var(--radius100);
+  }
+
+  .page-settings-teleporter .content > .row > .col-md-6:last-child::before {
+    translate: calc((var(--gap) - (var(--border-width) * .5)) * 1 + 1px) calc(var(--gap) * -2.8);
+    border-top-left-radius: 0;
+    border-top-right-radius: var(--radius100);
+    inset: 0 0 auto calc(var(--gap) * -2);
+  }
+
+  .page-settings-teleporter .content > .row > .col-md-6:first-child p:first-child,
+  .page-settings-teleporter .content > .row > .col-md-6:first-child p.text-danger {
     border-left-width: calc(var(--border-panel-width) / 2);
   }
 
-  #setteleport > .row::before {
+  .page-settings-teleporter .content > .row::before {
     display: block;
     position: absolute;
     background-color: var(--color-background);
-    inset: 0 0 auto 0;
-    height: var(--gap);
-    border-radius: var(--radius50) var(--radius50) 0 0;
+    inset: calc(var(--border-width-thick) * -2) 0 auto 0;
+    height: calc(var(--gap) * 3.85);
+    border-radius: var(--radius100) var(--radius100);
     translate: 0 -100%;
   }
 }
 
-#setteleport .pull-right {
+.page-settings-teleporter .content .pull-right {
   float: none !important;
   display: flex;
   justify-content: flex-end;
 }
 
-#setteleport .btn-success {
+.page-settings-teleporter .content .btn-success {
   display: flex;
   gap: var(--gap25);
   align-items: center;
@@ -4434,52 +4461,51 @@ div.dataTables_wrapper div.dataTables_length select {
   height: auto;
 }
 
-#setteleport .btn-success br {
+.page-settings-teleporter .content .btn-success br {
   display: none;
 }
 
 @media (max-width: 1199px) {
-  #setdhcp > .row:first-child div:nth-child(2) .box,
-  #setdhcp > .row:nth-child(2) > div:nth-child(2) > .box,
-  #setdns .row:first-child div:nth-child(2) .box {
+  .page-settings-dhcp .content > .row:nth-of-type(2) div:nth-child(2) .box,
+  .page-settings-dhcp .content > .row:nth-child(2) > div:nth-child(2) > .box,
+  .page-settings-dns .content > .row:nth-of-type(2) div:nth-child(2) .box {
     margin-top: var(--gap50);
   }
 
-  #setpriv > .row > div:nth-child(2) .box,
-  #setdnsrec .row:first-child div:nth-child(2) .box {
+  .page-settings-privacy .content > .row > div:nth-child(2) .box,
+  .page-settings-dns .content > .row:nth-of-type(2) div:nth-child(2) .box {
     margin-top: calc(var(--gap) * 2);
   }
 }
 
 @media (min-width: 768px) {
-  #setpriv > .row > div:first-child .box,
-  #setapi > .row > div:first-child .box,
-  #setdhcp > .row:first-child div:first-child .box,
-  #setdns .row:first-child div:first-child .box,
-  #setdnsrec .row:first-child div:first-child .box {
-    border-right-width: calc(var(--border-panel-width) / 2);
+  .page-settings-privacy .content > .row > div:first-child .box,
+  .page-settings-api .content > .row:nth-of-type(2) > div:first-child .box,
+  .page-settings-dhcp .content > .row:nth-of-type(2) div:nth-child(1) .box,
+  .page-settings-dns .content > .row:nth-of-type(2) div:first-child .box,
+  .page-settings-dnsrecords .content > .row:nth-of-type(2) div:first-child .box {
+    border-right-width: calc(var(--border-panel-width) / 2) !important;
   }
 
-  #setpriv > .row > div:nth-child(2) .box,
-  #setapi > .row > div:nth-child(2) .box,
-  #setdhcp > .row:first-child div:nth-child(2) .box,
-  #setdhcp > .row:nth-child(2) > div:nth-child(2) > .box,
-  #setdns .row:first-child div:nth-child(2) .box,
-  #setdnsrec .row:first-child div:nth-child(2) .box {
+  .page-settings-privacy .content > .row > div:nth-child(2) .box,
+  .page-settings-api .content > .row:nth-of-type(2) > div:nth-child(2) .box,
+  .page-settings-api .content > .row:nth-of-type(3) > div:nth-child(1) .box,
+  .page-settings-dhcp .content > .row:nth-of-type(2) div:nth-child(2) .box,
+  .page-settings-dns .content .row:nth-of-type(2) div:nth-child(2) .box,
+  .page-settings-dnsrecords .content > .row:nth-of-type(2) div:nth-child(2) .box {
     border-left-width: calc(var(--border-panel-width) / 2);
   }
 }
 
 /* --- fake corners */
 @media (min-width: 768px) {
-  #setpriv .row div .box::after,
-  #setapi .row div .box::after,
-  #setdhcp > .row:first-child div:first-child .box::before,
-  #setdhcp > .row:first-child div:nth-child(2) .box::before,
-  #setdhcp > .row:nth-child(2) > div:nth-child(2) > .box::before,
-  #setdns .row:first-child div:nth-child(2) .box::before,
-  #setdnsrec .row:first-child div .box::before,
-  #setteleport > .row > .col-md-6:first-child p::after,
+  .page-settings-privacy .content .row div .box::after,
+  .page-settings-api .content > .row div .box::after,
+  .page-settings-dhcp .content > .row:nth-of-type(2) div:first-child .box::before,
+  .page-settings-dhcp .content > .row:nth-child(2) > div:nth-child(2) > .box::before,
+  .page-settings-dns .content > .row:nth-of-type(2) div:nth-child(2) .box::before,
+  .page-settings-dnsrecords .content > .row:nth-of-type(2) div .box::before,
+  .page-settings-teleporter > .row > .col-md-6:first-child p::after,
   .box:has(> .box-header[data-widget="collapse"])::before,
   .login-donate .text-center::before,
   .main-footer > .row:first-child > div::before,
@@ -4493,13 +4519,13 @@ div.dataTables_wrapper div.dataTables_length select {
     z-index: 1;
   }
 
-  #setpriv > .row > div:nth-child(2) .box::after,
-  #setapi > .row > div:nth-child(2) .box::after,
-  #setdhcp > .row:first-child div:nth-child(2) .box::before,
-  #setdhcp > .row:nth-child(2) > div:nth-child(2) > .box::before,
-  #setdns .row:first-child div:nth-child(2) .box::before,
-  #setdnsrec .row:first-child div:nth-child(2) .box::before,
-  #setteleport > .row > .col-md-6:first-child p::after,
+  .page-settings-privacy .content > .row > div:nth-child(2) .box::after,
+  .page-settings-api .content > .row:nth-of-type(2) > div:nth-child(2) .box::after,
+  .page-settings-api .content > .row:nth-of-type(3) > div:nth-child(1) .box::after,
+  .page-settings-dhcp .content > .row:nth-child(2) > div:nth-child(2) > .box::before,
+  .page-settings-dns .content > .row:nth-of-type(2) div:nth-child(2) .box::before,
+  .page-settings-dnsrecords .content > .row:nth-of-type(2) div:nth-child(2) .box::before,
+  .page-settings-teleporter > .row > .col-md-6:first-child p::after,
   .box:has(> .box-header[data-widget="collapse"])::before,
   .login-donate .text-center::before,
   .main-footer > .row:first-child > div::before,
@@ -4510,11 +4536,11 @@ div.dataTables_wrapper div.dataTables_length select {
 
 /* --- fake panel */
 @media (min-width: 768px) {
-  #setpriv > .row div:nth-child(1) .box::before,
-  #setapi > .row div:nth-child(1) .box::before,
-  #setdhcp > .row:first-child div:first-child .box::after,
-  #setdns .row:first-child div:first-child .box::after,
-  #setdnsrec .row:first-child div:first-child .box::after {
+  .page-settings-privacy .content > .row div:nth-child(1) .box::before,
+  .page-settings-api .content > .row:nth-of-type(2) div:nth-child(1) .box::before,
+  .page-settings-dhcp .content > .row:nth-of-type(2) div:first-child .box::after,
+  .page-settings-dns .content > .row:nth-of-type(2) div:first-child .box::after,
+  .page-settings-dnsrecords .content > .row:nth-of-type(2) div:first-child .box::after {
     content: "STG 498 691";
     position: absolute;
     inset: calc(var(--gap) * 2) calc(var(--gap) * -2) calc(var(--gap) * 10.5) auto;
@@ -4528,47 +4554,47 @@ div.dataTables_wrapper div.dataTables_length select {
     color: var(--color-text-dark);
   }
 
-  #setpriv .row .row div:nth-child(1) .box::before,
-  #setapi > .row > div:nth-child(1) div:nth-child(2) .box::before {
+  .page-settings-privacy .content .row .row div:nth-child(1) .box::before,
+  .page-settings-api .content > .row:nth-of-type(2) > div:nth-child(1) .box::before {
     content: 'THM';
     background-color: var(--color-danger-bright);
     bottom: calc(var(--gap) * 2);
   }
 
-  #setpriv .row .row div:nth-child(1) .box::before {
+  .page-settings-privacy .content .row .row div:nth-child(1) .box::before {
     content: 'QLG';
     background-color: var(--color-secondary-hover);
   }
 }
 
-#setdhcp .box-body .box,
-#setdns .box-body .box {
+.page-settings-dhcp .content .box-body .box,
+.page-settings-dns .content .box-body .box {
   margin-top: var(--gap);
 }
 
-#setdns .box-body .box::after {
+.page-settings-dns .content .box-body .box::after {
   display: none;
 }
 
-#setdns .row:first-child .col-lg-6:first-child .box .col-sm-12 .box {
+.page-settings-dns .content > .row:nth-of-type(2) .col-lg-6:first-child .box .col-sm-12 .box {
   border-color: var(--color-link);
 }
 
-#setdhcp > .row:nth-child(2)> div:nth-child(2) .box .box-header h3,
-#setdns .row:first-child .col-lg-6:first-child .box .col-sm-12 .box .box-header h3 {
+.page-settings-dhcp .content > .row:nth-of-type(2) > div:nth-child(2) .box .box-header h3,
+.page-settings-dns .content > .row:nth-of-type(2) .col-lg-6:first-child .box .col-sm-12 .box .box-header h3 {
   padding-right: calc(var(--gap) * 4);
 }
 
-#setdhcp > .row:nth-child(2)> div:nth-child(2) .box .box-header .box-tools,
-#setdns .row:first-child .col-lg-6:first-child .box .col-sm-12 .box .box-header .box-tools {
+.page-settings-dhcp .content > .row:nth-of-type(2) > div:nth-child(2) .box .box-header .box-tools,
+.page-settings-dns .content > .row:nth-of-type(2) .col-lg-6:first-child .box .col-sm-12 .box .box-header .box-tools {
   float: none !important;
   margin-block: 0;
   position: absolute;
   inset: 0 0 auto auto;
 }
 
-#setdhcp > .row:nth-child(2)> div:nth-child(2) .box .box-header .box-tools button,
-#setdns .row:first-child .col-lg-6:first-child .box .col-sm-12 .box .box-header .box-tools button {
+.page-settings-dhcp .content > .row:nth-of-type(2) > div:nth-child(2) .box .box-header .box-tools button,
+.page-settings-dns .content > .row:nth-of-type(2) .col-lg-6:first-child .box .col-sm-12 .box .box-header .box-tools button {
   min-width: auto;
   width: calc(var(--gap) * 2);
   aspect-ratio: 1;
@@ -4577,29 +4603,34 @@ div.dataTables_wrapper div.dataTables_length select {
   border-radius: 0 0 var(--radius75) var(--radius75);
 }
 
-#setapi .select-checkbox,
-#setdhcp .select-checkbox {
+.page-settings-api .content .select-checkbox,
+.page-settings-dhcp .content .select-checkbox {
   border: 0;
 }
 
-/* --- DHCP - currently active leases */
-#setdhcp > .row:nth-child(2) > div:nth-child(1) .box {
+/* --- DHCP */
+.page-settings-dhcp .content > .row:nth-of-type(2) > div:nth-child(1) .box {
   margin-top: calc(var(--gap) * 2);
   border: var(--border-width) solid var(--color-disabled);
   border-left: 0;
   border-radius: 0 var(--radius100) var(--radius100) 0;
 }
 
-#setdhcp #DHCPLeasesTable_wrapper {
+/* --- currently active leases */
+.page-settings-dhcp .box-header:has(+ .box-body #DHCPLeasesTable_wrapper) {
+  margin-top: calc(var(--gap) * 2);
+}
+
+.page-settings-dhcp #DHCPLeasesTable_wrapper {
   padding-left: var(--gap25);
 }
 
 /* --- SAFE/DANGER AREA */
-#setdns .row:first-child div:nth-child(3) .box {
+.page-settings-dns .row:first-child div:nth-child(3) .box {
   margin-top: var(--gap);
 }
 
-#setdns .row:first-child div:nth-child(3) .box-body {
+.page-settings-dns .row:first-child div:nth-child(3) .box-body {
   padding-right: 0;
 }
 
@@ -4722,7 +4753,7 @@ div.dataTables_wrapper div.dataTables_length select {
 }
 
 /* --- headers + lcars panels (advanced settings, privacy)  */
-#setdns form > .row:nth-child(2) h4,
+.page-settings-dns .content form > .row:nth-child(2) h4,
 #privacy .box-header h3,
 #web > .row > div:first-child .box-header h3 {
   color: var(--color-danger-bright);
@@ -4738,8 +4769,8 @@ div.dataTables_wrapper div.dataTables_length select {
 }
 
 @media (min-width: 768px) {
-  #setdns form > .row:nth-child(2) h4::before,
-  #setdns form > .row:nth-child(2) h4::after,
+  .page-settings-dns .content form > .row:nth-child(2) h4::before,
+  .page-settings-dns .content form > .row:nth-child(2) h4::after,
   #privacy .box-header h3::before,
   #privacy .box-header h3::after,
   #web > .row > div:first-child .box-header h3::before,
@@ -4752,13 +4783,13 @@ div.dataTables_wrapper div.dataTables_length select {
     background-color: hotpink;
   }
 
-  #setdns form > .row:nth-child(2) h4::before,
+  .page-settings-dns .content form > .row:nth-child(2) h4::before,
   #privacy .box-header h3::before,
   #web > .row > div:first-child .box-header h3::before {
     background-color: var(--color-primary);
   }
 
-  #setdns form > .row:nth-child(2) h4::after,
+  .page-settings-dns .content form > .row:nth-child(2) h4::after,
   #privacy .box-header h3::after,
   #web > .row > div:first-child .box-header h3::after {
     background-color: var(--color-background);
@@ -4766,7 +4797,7 @@ div.dataTables_wrapper div.dataTables_length select {
   }
 }
 
-#setdns form > .row:nth-child(2) h4 ~ p,
+.page-settings-dns .content form > .row:nth-child(2) h4 ~ p,
 #privacy .box-body,
 #web > .row > div:first-child .box-body {
   margin-top: 0;
@@ -4774,15 +4805,15 @@ div.dataTables_wrapper div.dataTables_length select {
   padding-left: var(--gap);
 }
 
-#setdns form > .row:nth-child(2) h4:nth-of-type(1) ~ p:nth-of-type(1),
-#setdns form > .row:nth-child(2) h4:nth-of-type(1) ~ p:nth-of-type(2),
-#setdns form > .row:nth-child(2) h4:nth-of-type(1) ~ p:nth-of-type(3),
-#setdns form > .row:nth-child(2) h4:nth-of-type(2) ~ p:nth-of-type(4),
-#setdns form > .row:nth-child(2) h4:nth-of-type(2) ~ p:nth-of-type(5),
-#setdns form > .row:nth-child(2) h4:nth-of-type(2) ~ p:nth-of-type(6),
-#setdns form > .row:nth-child(2) h4:nth-of-type(2) ~ p:nth-of-type(7),
-#setdns form > .row:nth-child(2) h4:nth-of-type(2) ~ p:nth-of-type(8),
-#setdns form > .row:nth-child(2) .form-group,
+.page-settings-dns .content form > .row:nth-child(2) h4:nth-of-type(1) ~ p:nth-of-type(1),
+.page-settings-dns .content form > .row:nth-child(2) h4:nth-of-type(1) ~ p:nth-of-type(2),
+.page-settings-dns .content form > .row:nth-child(2) h4:nth-of-type(1) ~ p:nth-of-type(3),
+.page-settings-dns .content form > .row:nth-child(2) h4:nth-of-type(2) ~ p:nth-of-type(4),
+.page-settings-dns .content form > .row:nth-child(2) h4:nth-of-type(2) ~ p:nth-of-type(5),
+.page-settings-dns .content form > .row:nth-child(2) h4:nth-of-type(2) ~ p:nth-of-type(6),
+.page-settings-dns .content form > .row:nth-child(2) h4:nth-of-type(2) ~ p:nth-of-type(7),
+.page-settings-dns .content form > .row:nth-child(2) h4:nth-of-type(2) ~ p:nth-of-type(8),
+.page-settings-dns .content form > .row:nth-child(2) .form-group,
 #privacy .box-header h3,
 #privacy .box-body,
 #web > .row > div:first-child .box-header h3,
@@ -4790,22 +4821,22 @@ div.dataTables_wrapper div.dataTables_length select {
   border-left: var(--border-width) solid var(--color-primary);
 }
 
-#setdns form > .row:nth-child(2) h4:nth-of-type(1) ~ p:nth-of-type(3) {
+.page-settings-dns .content form > .row:nth-child(2) h4:nth-of-type(1) ~ p:nth-of-type(3) {
   border-bottom: var(--border-width) solid var(--color-primary);
   padding-bottom: var(--gap50);
 }
 
 @media (min-width: 768px) {
-  #setdns form > .row:nth-child(2) h4,
-  #setdns form > .row:nth-child(2) h4:nth-of-type(1) ~ p:nth-of-type(1),
-  #setdns form > .row:nth-child(2) h4:nth-of-type(1) ~ p:nth-of-type(2),
-  #setdns form > .row:nth-child(2) h4:nth-of-type(1) ~ p:nth-of-type(3),
-  #setdns form > .row:nth-child(2) h4:nth-of-type(2) ~ p:nth-of-type(4),
-  #setdns form > .row:nth-child(2) h4:nth-of-type(2) ~ p:nth-of-type(5),
-  #setdns form > .row:nth-child(2) h4:nth-of-type(2) ~ p:nth-of-type(6),
-  #setdns form > .row:nth-child(2) h4:nth-of-type(2) ~ p:nth-of-type(7),
-  #setdns form > .row:nth-child(2) h4:nth-of-type(2) ~ p:nth-of-type(8),
-  #setdns form > .row:nth-child(2) .form-group,
+  .page-settings-dns .content form > .row:nth-child(2) h4,
+  .page-settings-dns .content form > .row:nth-child(2) h4:nth-of-type(1) ~ p:nth-of-type(1),
+  .page-settings-dns .content form > .row:nth-child(2) h4:nth-of-type(1) ~ p:nth-of-type(2),
+  .page-settings-dns .content form > .row:nth-child(2) h4:nth-of-type(1) ~ p:nth-of-type(3),
+  .page-settings-dns .content form > .row:nth-child(2) h4:nth-of-type(2) ~ p:nth-of-type(4),
+  .page-settings-dns .content form > .row:nth-child(2) h4:nth-of-type(2) ~ p:nth-of-type(5),
+  .page-settings-dns .content form > .row:nth-child(2) h4:nth-of-type(2) ~ p:nth-of-type(6),
+  .page-settings-dns .content form > .row:nth-child(2) h4:nth-of-type(2) ~ p:nth-of-type(7),
+  .page-settings-dns .content form > .row:nth-child(2) h4:nth-of-type(2) ~ p:nth-of-type(8),
+  .page-settings-dns .content form > .row:nth-child(2) .form-group,
   #privacy .box-header h3,
   #privacy .box-body,
   #web > .row > div:first-child .box-header h3,
@@ -4814,7 +4845,7 @@ div.dataTables_wrapper div.dataTables_length select {
   }
 }
 
-#setdns form > .row:nth-child(2) .form-group {
+.page-settings-dns .content form > .row:nth-child(2) .form-group {
   margin-top: calc(var(--border-width) * 2);
   margin-bottom: 0;
   padding: var(--gap50) 0 var(--gap50) var(--gap);
@@ -4822,11 +4853,11 @@ div.dataTables_wrapper div.dataTables_length select {
   border-bottom: var(--border-width) solid var(--color-disabled);
 }
 
-#setdns form > .row:nth-child(2) .form-group .input-group {
+.page-settings-dns .content form > .row:nth-child(2) .form-group .input-group {
   display: block;
 }
 
-#setdns .col-lg-12 > .icheck-primary .help-block + p {
+.page-settings-dns .content .col-lg-12 > .icheck-primary .help-block + p {
   padding-left: calc(var(--gap) * 3.5);
 }
 
@@ -4912,8 +4943,8 @@ div[id^="advanced-content-"] .box-footer {
 /* Double border text areas
   ========================================================== */
 
-#setdns p,
-#setdns .icheck-primary,
+.page-settings-dns p,
+.page-settings-dns .icheck-primary,
 #all-queries_wrapper ~ p,
 #web > .row > div:nth-child(2) .box {
   font-weight: 100;
@@ -4923,12 +4954,12 @@ div[id^="advanced-content-"] .box-footer {
   margin-bottom: 0;
 }
 
-#setdns .table + p,
+.page-settings-dns .table + p,
 #all-queries_wrapper ~ p,
 #all-queries_wrapper ~ p + ul,
 #web > .row > div:nth-child(2) .box,
 .settings-container > .box,
-#setsystem div[id="cache-metrics-chart"] {
+.page-settings-system div[id="cache-metrics-chart"] {
   padding: var(--gap);
   border: calc(var(--border-width) * 2) double var(--color-disabled);
   border-radius: var(--radius100);
