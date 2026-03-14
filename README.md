@@ -44,7 +44,7 @@ Run the same commands directly in the container as shown [here](https://github.c
 ***
 
 ## Do you prefer more colorful LCARS?
-Check my other theme (⚠️ NOT COMPATIBLE WITH THE V6 AT THE MOMENT)
+Check my other theme
 [![Pi-hole LCARS Next Generation Theme](https://github.com/MichalSvatos/pi-hole-star-trek-picard/raw/main/previews/pi-hole-tng-lcars.png)](https://github.com/MichalSvatos/pi-hole-lcars-next-gen)
 
 ***
